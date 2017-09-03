@@ -14,5 +14,5 @@ bin-release/
 *.apk
 
 # Cunji 
-# log/
+log/
 .DS_Store
