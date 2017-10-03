@@ -1,0 +1,49 @@
+.recharge-box{
+  padding: 50px;
+}
+.i-info{
+  border: 1px solid red;
+  border-radius: 90px;
+  background-color: #2684b6;
+  font-size: 32px;
+  color: #efefef;
+  padding: 20px;
+  text-align: center;
+}
+.i-num{
+  font-size: 50px;
+}
+.i-money-box{
+  padding: 50px;
+  font-size: 23px;
+}
+.i-money-box>li>a{
+  padding: 30px;
+}
+.i-pay-box{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.i-pay-img{
+  width: 120px;
+}
+.i-pay-tips{
+  font-size: 19px;
+  margin-left: 20px;
+}
+.i-pay-btn-box{
+  padding: 50px;
+}
+.i-pay-btn{
+  width: 100px;
+}
+.i-discounts-box{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.recharge-b-box{
+  background-color: #67cbd9;
+}
+.i-discounts-b-box{
+  background-color: #f5c3c3;
+}

@@ -41,7 +41,7 @@ class adminUser extends model{
                 username like '%$search%'
         {$limit}
     ";
-    return $this->query($sql)->fetchAll();
+    return $this->query($sql)->fetchAll(2);
   }
 
   /**
@@ -70,7 +70,7 @@ class adminUser extends model{
   /**
    * 获取总记录数
    */
-  public function totalRow(){
+  public function totalRows(){
     return $this->count($this->table);
   }
 

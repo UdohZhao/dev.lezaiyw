@@ -1,0 +1,97 @@
+{% extends "layouts.html" %}
+{% block css %}
+
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 后台用户管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 后台用户列表</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/admin/adminUser/index" method="post">
+          <div class="input-group" style="width: 300px;float: right;margin-right: 30px;">
+            <input type="text" class="form-control" name="search" placeholder="请输入关键字">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </form>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>用户名</th>
+              <th>类型</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if data %}
+            {% for k,v in data %}
+            <tr>
+              <td>
+                {% if v.status == 0 %}
+                  <span class="text-success">{正常}</span>
+                {% else %}
+                  <span class="text-danger">{冻结}</span>
+                {% endif %}
+              </td>
+              <td>{{ v.username }}</td>
+              <td>
+              {% if v.type == 0 %}
+                <span class="text-warning">{超级管理员}</span>
+              {% elseif v.type == 1 %}
+                <span class="text-warning">{普通管理员}</span>
+              {% elseif v.type == 2 %}
+                <span class="text-warning">{服务审核管理员}</span>
+              {% elseif v.type == 3 %}
+                <span class="text-warning">{实名认证管理员}</span>
+              {% elseif v.type == 4 %}
+                <span class="text-warning">{提现管理员}</span>
+              {% elseif v.type == 5 %}
+                <span class="text-warning">{信息发布管理员}</span>
+              {% endif %}
+              </td>
+              <td>
+                <button type="button" class="btn btn-default btn-xs" onclick="del({{ v.id }});">删除</button>
+                {% if v.status == 0 %}
+                <button type="button" class="btn btn-danger btn-xs" onclick="flag({{ v.id }},1);">冻结</button>
+                {% else %}
+                <button type="button" class="btn btn-success btn-xs" onclick="flag({{ v.id }},0);">解冻</button>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="4">
+                <blockquote>
+                  <p>暂无数据 ～</p>
+                </blockquote>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <div style="float: right;">
+          {% autoescape false %}
+            {{ page }}
+          {% endautoescape %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<script src="{{src}}/adminUser/js/index.js"></script>
+{% endblock %}

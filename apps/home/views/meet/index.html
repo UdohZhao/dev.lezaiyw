@@ -1,0 +1,115 @@
+{% include 'header.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/meet/css/index.css">
+{% endblock %}
+
+  <!-- 服务类别 start -->
+  <div class="container-fluid service-b-box">
+    <div class="container service-itemb-box">
+      <div class="row service-row-box">
+        <div class="col-md-12 service-col">
+          <ul class="nav nav-pills service-title-box">
+            <li role="presentation"><div class="service-title">线上游戏</div></li>
+            {% for k,v in data.online %}
+            <li role="presentation" {% if scid == v.id %}class="active"{% endif %}><a href="/meet/index/scid/{{v.id}}">{{v.cname}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-12 service-col">
+          <ul class="nav nav-pills service-title-box">
+            <li role="presentation"><div class="service-title">线上娱乐</div></li>
+            {% for k,v in data.onlineRecreation %}
+            <li role="presentation" {% if scid == v.id %}class="active"{% endif %}><a href="/meet/index/scid/{{v.id}}">{{v.cname}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-12 service-col">
+          <ul class="nav nav-pills service-title-box">
+            <li role="presentation"><div class="service-title">线下娱乐</div></li>
+            {% for k,v in data.offlineRecreation %}
+            <li role="presentation" {% if scid == v.id %}class="active"{% endif %}><a href="/meet/index/scid/{{v.id}}">{{v.cname}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <!-- <div class="col-md-12 service-col">
+          <ul class="nav nav-pills service-title-box">
+            <li role="presentation"><div class="service-title">线下城市</div></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+            <li role="presentation"><a href="#">重庆</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- 服务类别 end -->
+
+  <!-- 热门推荐 start -->
+  <div class="container-fluid hot-b-box">
+    <div class="container">
+
+      <div class="row hot-list-box">
+        {% if data.sData %}
+        {% for k,v in data.sData %}
+        <div class="col-md-4">
+          <a href="/meet/detail/uid/{{v.uData.id}}/scid/{{v.scid}}/sid/{{v.id}}" target="_blank">
+            <div class="thumbnail">
+              <img src="{{v.cover_path}}" style="width: 100%; height: 300px;">
+              <div class="caption">
+                  <ul class="list-inline">
+                    <!-- <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
+                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
+                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
+                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li> -->
+                    {% for kk,vv in v.uData.i_label %}
+                      {% if kk == 0 %}
+                        <li class="bg-danger i-label">{{vv}}</li>
+                      {% else %}
+                        <li class="bg-success i-label">{{vv}}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                <h4>
+                  {{v.uData.nickname}}
+                </h4>
+                <ul class="list-inline">
+                  <li>{{v.uData.city}}</li>
+                  <li>{{v.uData.age}}</li>
+                </ul>
+                <ul class="list-inline">
+                  {% if v.uData.status == 1 %}
+                  <li><i class="fa fa-circle on-line"></i> 在线</li>
+                  {% elseif v.uData.status == 0 %}
+                  <li><i class="fa fa-circle off-line"></i> 离线</li>
+                  {% else %}
+                  <li><i class="fa fa-circle off-line"></i> 冻结</li>
+                  {% endif %}
+                  <li class="money-time">{{v.price}}元／{{data.units}}</li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+        {% else %}
+          <blockquote>
+            <p>暂无服务 ～</p>
+          </blockquote>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+  <!-- 热门推荐 end -->
+
+{% include 'footer.html' %}
+{% block js %}
+<script src="{{src}}/meet/js/index.js"></script>
+{% endblock %}

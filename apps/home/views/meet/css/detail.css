@@ -1,0 +1,62 @@
+.video-box{
+  width: 100%;
+}
+.info-title{
+  text-align: center;
+  font-size: 22px;
+  padding: 10px 0px;
+  background-color: #FC2DAA;
+  color: #efefef;
+}
+.info-ul>li{
+  font-size: 17px;
+  padding: 5px;
+}
+.detail-box{
+  background:url('/apps/home/views/layouts/img/detail-4.jpg');
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.info-div{
+  background-color: #ffffff;
+}
+.video-div{
+  background-color: #ffffff;
+  padding-top: 15px;
+}
+.service-div{
+  background-color: #ffffff;
+  padding-top: 15px;
+}
+.service-info{
+  padding: 20px 20px;
+  font-size: 17px;
+}
+.service-price{
+  font-size: 32px;
+  color: #FC2DAA;
+}
+.introduce-box{
+  padding: 20px 20px;
+}
+.introduce-content{
+  font-size: 17px;
+}
+.evaluate-box{
+  padding: 20px 20px;
+}
+.evaluate-img{
+  width: 50px;
+  height: 50px;
+}
+.evaluate-i{
+  float: right;
+  color: #FC140D;
+}
+.avatar-img{
+  width: 90px;
+}
+.nickname-text{
+  font-size: 17px;
+  padding-top: 20px;
+}

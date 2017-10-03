@@ -1,0 +1,114 @@
+{% extends "layouts.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/enter/css/service.css">
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 个人中心</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-body">
+        <blockquote>
+          <p>申请陪玩服务</p>
+        </blockquote>
+        <!-- 服务类别 start -->
+        <div class="container-fluid service-b-box">
+          <div class="container service-itemb-box">
+            <div class="row service-row-box">
+              <div class="col-md-12 service-col">
+                <ul class="nav nav-pills service-title-box">
+                  <li role="presentation"><div class="service-title">线上游戏</div></li>
+                  {% for k,v in data.online %}
+                  <li role="presentation" {% if scid == v.id %}class="active"{% endif %}><a href="/enter/service/scid/{{v.id}}">{{v.cname}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-12 service-col">
+                <ul class="nav nav-pills service-title-box">
+                  <li role="presentation"><div class="service-title">线上娱乐</div></li>
+                  {% for k,v in data.onlineRecreation %}
+                  <li role="presentation" {% if scid == v.id %}class="active"{% endif %}><a href="/enter/service/scid/{{v.id}}">{{v.cname}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-12 service-col">
+                <ul class="nav nav-pills service-title-box">
+                  <li role="presentation"><div class="service-title">线下娱乐</div></li>
+                  {% for k,v in data.offlineRecreation %}
+                  <li role="presentation" {% if scid == v.id %}class="active"{% endif %}><a href="/enter/service/scid/{{v.id}}">{{v.cname}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 服务类别 end -->
+        <form class="form-horizontal" id="serviceForm" action="/enter/service/scid/{{scid}}/sid/{{data.sData.id}}" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">服务封面</label>
+            <div class="col-sm-10">
+              {% if data.sData.cover_path %}
+                <img src="{{data.sData.cover_path}}" class="img-responsive breviary-img" onclick="delFiles({{data.sData.id}},1,'{{data.sData.cover_path}}');" alt="点击删除封面图片" title="点击删除封面图片">
+                <input type="hidden" class="cover-file" id="previewImg" name="cover_path" value="{{data.sData.cover_path}}">
+              {% else %}
+              <div id="preview">
+                <img id="imghead" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg').click();" alt="点击上传封面图片" title="点击上传封面图片">
+              </div>
+              <input type="file" id="previewImg" name="cover_path" class="cover-file" onchange="previewImage(this)" accept="image/*">
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">服务描述</label>
+            <div class="col-sm-10">
+              <!-- 加载编辑器的容器 -->
+              <script id="container" name="describe" type="text/plain" style="height: 500px;">{% autoescape false %}{{data.sData.describe}}{% endautoescape %}</script>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">价格／{{data.units}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="price" placeholder="请输入价格／{{data.units}}" value="{{data.sData.price}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">个性标签</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="i_label" placeholder="请针对服务填写个性标签" value="{{data.sData.i_label}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">语音介绍(选填60秒内)</label>
+            <div class="col-sm-10">
+              {% if data.sData.voice %}
+                <button type="button" class="btn btn-primary" onclick="delFiles({{data.sData.id}},2,'{{data.sData.voice}}');">删除音频</button>
+                <input type="hidden" id="inputFile" name="voice" value="{{data.sData.voice}}">
+              {% else %}
+                <input type="file" id="inputFile" name="voice" accept="audio/mp3">
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">申请导师</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<!-- 配置文件 -->
+<script type="text/javascript" src="/public/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/public/ueditor/ueditor.all.js"></script>
+<script src="{{src}}/enter/js/service.js"></script>
+{% endblock %}

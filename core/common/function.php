@@ -71,9 +71,9 @@ function enPassword($password){
 function upFiles($file){
     // 返回结果
     $res = array();
-    $res['code'] = 200;
+    $res['code'] = 0;
     $res['msg'] = '';
-    $res['data'] = array();
+    $res['data'] = '';
     // 上传路径
     $path = ICUNJI.'/admin/uploads/'.date('Y-m-d').'/';
     if (!is_dir($path)) {
@@ -91,7 +91,7 @@ function upFiles($file){
         $res['data'] = '/admin/uploads/'.date('Y-m-d').'/'.$up->getFileName();
       }
     } else {
-      $res['code'] = 400;
+      $res['code'] = 1;
       $res['msg'] = $up->getErrorMsg();
     }
     return $res;
@@ -109,11 +109,8 @@ function J($data){
  * 返回结果
  */
 function R($code,$msg = '',$data = ''){
-  if (!intval($code)) {
-    return false;
-  }
   $result = array();
-  $result['code'] = $code; //反码状态，200正常，400往上都属错误
+  $result['code'] = $code; //反码状态，0正常，往上都属错误
   $result['msg'] = $msg;
   $result['data'] = $data;
   return $result;
@@ -207,8 +204,8 @@ function TA($obj) {
 /**
  * 生成订单号
  */
-function createIn(){
-return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
+function createIn($uid){
+return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8).$uid;
 }
 
 /**
@@ -281,12 +278,94 @@ function XA($xml){
 
  //禁止引用外部xml实体
 
-libxml_disable_entity_loader(true);
+  libxml_disable_entity_loader(true);
 
-$xmlstring = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+  $xmlstring = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
 
-$val = json_decode(json_encode($xmlstring),true);
+  $val = json_decode(json_encode($xmlstring),true);
 
-return $val;
+  return $val;
 
+}
+
+/**
+* 验证手机号是否正确
+* @author honfei
+* @param number $mobile
+*/
+function isMobile($mobile) {
+    if (!is_numeric($mobile)) {
+        return false;
+    }
+    return preg_match('#^13[\d]{9}$|^14[5,7]{1}\d{8}$|^15[^4]{1}\d{8}$|^17[0,6,7,8]{1}\d{8}$|^18[\d]{9}$#', $mobile) ? true : false;
+}
+
+/**
+ * 云片网短信发送
+ * @param [string] $[phone] [<手机号码>]
+ * @param [string] $[msg] [<文字>]
+ */
+function ypSendMsg($phone,$msg){
+  // 以下为核心代码部分
+  $ch = curl_init();
+  // 必要参数
+  $apikey = conf::get('APIKEY','home');
+  $mobile = $phone;
+  $text="【听娱神游约玩】".$msg;
+  // 发送短信
+  $data=array('text'=>$text,'apikey'=>$apikey,'mobile'=>$mobile);
+  curl_setopt ($ch, CURLOPT_URL, 'https://sms.yunpian.com/v2/sms/single_send.json');
+  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+  $json_data = curl_exec($ch);
+  //如果curl发生错误，打印出错误
+  if(curl_error($ch) != ""){
+      return 'Curl error: ' .curl_error($ch);
+  }
+  //解析返回结果（json格式字符串）
+  $array = json_decode($json_data,true);
+  return $array;
+}
+
+/**
+ * 生成随机数
+ * @param [int] $[length] [<长度>]
+ */
+function generateCode($length = 6) {
+    return rand(pow(10,($length-1)), pow(10,$length)-1);
+}
+
+/**
+ * @param  integer [<整数>]
+ * @return [string]
+ */
+function generateString( $length = 8 ) {
+  // 密码字符集，可任意添加你需要的字符
+  $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_ []{}<>~`+=,.;:/?|';
+  $password = '';
+  for ( $i = 0; $i < $length; $i++ )
+  {
+    $password .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+  }
+  return $password;
+}
+
+/**
+ * 替换url参数
+ * @param $url  地址
+ * @param $data 替换数组
+ */
+function replaceUrlParam($url,$data){
+  $urlArr = parse_url($url);
+  $pstr = http_build_query($data);
+  $url = str_replace($urlArr['query'], $pstr, $url);
+  return $url;
+}
+
+/**
+ * 判断https ？ http 并且附带域名 https://baidu.com
+ */
+function isHttps(){
+  $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+  return $http_type . $_SERVER['SERVER_NAME'];
 }

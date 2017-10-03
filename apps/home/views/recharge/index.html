@@ -1,0 +1,67 @@
+{% include 'header.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/recharge/css/index.css">
+{% endblock %}
+
+  <!-- 充值 start -->
+  <div class="container-fluid recharge-b-box">
+    <div class="container">
+      <div class="row recharge-box">
+        <div class="col-md-12">
+          <div class="i-info">现拥有<span class="i-num"> {{data.balance}} </span>玩币，约玩值：{{data.contribution}}</div>
+        </div>
+        <div class="col-md-12">
+          <ul class="nav nav-pills i-money-box">
+            <li role="presentation" id="active0" class="active" onclick="rechargeMoney('0.01','0');"><a href="#">0.01元</a></li>
+            <li role="presentation" id="active1" onclick="rechargeMoney(10,'1');"><a href="javascript:;">10元</a></li>
+            <li role="presentation" id="active2" onclick="rechargeMoney(20,'2');"><a href="javascript:;">20元</a></li>
+            <li role="presentation" id="active3" onclick="rechargeMoney(30,'3');"><a href="javascript:;">30元</a></li>
+            <li role="presentation" id="active4" onclick="rechargeMoney(50,'4');"><a href="javascript:;">50元</a></li>
+            <li role="presentation" id="active5" onclick="rechargeMoney(100,'5');"><a href="javascript:;">100元</a></li>
+            <li role="presentation" id="active6" onclick="rechargeMoney(200,'6');"><a href="javascript:;">200元</a></li>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <ul class="list-inline i-pay-box">
+            <input type="hidden" name="money" value="0.01">
+            <li>
+              <label class="radio-inline">
+                <input type="radio" name="type" value="0" checked="checked"> <img src="{{src}}/recharge/img/alipay-icon.png" class="img-responsive i-pay-img">
+              </label>
+            </li>
+            <li>
+              <label class="radio-inline">
+                <input type="radio" name="type" value="1"> <img src="{{src}}/recharge/img/wechatpay-icon.png" class="img-responsive i-pay-img">
+              </label>
+            </li>
+            <li class="i-pay-tips">
+              * 兑换比例（1元 : 1玩币）
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <div class="i-pay-btn-box">
+            <button type="button" class="btn btn-danger btn-lg i-pay-btn" onclick="gotoPay();">去支付</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 充值 end -->
+
+  <!-- 充值展示 start -->
+  <div class="container-fluid i-discounts-b-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 i-discounts-box">
+          <img src="{{src}}/recharge/img/discounts.png" class="img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 充值展示 end -->
+
+{% include 'footer.html' %}
+{% block js %}
+<script src="{{src}}/recharge/js/index.js"></script>
+{% endblock %}

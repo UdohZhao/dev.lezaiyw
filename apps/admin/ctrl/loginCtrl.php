@@ -30,11 +30,6 @@ class loginCtrl extends \core\icunji{
     }
     // Ajax
     if (IS_AJAX === true) {
-      // result
-      $result = array();
-      $result['code'] = 200; //反码状态，200正常，400往上都属错误
-      $result['msg'] = '';
-      $result['data'] = '';
       // data
       $data = $this->getData();
       if (isset($_POST['remember']) && $_POST['remember'] == 1) {
@@ -45,18 +40,17 @@ class loginCtrl extends \core\icunji{
       // 核对用户名和密码
       $res = $this->db->getInfo($data['username'],$data['password']);
       if ($res === false) {
-        $result['code'] = 400;
-        $result['msg'] = '用户名或者密码错误 :(';
+        echo J(R(1,'用户名或者密码错误 :(',false));
+        die;
+      } else if ($res['status'] == 1) {
+        echo J(R(2,'该用户已被冻结，请联系网站管理员 :(',false));
+        die;
       } else {
-        if ($res['status'] == 1) {
-           $result['code'] = 401;
-           $result['msg'] = '该用户已被冻结，请联系网站管理员 :(';
-        }
         // 用户信息存入session
         $_SESSION['userinfo'] = $res;
+        echo J(R(0,'受影响的操作 :)',true));
+        die;
       }
-      echo json_encode($result);
-      die;
     }
   }
 

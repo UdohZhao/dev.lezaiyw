@@ -1,0 +1,105 @@
+body {
+  padding-top: 80px;
+}
+a{
+  text-decoration: none!important;
+}
+.navbar-box{
+  height: 80px;
+  background-color: #45afcb;
+}
+.logo-img{
+  width: 100px;
+}
+.nav-box a{
+  color: #efefef;
+  padding: 28px!important;
+}
+.nav-box>li.active>a{
+  color: #efefef;
+  background-color: #db4d6d;
+}
+.nav-box>li>a:focus, .nav-box>li>a:hover{
+  background-color:#000000;/* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 */
+  background-color:rgba(0,0,0,0.2); /* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 */
+}
+.footer-box{
+  background-color: #333333;
+  height: 320px;
+}
+.tips-box{
+  color: #efefef;
+}
+.tips-list-text{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.tips-line{
+  border: 2px solid #efefef;
+}
+.info-box{
+  color: #efefef;
+  margin-top: 10px;
+}
+.service-img{
+  padding: 0;
+}
+.service-msg{
+  padding: 0;
+  line-height: 80px;
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+.help-box{
+  text-align: center;
+}
+
+.help-box li{
+  background: red;
+  line-height: 30px;
+  margin-left: 10px;
+}
+
+.help-box li a{
+  color: #efefef;
+  font-size: 17px;
+}
+.copyright-box{
+  color: #efefef;
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: center;
+}
+.login-box{
+  margin-top: 20px;
+}
+.login-btn-box{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.login-button{
+  width: 60%;
+  margin: 0 auto;
+}
+.codeMsg-input{
+  width: 60%;
+}
+.u-box{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #efefef;
+}
+.u-avatar{
+  width: 50px;
+  height: 50px;
+}
+.u-nickname{
+  padding-top: 5px;
+  font-size: 15px;
+}
+.circle-on{
+  color: #49F70B;
+}
+.circle-off{
+  color: #B41011;
+}

@@ -45,17 +45,18 @@ $(function(){
         $(form).ajaxSubmit({
             dataType:"json",
             success:function( res ){
+              console.log(res);
               // res
-              if (res.code == 400) {
+              if (res.code == 1) {
                 swal("登录失败", res.msg, "error");
-              } else if (res.code == 401) {
+              } else if (res.code == 2) {
                 swal("登录失败", res.msg, "error");
               } else {
                 window.location.href = '/admin/index/index';
-                // window.setTimeout("window.location.href='/admin/index/index'",2000);
               }
             },
             error:function(e){
+              console.log(e);
               swal("未知错误 :(", "请刷新页面后重试!", "error");
             }
         });

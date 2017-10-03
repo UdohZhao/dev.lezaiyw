@@ -1,0 +1,99 @@
+{% extends "layouts.html" %}
+{% block css %}
+
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 服务管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 服务列表 -> [{{cname}}]</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/admin/service/index/scid/{{scid}}/type/{{type}}" method="post">
+          <div class="input-group" style="width: 300px;float: right;margin-right: 30px;">
+            <input type="text" class="form-control" name="search" placeholder="请输入用户昵称">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </form>
+        <ul class="nav nav-pills">
+          <li role="presentation" {% if type == 0 %}class="active"{% endif %}><a href="/admin/service/index/scid/{{scid}}/type/0">待审核</a></li>
+          <li role="presentation" {% if type == 1 %}class="active"{% endif %}><a href="/admin/service/index/scid/{{scid}}/type/1">审核未通过</a></li>
+          <li role="presentation" {% if type == 2 %}class="active"{% endif %}><a href="/admin/service/index/scid/{{scid}}/type/2">审核通过</a></li>
+        </ul>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>用户头像</th>
+              <th>用户昵称</th>
+              <th>封面图片</th>
+              <th>个性标签</th>
+              <th>价格</th>
+              <th>接单数</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if data %}
+            {% for k,v in data %}
+            <tr>
+              <td>
+                {% if v.status == 0 %}
+                  <span class="text-danger">{下架}</span>
+                {% else %}
+                  <span class="text-success">{上架}</span>
+                {% endif %}
+              </td>
+              <td>
+                <img src="{{v.uData.avatar}}" class="img-responsive" style="width: 90px;">
+              </td>
+              <td>{{v.uData.nickname}}</td>
+              <td>
+                <img src="{{v.cover_path}}" class="img-responsive" style="width: 90px;">
+              </td>
+              <td>{{v.i_label}}</td>
+              <td>{{v.price}}</td>
+              <td>{{v.or_quantity}}</td>
+              <td>
+                {% if v.status == 1 %}
+                <button type="button" class="btn btn-danger btn-xs" onclick="flag({{ v.id }},0)">下架</button>
+                {% else %}
+                <button type="button" class="btn btn-success btn-xs" onclick="flag({{ v.id }},1)">上架</button>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="4">
+                <blockquote>
+                  <p>暂无数据 ～</p>
+                </blockquote>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <div style="float: right;">
+          {% autoescape false %}
+            {{ page }}
+          {% endautoescape %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<script src="{{src}}/service/js/index.js"></script>
+{% endblock %}

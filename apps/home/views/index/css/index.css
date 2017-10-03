@@ -1,0 +1,131 @@
+.banner-box{
+  background-color: #1fb9c9;
+  height: 700px;
+}
+.hot-anchor-box{
+  background-color: #f6b1bb;
+}
+.hot-img-box{
+  width: 560px;
+  height: 470px;
+}
+.hot-img-box img{
+  width: 100%;
+  height: 100%;
+}
+.hot-img-row{
+  margin-top: 100px;
+}
+.hot-item-row{
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.hot-recommend-img{
+  margin: 0 auto;
+}
+.hot-recommend-title{
+  margin-top: 100px;
+}
+.money-time{
+  float: right;
+  font-size: 21px;
+  color: #db4d6d;
+}
+.i-label{
+  float: right;
+  margin-left: 5px;
+}
+.on-line{
+  color: #66FF66;
+}
+.off-line{
+  color: #db4d6d;
+}
+.hot-list-box{
+  margin-top: 100px;
+}
+.hot-b-box{
+  background-color: #dc7db9;
+}
+.more-box{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.more-btn{
+  margin: 0 auto;
+}
+.ranking-title-box{
+  height: 100px;
+  border: 3px solid #e44875;
+  text-align: center;
+  line-height: 100px;
+  background-color: #f7cb24;
+}
+.ranking-title{
+  font-size: 30px;
+  color: #e44875;
+  margin-left: 10px;
+}
+.ranking-icon{
+  font-size: 30px;
+  color: #e44875;
+}
+.ranking-list-box{
+  margin-top: 30px;
+}
+.ranking-list-box li{
+  background-color: #bdbdbd;
+}
+.ranking-list-title{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.on-notice{
+  font-size: 23px;
+  border: 3px solid #e44875;
+  display: inline-block;
+  width: 100px;
+  background-color: #ffffff;
+  border-radius:25px;
+  margin-right: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.off-notice{
+  font-size: 23px;
+  display: inline-block;
+  width: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.hot-list-img{
+  width: 90px;
+  height: 90px;
+}
+.hot-list-li{
+  margin-top: 15px;
+}
+.sort-box{
+  float: right;
+  margin-right: 30px;
+}
+.sort-num{
+  background-color: #e44875;
+  border: 2px solid #efefef;
+  color: #efefef;
+  font-size: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.ranking-box{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.ranking-b-box{
+  background-color: #2786af;
+}
