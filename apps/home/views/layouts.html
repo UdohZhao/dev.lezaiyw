@@ -291,13 +291,13 @@
                 <img src="{{u.avatar}}">
                 <i></i>
               </span>
-              <span>{{u.nickname}}({% if u.type == 1 %}陪玩主播{% else %}普通用户{% endif %})</span>
+              <span>{{u.nickname}}({% if u.istatus == 1 %}陪玩主播{% else %}普通用户{% endif %})</span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li role="presentation">
-              {% if u.status == 0 %}
+              {% if u.status == 0 and u.istatus == 1 %}
                 <a href="javascript:void(0)" role="menuitem" onclick="onLine(1);"><i class="icon fa fa-circle circle-off"></i> 离线</a>
-              {% elseif u.status == 1 %}
+              {% elseif u.status == 1 and u.istatus == 1 %}
                 <a href="javascript:void(0)" role="menuitem" onclick="onLine(0);"><i class="icon fa fa-circle circle-on"></i> 在线</a>
               {% elseif u.status == 2 %}
                 <a href="javascript:void(0)" role="menuitem" onclick="onLine(2);"><i class="icon fa fa-circle circle-off"></i> 冻结</a>
@@ -336,6 +336,12 @@
                 <span class="site-menu-arrow"></span>
               </a>
               <ul class="site-menu-sub">
+                <li class="site-menu-item">
+                  <a class="animsition-link" href="/indent/index" data-slug="layout-menu-collapsed">
+                    <i class="site-menu-icon " aria-hidden="true"></i>
+                    <span class="site-menu-title">订单管理</span>
+                  </a>
+                </li>
                 <li class="site-menu-item">
                   <a class="animsition-link" href="menu-collapsed.html" data-slug="layout-menu-collapsed">
                     <i class="site-menu-icon " aria-hidden="true"></i>

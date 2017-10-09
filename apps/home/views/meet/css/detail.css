@@ -33,8 +33,8 @@
   font-size: 17px;
 }
 .service-price{
-  font-size: 32px;
-  color: #FC2DAA;
+  font-size: 28px;
+  color: #FC140D;
 }
 .introduce-box{
   padding: 20px 20px;
@@ -59,4 +59,27 @@
 .nickname-text{
   font-size: 17px;
   padding-top: 20px;
+}
+.indent-row{
+  padding-bottom: 20px;
+  font-size: 17px;
+}
+.num-md{
+  padding: 5px 0px;
+}
+.num-select{
+  width: 100px;
+}
+.i-dialog{
+  width: 50%;
+}
+.service-price-p{
+  padding-top: 10px;
+}
+.service-price-indent{
+  font-size: 22px;
+  color: #FC140D;
+}
+.pay-tips{
+  color: #FC140D;
 }

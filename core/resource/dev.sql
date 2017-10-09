@@ -145,24 +145,28 @@ CREATE TABLE `service`(
 # 订单表
 CREATE TABLE `indent`(
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单表主键id',
-  `uid` int(11) UNSIGNED NOT NULL COMMENT '关联用户信息表主键id',
+  `to_uid` int(11) UNSIGNED NOT NULL COMMENT '关联陪陪用户信息表主键id',
+  `from_uid` int(11) UNSIGNED NOT NULL COMMENT '关联下单用户信息表主键id',
   `sid` int(11) UNSIGNED NOT NULL COMMENT '关联服务表主键id',
   `ibid` int(11) UNSIGNED NOT NULL COMMENT '关联网咖表主键id',
+  `onsc_cname` varchar(25) NOT NULL COMMENT '订单服务名称',
   `inumber` varchar(50) NOT NULL COMMENT '订单编号',
-  `price` decimal(14,2) UNSIGNED NOT NULL COMMENT '价格',
+  `unit_price` decimal(14,2) UNSIGNED NOT NULL COMMENT '单价',
+  `total_price` decimal(14,2) UNSIGNED NOT NULL COMMENT '总价',
+  `from_num` tinyint(3) UNSIGNED NOT NULL COMMENT '下单数量',
   `showinfo` varchar(20) NOT NULL COMMENT '展示信息（1小时；1局；1首；1次）',
   `from_phone` char(11) NOT NULL COMMENT '来自下单用户的电话号码',
   `to_phone` char(11) NOT NULL COMMENT '去往陪陪的电话号码',
   `creation_time` int(10) UNSIGNED NOT NULL COMMENT '创建时间',
   `maa_start_time` int(10) UNSIGNED NOT NULL COMMENT '预约开始时间',
-  `maa_end_time` int(10) UNSIGNED NOT NULL COMMENT '预约结束时间',
   `accept_time` int(10) UNSIGNED NOT NULL COMMENT '接单时间',
   `start_time` int(10) UNSIGNED NOT NULL COMMENT '开始时间',
   `end_time` int(10) UNSIGNED NOT NULL COMMENT '结束时间',
   `type` tinyint(1) UNSIGNED NOT NULL COMMENT '类型？0>待确定，1>已接单，2>进行中，3>结束',
   `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>默认，1>取消，2>超时取消，3>待评价，4>已评价',
   PRIMARY KEY (`id`),
-  KEY (`uid`),
+  KEY (`to_uid`),
+  KEY (`from_uid`),
   KEY (`sid`),
   KEY (`ibid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -179,5 +183,17 @@ CREATE TABLE `indent_royalties`(
   `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>未提成，1>已提成',
   PRIMARY KEY (`id`),
   KEY (`uid`),
+  KEY (`iid`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+# 订单评论表
+CREATE TABLE `indent_comment`(
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单评论表主键id',
+  `iid` int(11) UNSIGNED NOT NULL COMMENT '关联订单表主键id',
+  `avatar` varchar(255) NOT NULL COMMENT '头像',
+  `nickname` varchar(50) NOT NULL COMMENT '昵称',
+  `content` varchar(255) NOT NULL COMMENT '评论',
+  `ctime` int(10) UNSIGNED NOT NULL COMMENT '时间',
+  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>好评，1>中评，2>差评',
+  PRIMARY KEY (`id`),
   KEY (`iid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

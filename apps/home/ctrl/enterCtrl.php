@@ -201,6 +201,11 @@ class enterCtrl extends baseCtrl{
         $res = $this->sdb->add($data);
       }
       if ($res) {
+        // 真人认证
+        $istatus = $this->udb->getIstatus($this->u['id']);
+        if ($istatus != 1) {
+          $this->udb->save($this->u['id'],array('istatus'=>1));
+        }
         echo J(R(0,'受影响的操作 :)',true));
         die;
       } else {

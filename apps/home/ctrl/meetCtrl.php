@@ -116,6 +116,8 @@ class meetCtrl extends baseCtrl{
       $data['units'] = $units;
       // 读取当前服务类别名称
       $data['onscCname'] = $this->scdb->getCnameRow($this->scid);
+      // currentDate 当前日期
+      $data['currentDate'] = date('Y-m-d');
       // assign
       $this->assign('data',$data);
       // display

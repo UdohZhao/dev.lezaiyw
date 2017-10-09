@@ -43,5 +43,19 @@ class users extends model{
     return $this->get($this->table,'balance',['id'=>$id]);
   }
 
+  /**
+   * 读取istatus状态
+   */
+  public function getIstatus($id){
+    return $this->get($this->table,'istatus',['id'=>$id]);
+  }
+
+  /**
+   * 读取提成总额
+   */
+  public function getRoyalties($id){
+    return $this->get($this->table,'royalties',['id'=>$id]);
+  }
+
 }
 

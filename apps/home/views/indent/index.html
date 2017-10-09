@@ -1,0 +1,139 @@
+{% extends "layouts.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/indent/css/index.css">
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 订单管理</h3>
+      </div>
+      <div class="panel-body">
+        <div class="panel" id="exampleWizardForm">
+            <div class="panel-heading">
+              <h3 class="panel-title">最新订单</h3>
+            </div>
+            <div class="panel-body">
+              {% if data %}
+                {% for k,v in data %}
+                <!-- Steps -->
+                <div class="steps steps-sm row" data-plugin="matchHeight" data-by-row="true" role="tablist">
+
+                  <div {% if v.type == 0 %}class="step col-md-3 current"{% else %}class="step col-md-3 disabled"{% endif %} data-target="#exampleAccount" role="tab" aria-expanded="true" style="height: 88px;">
+                    <span class="step-number">1</span>
+                    <div class="step-desc">
+                      <span class="step-title">待确认</span>
+                      <div class="btn-div">
+                        {% if v.type == 0 and v.status == 0 and u.istatus == 1 %}
+                        <button type="button" class="btn btn-danger btn-xs" onclick="confirm({{v.id}},'{{v.from_phone}}','{{v.inumber}}');">确认接单</button>
+                        <button type="button" class="btn btn-default btn-xs" onclick="cancel({{v.id}},{{v.from_uid}},'{{v.total_price}}');">取消订单</button>
+                        {% endif %}
+                        {% if v.type == 0 and v.status == 1 %}
+                          <p class="bg-danger">已取消订单</p>
+                        {% endif %}
+                        {% if v.type == 0 and v.status == 0 and u.istatus == 0 %}
+                          <p class="bg-danger">待陪玩主播接单</p>
+                        {% endif %}
+                      </div>
+                      <p>订单编号：{{v.inumber}}</p>
+                      <p>订单创建时间：{{v.creation_time|date('Y-m-d H:i:s')}}</p>
+                      <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
+                      <p>预约服务：{{v.onsc_cname}}</p>
+                      <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
+                      <p>来自用户手机号码：{{v.from_phone}}</p>
+                    </div>
+                  </div>
+
+                  <div {% if v.type == 1 %}class="step col-md-3 current"{% else %}class="step col-md-3 disabled"{% endif %} data-target="#exampleBilling" role="tab" aria-expanded="false">
+                    <span class="step-number">2</span>
+                    <div class="step-desc">
+                      <span class="step-title">已接单</span>
+                      <div class="btn-div">
+                        {% if v.type == 1 and v.status == 0 and u.istatus == 1 %}
+                        <button type="button" class="btn btn-danger btn-xs" onclick="start({{v.id}});">开始服务</button>
+                        {% endif %}
+                        {% if v.type == 1 and v.status == 0 and u.istatus == 0 %}
+                          <p class="bg-danger">待陪玩主播开始服务</p>
+                        {% endif %}
+                      </div>
+                      <p>订单编号：{{v.inumber}}</p>
+                      <p>接单时间：{{v.accept_time|date('Y-m-d H:i:s')}}</p>
+                      <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
+                      <p>预约服务：{{v.onsc_cname}}</p>
+                      <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
+                      <p>来自用户手机号码：{{v.from_phone}}</p>
+                    </div>
+                  </div>
+
+                  <div {% if v.type == 2 %}class="step col-md-3 current"{% else %}class="step col-md-3 disabled"{% endif %} data-target="#exampleGetting" role="tab" aria-expanded="false" style="height: 88px;">
+                    <span class="step-number">3</span>
+                    <div class="step-desc">
+                      <span class="step-title">进行中</span>
+                      <div class="btn-div">
+                        {% if v.type == 2 and v.status == 0 and u.istatus == 1 %}
+                        <p class="bg-danger">待下单用户完成订单</p>
+                        {% endif %}
+                        {% if v.type == 2 and v.status == 0 and u.istatus == 0 %}
+                        <button type="button" class="btn btn-danger btn-xs" onclick="end({{v.id}},{{v.to_uid}},'{{v.total_price}}');">完成订单</button>
+                        {% endif %}
+                      </div>
+                      <p>订单编号：{{v.inumber}}</p>
+                      <p>开始时间：{{v.start_time|date('Y-m-d H:i:s')}}</p>
+                      <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
+                      <p>预约服务：{{v.onsc_cname}}</p>
+                      <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
+                      <p>来自用户手机号码：{{v.from_phone}}</p>
+                    </div>
+                  </div>
+
+                  <div {% if v.type == 3 %}class="step col-md-3 current"{% else %}class="step col-md-3 disabled"{% endif %} data-target="#exampleGetting" role="tab" aria-expanded="false" style="height: 88px;">
+                    <span class="step-number">4</span>
+                    <div class="step-desc">
+                      <span class="step-title">结束</span>
+                      <div class="btn-div">
+                        {% if v.type == 3 and v.status == 0 and u.istatus == 1 %}
+                        <p class="bg-danger">待下单用户评价</p>
+                        {% endif %}
+                        {% if v.type == 3 and v.status == 0 and u.istatus == 0 %}
+                        <button type="button" class="btn btn-danger btn-xs" onclick="estimate({{v.id}},{{v.to_uid}});">立即评价</button>
+                        {% endif %}
+                      </div>
+                      <p>订单编号：{{v.inumber}}</p>
+                      <p>结束时间：{{v.end_time|date('Y-m-d H:i:s')}}</p>
+                      <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
+                      <p>预约服务：{{v.onsc_cname}}</p>
+                      <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
+                      <p>来自用户手机号码：{{v.from_phone}}</p>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- End Steps -->
+                {% endfor %}
+              {% else %}
+                <blockquote>
+                  {% if u.istatus == 1 %}
+                    <p>暂无订单，完善服务资料更有可能获得青睐 ～</p>
+                  {% else %}
+                    <p>暂无订单，去看看需要的陪玩服务 ～</p>
+                  {% endif %}
+                </blockquote>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<script src="{{src}}/indent/js/index.js"></script>
+{% endblock %}
