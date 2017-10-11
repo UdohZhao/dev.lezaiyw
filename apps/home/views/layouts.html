@@ -102,13 +102,13 @@
         <!-- Navbar Toolbar Right -->
         <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
           <li>
-            <a class="navbar-avatar dropdown-toggle" href="http://wpa.qq.com/msgrd?v=3&uin=800814441&site=qq&menu=yes" target="_blank">
+            <a class="navbar-avatar dropdown-toggle" href="tencent://message/?uin=800814441&Site=&Menu=yes">
               <span class="avatar avatar-online">
                 <img src="/apps/home/views/layouts/img/qq-line.png">
               </span>
             </a>
           </li>
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="scale-up" role="button">
               <i class="icon wb-bell" aria-hidden="true"></i>
               <span class="badge badge-danger up">5</span>
@@ -189,8 +189,8 @@
                   </a>
               </li>
             </ul>
-          </li>
-          <li class="dropdown">
+          </li> -->
+          <!-- <li class="dropdown">
             <a data-toggle="dropdown" href="javascript:void(0)" title="Messages" aria-expanded="false" data-animation="scale-up" role="button">
               <i class="icon wb-envelope" aria-hidden="true"></i>
               <span class="badge badge-info up">3</span>
@@ -284,7 +284,7 @@
                   </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <li class="dropdown open">
             <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true" data-animation="scale-up" role="button">
               <span class="avatar avatar-online">
@@ -342,10 +342,18 @@
                     <span class="site-menu-title">订单管理</span>
                   </a>
                 </li>
+                {% if u.istatus == 1 %}
                 <li class="site-menu-item">
-                  <a class="animsition-link" href="menu-collapsed.html" data-slug="layout-menu-collapsed">
+                  <a class="animsition-link" href="/indentRoyalties/index" data-slug="layout-menu-collapsed">
                     <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Menu Collapsed</span>
+                    <span class="site-menu-title">收益管理</span>
+                  </a>
+                </li>
+                {% endif %}
+                <li class="site-menu-item">
+                  <a class="animsition-link" href="/cashValue/index" data-slug="layout-menu-collapsed">
+                    <i class="site-menu-icon " aria-hidden="true"></i>
+                    <span class="site-menu-title">{% if u.istatus == 1 %}充值／提现管理{% else %}充值管理{% endif %}</span>
                   </a>
                 </li>
               </ul>
@@ -357,6 +365,12 @@
                 <span class="site-menu-arrow"></span>
               </a>
               <ul class="site-menu-sub">
+                <li class="site-menu-item">
+                  <a class="animsition-link" href="/certificationInfo/add" data-slug="layout-menu-collapsed">
+                    <i class="site-menu-icon " aria-hidden="true"></i>
+                    <span class="site-menu-title">实名认证</span>
+                  </a>
+                </li>
                 <li class="site-menu-item">
                   <a class="animsition-link" href="/users/add" data-slug="layout-menu-collapsed">
                     <i class="site-menu-icon " aria-hidden="true"></i>

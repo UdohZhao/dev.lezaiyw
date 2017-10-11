@@ -129,3 +129,7 @@
 .ranking-b-box{
   background-color: #2786af;
 }
+.cover-thumbnail{
+  height: 400px!important;
+  width: 100%!important;
+}

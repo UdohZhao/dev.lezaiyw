@@ -1,0 +1,92 @@
+{% extends "layouts.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/cashValue/css/index.css">
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 用户提现管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 用户提现列表</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/admin/cashValue/index" method="post">
+          <div class="input-group" style="width: 300px;float: right;margin-right: 30px;">
+            <input type="text" class="form-control" name="search" placeholder="请输入关键字">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </form>
+        <ul class="nav nav-pills">
+          <li role="presentation" {% if status == 0 %}class="active"{% endif %} ><a href="/admin/cashValue/index/status/0">默认</a></li>
+          <li role="presentation" {% if status == 1 %}class="active"{% endif %} ><a href="/admin/cashValue/index/status/1">失败</a></li>
+          <li role="presentation" {% if status == 2 %}class="active"{% endif %} ><a href="/admin/cashValue/index/status/2">成功</a></li>
+        </ul>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>用户头像</th>
+              <th>用户昵称</th>
+              <th>手机号码</th>
+              <th>订单编号</th>
+              <th>提现金额</th>
+              {% if status == 0 %}
+              <th>操作</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% if data %}
+            {% for k,v in data %}
+            <tr>
+              <td>{{v.ctime|date('Y-m-d H:i:s')}}</td>
+              <td>
+                <a href="javascript:;" class="thumbnail avatar-box">
+                  <img src="{{v.uData.avatar}}">
+                </a>
+              </td>
+              <td>{{v.uData.nickname}}</td>
+              <td>{{v.uData.phone}}</td>
+              <td>{{v.inumber}}</td>
+              <td>¥{{v.money}}</td>
+              {% if status == 0 %}
+              <td>
+                <button type="button" class="btn btn-danger btn-xs" onclick="flag({{v.id}},1);">拒绝</button>
+                <button type="button" class="btn btn-success btn-xs" onclick="flag({{v.id}},2);">已提现</button>
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="1">
+                <blockquote>
+                  <p>暂无数据 ～</p>
+                </blockquote>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <div style="float: right;">
+          {% autoescape false %}
+            {{ page }}
+          {% endautoescape %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<script src="{{src}}/cashValue/js/index.js"></script>
+{% endblock %}

@@ -11,6 +11,11 @@ class indentCtrl extends baseCtrl{
   public $id;
   // 构造方法
   public function _auto(){
+    // 没有登录不让访问
+    if (!isset($_SESSION['homeUserinfo'])) {
+      header("Location:/");
+      die;
+    }
     $this->db = new indent();
     $this->irdb = new indentRoyalties();
     $this->sdb = new service();
@@ -113,6 +118,12 @@ class indentCtrl extends baseCtrl{
             die;
           }
         }
+        $sid = isset($_POST['sid']) ? intval($_POST['sid']) : 0;
+        // 读取当前服务接单数
+        $or_quantity = $this->sdb->getOrquantity($sid);
+        $or_quantity = bcadd($or_quantity, 1, 0);
+        // 更新接单数
+        $this->sdb->save($sid,array('or_quantity'=>$or_quantity));
       } else if ($typeFlag == 3) {
         $type = isset($_POST['type']) ? intval($_POST['type']) : 2;
         $res = $this->db->save($this->id,array('type'=>$type,'start_time'=>time()));

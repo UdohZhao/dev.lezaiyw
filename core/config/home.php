@@ -36,5 +36,7 @@ return array(
         '9'     =>    '其它'
     ),
     'ROYALTIES_PERCENT'     =>  '40', // 陪陪提成百分比，默认为40%，平台60%
-    'CHARM_MULRIPLE'        =>  '10' // 魅力倍数默认10倍
+    'CHARM_MULRIPLE'        =>  '10', // 魅力倍数默认10倍
+    'ADMIN_PHONE'           =>  '18423031898', // 管理员手机号码
+    'ADMIN_NAME'           =>  '马俊' // 管理员姓名
 );

@@ -51,6 +51,9 @@ CREATE TABLE `certification_info`(
   `front_path` varchar(255) NOT NULL COMMENT '身份证正面路径',
   `back_path` varchar(255) NOT NULL COMMENT '身份证背面路径',
   `hand_path` varchar(255) NOT NULL COMMENT '手持身份证路径',
+  `ctime` int(10) UNSIGNED NOT NULL COMMENT '时间',
+  `remark` varchar(255) NOT NULL COMMENT '备注',
+  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>默认，1>不通过，2>通过',
   PRIMARY KEY (`id`),
   KEY (`uid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -136,8 +139,10 @@ CREATE TABLE `service`(
   `price` decimal(14,2) UNSIGNED NOT NULL COMMENT '价格',
   `or_quantity` int(10) UNSIGNED NOT NULL COMMENT '接单数',
   `i_label` varchar(50) NOT NULL COMMENT '个性标签',
+  `ctime` int(10) UNSIGNED NOT NULL COMMENT '时间',
   `type` tinyint(1) UNSIGNED NOT NULL COMMENT '类型？0>待审核，1>审核未通过，2>审核通过',
   `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>下架，1>上架',
+  `hot_status` tinyint(1) UNSIGNED NOT NULL COMMENT '热门状态？0>默认，1>首页热门榜，2>首页热门推荐',
   PRIMARY KEY (`id`),
   KEY (`uid`),
   KEY (`scid`)
@@ -163,7 +168,7 @@ CREATE TABLE `indent`(
   `start_time` int(10) UNSIGNED NOT NULL COMMENT '开始时间',
   `end_time` int(10) UNSIGNED NOT NULL COMMENT '结束时间',
   `type` tinyint(1) UNSIGNED NOT NULL COMMENT '类型？0>待确定，1>已接单，2>进行中，3>结束',
-  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>默认，1>取消，2>超时取消，3>待评价，4>已评价',
+  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>默认，1>取消，2>超时取消，3>已评价',
   PRIMARY KEY (`id`),
   KEY (`to_uid`),
   KEY (`from_uid`),
@@ -188,12 +193,20 @@ CREATE TABLE `indent_royalties`(
 # 订单评论表
 CREATE TABLE `indent_comment`(
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单评论表主键id',
-  `iid` int(11) UNSIGNED NOT NULL COMMENT '关联订单表主键id',
+  `sid` int(11) UNSIGNED NOT NULL COMMENT '关联服务表主键id',
   `avatar` varchar(255) NOT NULL COMMENT '头像',
   `nickname` varchar(50) NOT NULL COMMENT '昵称',
   `content` varchar(255) NOT NULL COMMENT '评论',
   `ctime` int(10) UNSIGNED NOT NULL COMMENT '时间',
   `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>好评，1>中评，2>差评',
   PRIMARY KEY (`id`),
-  KEY (`iid`)
+  KEY (`sid`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+# banner表
+CREATE TABLE `banner`(
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'banner表主键id',
+  `path` varchar(255) NOT NULL COMMENT '路径',
+  `sort` tinyint(3) UNSIGNED NOT NULL COMMENT '排序',
+  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态？0>显示，1>隐藏',
+  PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

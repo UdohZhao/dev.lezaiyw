@@ -1,0 +1,12 @@
+.cover-file{
+  display: none!important;
+}
+.breviary-img{
+  cursor: pointer;
+  width: 400px;
+  height: 250px;
+}
+.idcard-tips{
+  margin-top: 30px;
+  color: #FC140D;
+}

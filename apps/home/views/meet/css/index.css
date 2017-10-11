@@ -54,3 +54,7 @@
   background-color: #dc7db9;
   padding-top: 100px;
 }
+.cover-thumbnail{
+  height: 400px!important;
+  width: 100%!important;
+}

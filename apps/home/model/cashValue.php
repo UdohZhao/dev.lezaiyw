@@ -19,6 +19,28 @@ class cashValue extends model{
     return $this->count($this->table,['inumber'=>$out_trade_no]);
   }
 
+  /**
+   * 读取相关记录数
+   */
+  public function getRows($uid,$type){
+    // sql
+    $sql = "
+        SELECT
+                *
+        FROM
+                `$this->table`
+        WHERE
+                1 = 1
+        AND
+                uid = '$uid'
+        AND
+                type = '$type'
+        ORDER BY
+                ctime DESC
+    ";
+    return $this->query($sql)->fetchAll(2);
+  }
+
 
 }
 

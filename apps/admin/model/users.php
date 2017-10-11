@@ -18,5 +18,13 @@ class users extends model{
     return $this->get($this->table,'id',['nickname'=>$nickname]);
   }
 
+  /**
+   * 更新数据
+   */
+  public function save($id,$data){
+    $res = $this->update($this->table,$data,['id'=>$id]);
+    return $res->rowCount();
+  }
+
 
 }

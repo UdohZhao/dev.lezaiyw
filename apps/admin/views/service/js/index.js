@@ -3,8 +3,8 @@ $(function(){
 })
 
 // 上架 & 下架
-function flag(id,status){
-  console.log(id,status);
+function flag(id,type){
+  console.log(id,type);
   swal({
     title: "确认此操作吗？",
     text: ":(",
@@ -23,7 +23,7 @@ function flag(id,status){
         method: "POST",
         url: "/admin/service/flag/id/"+id,
         data: {
-          status: status
+          type: type
         },
         dataType: "JSON",
         success: function (res) {

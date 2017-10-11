@@ -71,53 +71,32 @@
           </div>
           <div class="row evaluate-box">
             <blockquote>
-              <p>评价</p>
+              <p>评论</p>
             </blockquote>
             <div class="col-md-12">
+              {% if data.onsData.comment %}
+              {% for k,v in data.onsData.comment %}
               <div class="media">
                 <div class="media-left media-middle">
                   <a href="javascript:;">
-                    <img class="media-object evaluate-img" src="{{src}}/index/img/hot-3.jpeg">
+                    <img class="media-object evaluate-img" src="{{v.avatar}}">
                   </a>
                 </div>
                 <div class="media-body">
-                  <h4 class="media-heading">一位温暖的路人 <span class="evaluate-i">好评</span></h4>
-                  111
+                  <h4 class="media-heading">{{v.nickname}}（{{v.ctime|date('Y-m-d')}}）
+                    <span class="evaluate-i">
+                    {% if v.status == 0 %}好评{% endif %}
+                    {% if v.status == 1 %}中评{% endif %}
+                    {% if v.status == 2 %}差评{% endif %}
+                    </span>
+                  </h4>
+                  {{v.content}}
                 </div>
               </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="javascript:;">
-                    <img class="media-object evaluate-img" src="{{src}}/index/img/hot-3.jpeg">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">一位温暖的路人 <span class="evaluate-i">好评</span></h4>
-                  111
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="javascript:;">
-                    <img class="media-object evaluate-img" src="{{src}}/index/img/hot-3.jpeg">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">一位温暖的路人 <span class="evaluate-i">好评</span></h4>
-                  111
-                </div>
-              </div>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <a href="javascript:;">
-                    <img class="media-object evaluate-img" src="{{src}}/index/img/hot-3.jpeg">
-                  </a>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">一位温暖的路人 <span class="evaluate-i">好评</span></h4>
-                  111
-                </div>
-              </div>
+              {% endfor %}
+              {% else %}
+                <p>暂无评论 ～</p>
+              {% endif %}
             </div>
           </div>
         </div>

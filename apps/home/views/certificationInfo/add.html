@@ -1,0 +1,91 @@
+{% extends "layouts.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/certificationInfo/css/add.css">
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 实名认证</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 完善实名认证</h3>
+      </div>
+      <div class="panel-body">
+        {% if data %}
+        <div class="row">
+          <div class="col-md-4">
+            <blockquote>
+              <p>上传身份证正面照片</p>
+            </blockquote>
+            <img src="{{data.front_path}}" class="img-responsive breviary-img">
+          </div>
+          <div class="col-md-4">
+            <blockquote>
+              <p>上传身份证背面照片</p>
+            </blockquote>
+            <img src="{{data.back_path}}" class="img-responsive breviary-img">
+          </div>
+          <div class="col-md-4">
+            <blockquote>
+              <p>上传手持身份证照片</p>
+            </blockquote>
+            <img src="{{data.hand_path}}" class="img-responsive breviary-img">
+          </div>
+        </div>
+        <blockquote class="idcard-tips">
+          <p>* {{data.remark}}</p>
+          {% if data.status == 1 %}
+            <button type="button" class="btn btn-danger" onclick="delApply({{data.id}},'{{data.front_path}}','{{data.back_path}}','{{data.hand_path}}');">全部删除</button>
+          {% endif %}
+        </blockquote>
+        {% else %}
+        <div class="row">
+          <div class="col-md-4">
+            <blockquote>
+              <p>上传身份证正面照片</p>
+            </blockquote>
+            <div id="preview0">
+              <img id="imghead0" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传身份证正面照片" title="点击上传身份证正面照片">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <blockquote>
+              <p>上传身份证背面照片</p>
+            </blockquote>
+            <div id="preview1">
+              <img id="imghead1" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg1').click();" alt="点击上传身份证背面照片" title="点击上传身份证背面照片">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <blockquote>
+              <p>上传手持身份证照片</p>
+            </blockquote>
+            <div id="preview2">
+              <img id="imghead2" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg2').click();" alt="点击上传手持身份证照片" title="点击上传手持身份证照片">
+            </div>
+          </div>
+        </div>
+        <blockquote class="idcard-tips">
+          <p>* 请上传清晰的照片将极大可能增加审核成功率 ！！！</p>
+          <form id="idcardForm" action="/certificationInfo/add" method="post" enctype="multipart/form-data">
+            <input type="file" id="previewImg0" name="front_path" class="cover-file" onchange="previewImage(this,'preview0','imghead0','previewImg0')" accept="image/*">
+            <input type="file" id="previewImg1" name="back_path" class="cover-file" onchange="previewImage(this,'preview1','imghead1','previewImg1')" accept="image/*">
+            <input type="file" id="previewImg2" name="hand_path" class="cover-file" onchange="previewImage(this,'preview2','imghead2','previewImg2')" accept="image/*">
+          </form>
+          <button type="button" class="btn btn-danger" onclick="apply();">申请实名认证</button>
+        </blockquote>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<script src="{{src}}/certificationInfo/js/add.js"></script>
+{% endblock %}

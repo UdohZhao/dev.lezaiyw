@@ -14,9 +14,9 @@ class baseCtrl extends \core\icunji{
     $this->assign('src','/apps/home/views');
     // 站点名称
     $this->assign('websiteName',conf::get('WEBSITE_NAME','admin'));
+    $this->udb = new users();
     // userinfo
     if (isset($_SESSION['homeUserinfo'])) {
-      $this->udb = new users();
       // 读取当前登录用户信息
       $this->u = $this->udb->getRow($_SESSION['homeUserinfo']['id']);
     } else {

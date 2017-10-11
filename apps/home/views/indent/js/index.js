@@ -1,5 +1,39 @@
 $(function(){
 
+  // 验证评价表单
+  $("#estimateForm").validate({
+      focusInvalid: true,
+      rules: {
+        content: {
+          required: true
+        }
+      },
+      messages: {
+        content: {
+          required: "<span style='color:red;'>评价内容不能为空 :(</span>"
+        }
+      },
+      submitHandler: function(form){
+        $(form).ajaxSubmit({
+            dataType:"json",
+            success:function( res ){
+              console.log(res);
+              // res
+              if (res.code == 0) {
+                swal("评价成功", res.msg, "success");
+                setTimeout("window.location.reload();",2000);
+              } else {
+                swal("评价失败", res.msg, "error");
+              }
+            },
+            error:function(e){
+              console.log(e);
+              swal("未知错误 :(", "请刷新页面后重试!", "error");
+            }
+        });
+      }
+  });
+
 });
 
 // 取消订单
@@ -49,7 +83,7 @@ function cancel(id,from_uid,total_price){
 }
 
 // 确认接单
-function confirm(id,from_phone,inumber){
+function confirm(id,from_phone,inumber,sid){
   swal({
     title: "确认接单吗？",
     text: "请确保与下单用户沟通过！",
@@ -71,7 +105,8 @@ function confirm(id,from_phone,inumber){
           typeFlag: 2,
           type: 1,
           from_phone: from_phone,
-          inumber: inumber
+          inumber: inumber,
+          sid: sid
         },
         dataType: "JSON",
         success: function(res){
@@ -179,5 +214,16 @@ function end(id,to_uid,total_price){
     } else {
       swal("取消了", "不受影响的操作 :)", "error");
     }
+  });
+}
+
+// 立即评价
+function estimate(id,sid){
+  // 动态赋值form表单action
+  $("#estimateForm").attr("action","/indentComment/add/iid/"+id+"/sid/"+sid);
+  $('#estimateModal').modal({
+    backdrop: 'static',
+    keyboard: false,
+    show: true
   });
 }

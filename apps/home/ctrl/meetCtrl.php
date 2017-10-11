@@ -4,20 +4,24 @@ use apps\home\model\serviceCategory;
 use apps\home\model\service;
 use apps\home\model\users;
 use apps\home\model\usersInfo;
+use apps\home\model\indentComment;
 class meetCtrl extends baseCtrl{
   public $scdb;
   public $sdb;
   public $udb;
   public $uidb;
+  public $icdb;
   public $scid;
   public $sid;
   public $uid;
   // 构造方法
   public function _auto(){
+    $this->assign('active','meet');
     $this->scdb = new serviceCategory();
     $this->sdb = new service();
     $this->udb = new users();
     $this->uidb = new usersInfo();
+    $this->icdb = new indentComment();
     $this->scid = isset($_GET['scid']) ? intval($_GET['scid']) : 1;
     $this->sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
     $this->uid = isset($_GET['uid']) ? intval($_GET['uid']) : 0;
@@ -114,6 +118,8 @@ class meetCtrl extends baseCtrl{
       }
       // 服务单位
       $data['units'] = $units;
+      // 读取当前服务评论
+      $data['onsData']['comment'] = $this->icdb->getRows($this->sid);
       // 读取当前服务类别名称
       $data['onscCname'] = $this->scdb->getCnameRow($this->scid);
       // currentDate 当前日期

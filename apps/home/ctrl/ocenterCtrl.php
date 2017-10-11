@@ -5,8 +5,9 @@ class ocenterCtrl extends baseCtrl{
 
   // 构造方法
   public function _auto(){
-    if ($this->u === false) {
-      header('Location:/');
+    // 没有登录不让访问
+    if (!isset($_SESSION['homeUserinfo'])) {
+      header("Location:/");
       die;
     }
   }
