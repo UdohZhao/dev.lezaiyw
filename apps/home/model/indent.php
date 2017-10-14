@@ -40,5 +40,12 @@ class indent extends model{
     return $res->rowCount();
   }
 
+  /**
+   * 读取单条订单
+   */
+  public function getRow($id){
+    return $this->get($this->table,'*',['id'=>$id]);
+  }
+
 }
 

@@ -14,6 +14,12 @@ class enterCtrl extends baseCtrl{
   public $sid;
   // 构造方法
   public function _auto(){
+    // 没有登录不让访问
+    if (!isset($_SESSION['homeUserinfo'])) {
+      header("Location:/");
+      die;
+    }
+    $this->assign('active','enter');
     $this->udb = new users();
     $this->uidb = new usersInfo();
     $this->scdb = new serviceCategory();
@@ -230,6 +236,8 @@ class enterCtrl extends baseCtrl{
     $data['i_label'] = isset($_POST['i_label']) ? $_POST['i_label'] : '';
     $data['type'] = 2;
     $data['status'] = 1;
+    $data['ctime'] = time();
+    $data['hot_status'] = 0;
     return $data;
   }
 

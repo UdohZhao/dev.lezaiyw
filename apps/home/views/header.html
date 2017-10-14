@@ -31,21 +31,33 @@
         <div class="container">
           <div class="row">
             <div class="col-md-5">
-              <img src="{{src}}/layouts/img/logo.png" class="img-responsive logo-img">
+              <a href="/"><img src="{{src}}/layouts/img/logo.png" class="img-responsive logo-img"></a>
             </div>
             <div class="col-md-5">
               <ul class="nav nav-pills nav-box">
-                <li role="presentation" class="active"><a href="/">首页</a></li>
-                <li role="presentation"><a href="/meet/index">约陪玩</a></li>
-                <li role="presentation"><a href="/recharge/index">充值</a></li>
-                <li role="presentation"><a href="JavaScript:;">申请入驻</a></li>
+                <li role="presentation" {% if active == 'index' %}class="active"{% endif %} ><a href="/">首页</a></li>
+                <li role="presentation" {% if active == 'meet' %}class="active"{% endif %} ><a href="/meet/index" target="_blank">约陪玩</a></li>
+                <li role="presentation" {% if active == 'recharge' %}class="active"{% endif %} >
+                  {% if u %}
+                    <a href="/recharge/index" target="_blank">充值</a>
+                  {% else %}
+                    <a href="JavaScript:;" onclick="JavaScript:swal('提示','请先您登录 :(','error');">充值</a>
+                  {% endif %}
+                </li>
+                <li role="presentation">
+                  {% if u %}
+                    <a href="/enter/add" target="_blank">申请入驻</a>
+                  {% else %}
+                    <a href="JavaScript:;" onclick="JavaScript:swal('提示','请先您登录 :(','error');">申请入驻</a>
+                  {% endif %}
+                </li>
               </ul>
             </div>
             <div class="col-md-2">
               {% if u %}
                 <div class="media u-box">
                   <div class="media-left media-middle">
-                    <a href="/ocenter/index" target="_blank">
+                    <a href="/indent/index" target="_blank">
                       <img class="media-object u-avatar" src="{{u.avatar}}">
                     </a>
                   </div>

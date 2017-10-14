@@ -1,0 +1,68 @@
+{% extends "layouts.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{src}}/banner/css/add.css">
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># banner管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 上传banner</h3>
+      </div>
+      <div class="panel-body">
+        <form class="form-horizontal" id="bannerForm" action="/admin/banner/add/id/{{data.id}}" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">上传banner</label>
+            <div class="col-sm-10">
+              {% if data.path %}
+                <img src="{{data.path}}" class="img-responsive breviary-img" alt="点击删除banner" title="点击删除图片" onclick="delBanner({{data.id}},'{{data.path}}');">
+                <input type="hidden" name="path" class="cover-file" accept="image/*" value="{{data.path}}">
+              {% else %}
+                <div id="preview0">
+                  <img id="imghead0" src="{{src}}/banner/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传banner" title="点击上传banner">
+                </div>
+                <input type="file" id="previewImg0" name="path" class="cover-file" onchange="previewImage(this,'preview0','imghead0','previewImg0')" accept="image/*">
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">排序</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="sort" value="{{data.sort}}" placeholder="排序？数字越小越靠前">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <label class="radio-inline">
+                {% if data %}
+                  <input type="radio" name="status" value="0" {% if data.status == 0 %}checked="checked"{% endif %} > 显示
+                {% else %}
+                  <input type="radio" name="status" value="0" checked="checked"> 显示
+                {% endif %}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="status" value="1" {% if data.status == 1 %}checked="checked"{% endif %} > 隐藏
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">提 交</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+<script src="{{src}}/banner/js/add.js"></script>
+{% endblock %}

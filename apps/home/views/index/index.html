@@ -17,21 +17,22 @@
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
+              {% if data.bannerData %}
+                {% for k,v in data.bannerData %}
+                <div {% if k == 0 %}class="item active"{% else %}class="item"{% endif %}>
+                  <img src="{{v.path}}">
+                  <div class="carousel-caption">
+                  </div>
+                </div>
+                {% endfor %}
+              {% else %}
               <div class="item active">
                 <img src="{{src}}/index/img/banner-1.png">
                 <div class="carousel-caption">
                 </div>
               </div>
-              <div class="item">
-                <img src="{{src}}/index/img/banner-1.png">
-                <div class="carousel-caption">
-                </div>
-              </div>
-              <div class="item">
-                <img src="{{src}}/index/img/banner-1.png">
-                <div class="carousel-caption">
-                </div>
-              </div>
+              {% endif %}
+
             </div>
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -52,9 +53,10 @@
   <!-- 热门主播 start -->
   <div class="container-fluid hot-anchor-box">
     <div class="container">
+      {% if data.hlData %}
       <div class="row hot-img-row">
         <div class="col-md-6 hot-img-box">
-          <a href="javascript:;"><img src="{{src}}/index/img/hot-3.jpeg" class="img-responsive"></a>
+          <a href="/meet/detail/uid/{{data.hlData[0].uid}}/scid/{{data.hlData[0].scid}}/sid/{{data.hlData[0].id}}" target="_blank"><img src="{{data.hlData[0].cover_path}}" class="img-responsive"></a>
         </div>
         <div class="col-md-6">
           <img src="{{src}}/index/img/hot-0.png" class="img-responsive">
@@ -62,15 +64,20 @@
       </div>
       <div class="row hot-item-row">
         <div class="col-md-4">
-          <a href="javascript:;"><img src="{{src}}/index/img/hot-3.jpeg" class="img-responsive"></a>
+          <a href="/meet/detail/uid/{{data.hlData[1].uid}}/scid/{{data.hlData[1].scid}}/sid/{{data.hlData[1].id}}" target="_blank"><img src="{{data.hlData[1].cover_path}}" class="img-responsive"></a>
         </div>
         <div class="col-md-4">
-          <a href="javascript:;"><img src="{{src}}/index/img/hot-3.jpeg" class="img-responsive"></a>
+          <a href="/meet/detail/uid/{{data.hlData[2].uid}}/scid/{{data.hlData[2].scid}}/sid/{{data.hlData[2].id}}" target="_blank"><img src="{{data.hlData[2].cover_path}}" class="img-responsive"></a>
         </div>
         <div class="col-md-4">
-          <a href="javascript:;"><img src="{{src}}/index/img/hot-3.jpeg" class="img-responsive"></a>
+          <a href="/meet/detail/uid/{{data.hlData[3].uid}}/scid/{{data.hlData[3].scid}}/sid/{{data.hlData[3].id}}" target="_blank"><img src="{{data.hlData[3].cover_path}}" class="img-responsive"></a>
         </div>
       </div>
+      {% else %}
+        <blockquote>
+          <p>暂无数据 ～</p>
+        </blockquote>
+      {% endif %}
     </div>
   </div>
   <!-- 热门主播 end -->
@@ -86,361 +93,60 @@
       </div>
 
       <div class="row hot-list-box">
-
+      {% if data.hrData %}
+      {% for k,v in data.hrData %}
         <div class="col-md-4">
-          <a href="javascript:;">
+          <a href="/meet/detail/uid/{{v.uid}}/scid/{{v.scid}}/sid/{{v.id}}" target="_blank">
             <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
+              <img src="{{v.cover_path}}" class="cover-thumbnail">
               <div class="caption">
                   <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
+                    <!-- <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
                     <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
                     <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
+                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li> -->
+                    {% for kk,vv in v.uData.i_label %}
+                      {% if kk == 0 %}
+                        <li class="bg-danger i-label">{{vv}}</li>
+                      {% else %}
+                        <li class="bg-success i-label">{{vv}}</li>
+                      {% endif %}
+                    {% endfor %}
                   </ul>
                 <h4>
-                  一位温暖的路人
+                  {{v.uData.nickname}}
                 </h4>
                 <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
+                  <li>{{v.uData.city}}</li>
+                  <li>{{v.uData.age}}</li>
                 </ul>
                 <ul class="list-inline">
+                  {% if v.uData.status == 1 %}
                   <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
+                  {% elseif v.uData.status == 0 %}
                   <li><i class="fa fa-circle off-line"></i> 离线</li>
-                  <li class="money-time">66元／小时</li>
+                  {% else %}
+                  <li><i class="fa fa-circle off-line"></i> 冻结</li>
+                  {% endif %}
+                  <li class="money-time">{{v.price}}元／{{v.units}}</li>
                 </ul>
               </div>
             </div>
           </a>
         </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle off-line"></i> 离线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle off-line"></i> 离线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                <ul class="list-inline">
-                  <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                  <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                  <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                  <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                  <li class="bg-danger i-label">温文尔雅</li>
-                  <li class="bg-success i-label">情感知性</li>
-                </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                  <ul class="list-inline">
-                    <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                    <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    <li class="bg-danger i-label">温文尔雅</li>
-                    <li class="bg-success i-label">情感知性</li>
-                  </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle off-line"></i> 离线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="javascript:;">
-            <div class="thumbnail">
-              <img src="{{src}}/index/img/hot-3.jpeg">
-              <div class="caption">
-                <ul class="list-inline">
-                  <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                  <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                  <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                  <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                  <li class="bg-danger i-label">温文尔雅</li>
-                  <li class="bg-success i-label">情感知性</li>
-                </ul>
-                <h4>
-                  一位温暖的路人
-                </h4>
-                <ul class="list-inline">
-                  <li>重庆</li>
-                  <li>21</li>
-                </ul>
-                <ul class="list-inline">
-                  <li><i class="fa fa-circle on-line"></i> 在线</li>
-                  <li class="money-time">66元／小时</li>
-                </ul>
-              </div>
-            </div>
-          </a>
-        </div>
+      {% endfor %}
+      {% else %}
+        <blockquote>
+          <p>暂无数据 ～</p>
+        </blockquote>
+      {% endif %}
 
       </div>
 
       <!-- 更多按钮 -->
       <div class="row">
         <div class="col-md-12 more-box">
-          <a href="javascript:;">
+          <a href="/meet/index" target="_blank">
             <img src="{{src}}/index/img/more.png" class="img-responsive more-btn">
           </a>
         </div>
@@ -459,234 +165,43 @@
             <i class="fa fa-free-code-camp ranking-icon"></i><span class="ranking-title">热度榜</span>
           </div>
           <ul class="list-group ranking-list-box">
-            <li class="list-group-item ranking-list-title">
+            <!-- <li class="list-group-item ranking-list-title">
               <span class="on-notice" id="hotWeekNotice" onclick="noticeChange('hotWeekNotice','hotTotalNotice');">周榜</span><span class="off-notice" id="hotTotalNotice" onclick="noticeChange('hotTotalNotice','hotWeekNotice');">总榜</span>
-            </li>
+            </li> -->
+            {% if data.charmData %}
+            {% for k,v in data.charmData %}
             <li class="list-group-item">
               <ul class="media-list">
                 <li class="media">
                   <div class="media-left">
                     <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
+                      <img class="media-object hot-list-img" src="{{v.avatar}}">
                     </a>
                   </div>
                   <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">1</span></p>
+                    <h4 class="media-heading">{{v.nickname}}</h4>
+                    <p class="sort-box"><span class="sort-num">{{k+1}}</span></p>
                     <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
+                      <li>{{v.city}}</li>
+                      <li>{{v.age}}</li>
                     </ul>
                     <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
+                      <li>魅力值：{{v.charm}}</li>
+                      <!-- <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
                       <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
                       <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
+                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li> -->
                     </ul>
                   </div>
                 </li>
               </ul>
             </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">2</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">3</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">4</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">5</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">6</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">7</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">8</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">9</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>重庆</li>
-                      <li>21</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li><img src="{{src}}/index/img/sicon-1.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-2.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-3.png" class="img-responsive"></li>
-                      <li><img src="{{src}}/index/img/sicon-4.png" class="img-responsive"></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
+            {% endfor %}
+            {% else %}
+              <blockquote>
+                <p>暂无数据 ～</p>
+              </blockquote>
+            {% endif %}
           </ul>
         </div>
         <div class="col-md-2">&nbsp;</div>
@@ -695,198 +210,58 @@
             <i class="fa fa-money ranking-icon"></i><span class="ranking-title">贡献榜</span>
           </div>
           <ul class="list-group ranking-list-box">
-            <li class="list-group-item ranking-list-title">
+            <!-- <li class="list-group-item ranking-list-title">
               <span class="on-notice" id="contributionWeekNotice" onclick="noticeChange('contributionWeekNotice','contributionTotalNotice');">周榜</span><span class="off-notice" id="contributionTotalNotice" onclick="noticeChange('contributionTotalNotice','contributionWeekNotice');">总榜</span>
-            </li>
+            </li> -->
+            {% if data.contributionData %}
+            {% for k,v in data.contributionData %}
             <li class="list-group-item">
               <ul class="media-list">
                 <li class="media">
                   <div class="media-left">
                     <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
+                      <img class="media-object hot-list-img" src="{{v.avatar}}">
                     </a>
                   </div>
                   <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">1</span></p>
+                    <h4 class="media-heading">{{v.nickname}}</h4>
+                    <p class="sort-box"><span class="sort-num">{{k+1}}</span></p>
                     <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
+                      <li>
+                        {% if v.contribution <10000 %}
+                        Lv：1
+                        {% elseif v.contribution <30000 %}
+                        Lv：2
+                        {% elseif v.contribution <50000 %}
+                        Lv：3
+                        {% elseif v.contribution <70000 %}
+                        Lv：4
+                        {% elseif v.contribution <90000 %}
+                        Lv：5
+                        {% elseif v.contribution <110000 %}
+                        Lv：6
+                        {% elseif v.contribution <130000 %}
+                        Lv：7
+                        {% elseif v.contribution <150000 %}
+                        Lv：8
+                        {% elseif v.contribution <200000 %}
+                        Lv：9
+                        {% endif %}
+                      </li>
                     </ul>
                     <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
+                      <li>贡献值：{{v.contribution}}</li>
                     </ul>
                   </div>
                 </li>
               </ul>
             </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">2</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">3</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">4</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">5</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">6</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">7</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">8</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="list-group-item">
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                    <a href="javascript:;">
-                      <img class="media-object hot-list-img" src="{{src}}/index/img/hot-3.jpeg">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">一位温暖的路人</h4>
-                    <p class="sort-box"><span class="sort-num">9</span></p>
-                    <ul class="list-inline hot-list-li">
-                      <li>Lv：9</li>
-                    </ul>
-                    <ul class="list-inline hot-list-li">
-                      <li>贡献值：12434433445</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
+            {% endfor %}
+            {% else %}
+              <blockquote>
+                <p>暂无数据 ～</p>
+              </blockquote>
+            {% endif %}
           </ul>
         </div>
       </div>

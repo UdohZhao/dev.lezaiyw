@@ -5,11 +5,12 @@ class rechargeCtrl extends baseCtrl{
   public $udb;
   // 构造方法
   public function _auto(){
-    // userinfo
+    // 没有登录不让访问
     if (!isset($_SESSION['homeUserinfo'])) {
-      header('Location:/');
+      header("Location:/");
       die;
     }
+    $this->assign('active','recharge');
     $this->udb = new users();
   }
 

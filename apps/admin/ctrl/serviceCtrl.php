@@ -61,8 +61,18 @@ class serviceCtrl extends baseCtrl{
   public function flag(){
     // Ajax
     if (IS_AJAX === true) {
-      $status = isset($_POST['status']) ? intval($_POST['status']) : 0;
-      $res = $this->db->save($this->id,['status'=>$status]);
+      $type = isset($_POST['type']) ? intval($_POST['type']) : 0;
+      // type小于2为上架&下架
+      if ($type < 2) {
+        $data['status'] = $type;
+      } else if ($type == 2) {
+        // 送你上热门榜
+        $data['hot_status'] = 1;
+      } else if ($type == 3) {
+        $data['hot_status'] = 2;
+      }
+      $data['ctime'] = time();
+      $res = $this->db->save($this->id,$data);
       if ($res) {
         echo J(R(0,'受影响的操作 :)',true));
         die;

@@ -46,10 +46,10 @@
             {% for k,v in data %}
             <tr>
               <td>
-                {% if v.status == 0 %}
-                  <span class="text-danger">{下架}</span>
-                {% else %}
-                  <span class="text-success">{上架}</span>
+                {% if v.hot_status == 1 %}
+                  <span class="text-danger">{首页热门榜}</span>
+                {% elseif v.hot_status == 2 %}
+                  <span class="text-success">{首页热门推荐}</span>
                 {% endif %}
               </td>
               <td>
@@ -66,6 +66,8 @@
                 {% if v.status == 1 %}
                 <button type="button" class="btn btn-danger btn-xs" onclick="flag({{ v.id }},0)">下架</button>
                 {% else %}
+                <button type="button" class="btn btn-primary btn-xs" onclick="flag({{v.id}},2);">热门榜</button>
+                <button type="button" class="btn btn-primary btn-xs" onclick="flag({{v.id}},3);">热门推荐</button>
                 <button type="button" class="btn btn-success btn-xs" onclick="flag({{ v.id }},1)">上架</button>
                 {% endif %}
               </td>

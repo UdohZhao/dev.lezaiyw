@@ -1,0 +1,140 @@
+{% extends "layouts.html" %}
+{% block css %}
+<!-- Plugins For This Page -->
+<link rel="stylesheet" href="{{src}}/assets/vendor/magnific-popup/magnific-popup.css">
+<link rel="stylesheet" href="{{src}}/certificationInfo/css/index.css">
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 实名认证管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title"> @审核实名认证列表</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/admin/certificationInfo/index" method="post">
+          <div class="input-group" style="width: 300px;float: right;margin-right: 30px;">
+            <input type="text" class="form-control" name="search" placeholder="请输入关键字">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </form>
+        <ul class="nav nav-pills">
+          <li role="presentation" {% if status == 0 %}class="active"{% endif %} ><a href="/admin/certificationInfo/index/status/0">待审核</a></li>
+          <li role="presentation" {% if status == 1 %}class="active"{% endif %} ><a href="/admin/certificationInfo/index/status/1">审核失败</a></li>
+          <li role="presentation" {% if status == 2 %}class="active"{% endif %} ><a href="/admin/certificationInfo/index/status/2">审核成功</a></li>
+        </ul>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>用户昵称</th>
+              <th>手机号码</th>
+              <th>贡献值</th>
+              <th>魅力值</th>
+              <th>剩余约玩币</th>
+              <th>收益金额</th>
+              <th>审核资料</th>
+              <th>备注</th>
+              {% if status == 0 %}
+              <th>操作</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% if data %}
+            {% for k,v in data %}
+            <tr>
+              <td>{{v.ctime|date('Y-m-d H:i:s')}}</td>
+              <td>{{v.uData.nickname}}</td>
+              <td>{{v.uData.phone}}</td>
+              <td>{{v.uData.contribution}}</td>
+              <td>{{v.uData.charm}}</td>
+              <td>{{v.uData.balance}}</td>
+              <td>{{v.uData.royalties}}</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-xs" onclick="lookInfo();">查看审核资料</button>
+                <div class="example audit-data" id="exampleZoomGallery">
+                  <a id="auditData" class="inline-block" href="{{v.front_path}}" title="view-1"
+                  data-source="{{v.front_path}}">
+                    <img class="img-responsive" src="{{v.front_path}}" width="220" />
+                  </a>
+                  <a class="inline-block" href="{{v.back_path}}" title="view-2"
+                  data-source="{{v.back_path}}">
+                    <img class="img-responsive" src="{{v.back_path}}" width="220" />
+                  </a>
+                  <a class="inline-block" href="{{v.hand_path}}" title="view-3"
+                  data-source="{{v.hand_path}}">
+                    <img class="img-responsive" src="{{v.hand_path}}" width="220" />
+                  </a>
+                </div>
+              </td>
+              <td>{{v.remark}}</td>
+              {% if status == 0 %}
+              <td>
+                <button type="button" class="btn btn-danger btn-xs" onclick="flag({{v.id}},1,{{v.uid}},'{{v.uData.phone}}');">不通过</button>
+                <button type="button" class="btn btn-success btn-xs" onclick="flag({{v.id}},2,{{v.uid}},'{{v.uData.phone}}');">通过</button>
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="1">
+                <blockquote>
+                  <p>暂无数据 ～</p>
+                </blockquote>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <div style="float: right;">
+          {% autoescape false %}
+            {{ page }}
+          {% endautoescape %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+<!-- Modal -->
+<div id="flagModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">请用简短的语句说明情况！</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" name="id">
+        <input type="hidden" name="status">
+        <input type="hidden" name="uid">
+        <input type="hidden" name="phone">
+        <input type="text" name="remark" class="form-control" placeholder="请输入您的说明">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" onclick="okFlag();">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<!-- Plugins For This Page -->
+<script src="{{src}}/assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+<!-- Scripts For This Page -->
+<script src="{{src}}/assets/js/components/magnific-popup.js"></script>
+<script src="{{src}}/assets/examples/js/advanced/lightbox.js"></script>
+<script src="{{src}}/certificationInfo/js/index.js"></script>
+{% endblock %}

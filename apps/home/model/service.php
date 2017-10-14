@@ -82,5 +82,37 @@ class service extends model{
     return $this->get($this->table,'*',['id'=>$id]);
   }
 
+  /**
+   * 读取单条记录接单数
+   */
+  public function getOrquantity($id){
+    return $this->get($this->table,'or_quantity',['id'=>$id]);
+  }
+
+  /**
+   * 读取热门榜服务
+   */
+  public function getHotlist($hot_status,$limit){
+    // sql
+    $sql = "
+      SELECT
+              *
+      FROM
+              `$this->table`
+      WHERE
+              1 = 1
+      AND
+              hot_status = '$hot_status'
+      AND
+              type = '2'
+      AND
+              status = '1'
+      ORDER BY
+              ctime DESC
+      {$limit}
+    ";
+    return $this->query($sql)->fetchAll(2);
+  }
+
 }
 

@@ -5,9 +5,9 @@ class usersCtrl extends baseCtrl{
   public $db;
   // 构造方法
   public function _auto(){
-    // userinfo
+    // 没有登录不让访问
     if (!isset($_SESSION['homeUserinfo'])) {
-      header('Location:/');
+      header("Location:/");
       die;
     }
     $this->db = new users();

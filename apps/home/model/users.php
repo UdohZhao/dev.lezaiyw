@@ -57,5 +57,51 @@ class users extends model{
     return $this->get($this->table,'royalties',['id'=>$id]);
   }
 
+  /**
+   * 读取魅力值记录
+   */
+  public function getCharmRows(){
+    // sql
+    $sql = "
+        SELECT
+                *
+        FROM
+                `$this->table`
+        WHERE
+                1 = 1
+        AND
+                istatus = '1'
+        ORDER BY
+                charm DESC
+        LIMIT
+                0 , 9
+    ";
+    return $this->query($sql)->fetchAll(2);
+  }
+
+  /**
+   * 读取贡献榜记录
+   */
+  public function getContributionRows(){
+    // sql
+    $sql = "
+        SELECT
+                *
+        FROM
+                `$this->table`
+        WHERE
+                1 = 1
+        AND
+                istatus = '0'
+        AND
+                contribution != '0'
+        ORDER BY
+                contribution DESC
+        LIMIT
+                0 , 9
+    ";
+    return $this->query($sql)->fetchAll(2);
+  }
+
 }
 

@@ -1,0 +1,82 @@
+{% extends "layouts.html" %}
+{% block css %}
+
+{% endblock %}
+{% block content%}
+
+<!-- Page -->
+<div class="page animsition">
+  <div class="page-header">
+    <h1 class="page-title"># 提成管理</h1>
+  </div>
+  <div class="page-content">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">@ 充值／提现记录</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/admin/cashValue/index" method="post">
+          <div class="input-group" style="width: 300px;float: right;margin-right: 30px;">
+            <input type="text" class="form-control" name="search" placeholder="请输入关键字">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </form>
+        <ul class="nav nav-pills">
+          <li role="presentation" {% if type == 0 %}class="active"{% endif %} ><a href="/cashValue/index/type/0">充值</a></li>
+          {% if u.istatus == 1 %}
+          <li role="presentation" {% if type == 1 %}class="active"{% endif %} ><a href="/cashValue/index/type/1">提现</a></li>
+          {% endif %}
+        </ul>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>订单编号</th>
+              <th>金额</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if data %}
+            {% for k,v in data %}
+            <tr>
+              <td>
+                {% if v.status == 0 %}
+                  <span class="text-default">{待管理员确认}</span>
+                {% elseif v.status == 1 %}
+                  <span class="text-danger">{失败}</span>
+                {% elseif v.status == 2 %}
+                  <span class="text-success">{成功}</span>
+                {% endif %}
+              </td>
+              <td>{{ v.inumber }}</td>
+              <td>¥{{v.money}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="4">
+                <blockquote>
+                  <p>暂无数据 ～</p>
+                </blockquote>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <div style="float: right;">
+          {% autoescape false %}
+            {{ page }}
+          {% endautoescape %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}
