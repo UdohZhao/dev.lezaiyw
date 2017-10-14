@@ -1,0 +1,21 @@
+.page{width: 100%;height: 200px;background: url(/apps/wap/views/index/img/detail_back.png) no-repeat;}
+.weui-cells{background-color:transparent; color: #fff;padding-top:30px;font-size: 12px;}
+.weui-cell__hd{padding-right: 20px;}
+.weui-cells:after{border: 0;}
+.my_msg{font-size: 12px;padding: 10px;position: relative;}
+.my_msg p{text-indent: 20px;}
+.my_msg p:first-child{font-size: 15px;font-weight: bold;}
+.my_msg .online{position: absolute;top: 15px;right: 20px;font-size: 14px;}
+
+/* 服务信息 style */
+.posRel{position: relative;}
+.posAbS{position: absolute;}
+.red{color: red;font-size: 16px;font-weight: bold;}
+.weui-navbar__item{background: #fff;}
+.weui-navbar:after{border: 0;}
+.container .weui-bar__item--on{border-bottom: 3px solid #f00;}
+.service{padding:10px 20px;position: relative;}
+.service  h5{padding:10px 20px;font-size: 17px;border-left: 5px solid #eee;}
+.service .order{position: absolute;top:60px;right: 30px;}
+.service .order button{padding: 0 10px;font-size: 12px; }
+.postopRig{top:5px;right: 10px;}

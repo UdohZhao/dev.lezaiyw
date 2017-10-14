@@ -1,0 +1,120 @@
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+{% endblock %}
+
+<!-- section -->
+<div class="row myMsg">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-11 ">
+		<h4>基本资料</h4>
+	</div>
+</div>
+<div class="container">
+	<form action="javascript:;" class="form">
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">出生年月</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="date" name="" class="weui-input">
+		    </div>
+		</div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="" name="" class="weui-input" placeholder="请输入昵称">
+		    </div>
+		 </div>
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">性别</label></div>
+		    <div class="weui-cell__bd">
+			    <label>
+			    	<input type="radio" name="sex" checked="checked"> 女
+			    </label>
+			    <label>
+			    	<input type="radio" name="sex"> 男
+			    </label>
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">年龄</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input" placeholder="请输入年龄">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">所在城市</label></div>
+		    <div class="weui-cell__bd">
+		      <select class="weui-input">
+		      	<option value="0">重庆</option>
+		      </select>
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">个性标签(任意选2项)</label></div>
+		    <div class="weui-cell__bd">
+			    <label><input type="checkbox" name="checkbox1"> 特殊才艺</label>
+			    <label><input type="checkbox" name="checkbox1"> 颜值担当</label>
+			    <label><input type="checkbox" name="checkbox1"> 逗比闲聊</label>
+			    <label><input type="checkbox" name="checkbox1"> 声音甜美</label>
+			    <label><input type="checkbox" name="checkbox1"> 乖巧粘人</label>
+			    <label><input type="checkbox" name="checkbox1"> 情感知心</label>
+			    <label><input type="checkbox" name="checkbox1"> 爽朗直率</label>
+			    <label><input type="checkbox" name="checkbox1"> 激情四射</label>
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">个性签名</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">身高(cm)</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">体重(kg)</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">职业</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">兴趣爱好</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">魅力部位(不超过3项)</label></div>
+		    <div class="weui-cell__bd">
+			    <label><input type="checkbox" name="checkbox2"> 眼睛</label>
+			    <label><input type="checkbox" name="checkbox2"> 鼻子</label>
+			    <label><input type="checkbox" name="checkbox2"> 耳朵</label>
+			    <label><input type="checkbox" name="checkbox2"> 嘴唇</label>
+			    <label><input type="checkbox" name="checkbox2"> 胸部</label>
+			    <label><input type="checkbox" name="checkbox2"> 腰部</label>
+			    <label><input type="checkbox" name="checkbox2"> 腿</label>
+			    <label><input type="checkbox" name="checkbox2"> 臀部</label>
+			    <label><input type="checkbox" name="checkbox2"> 手</label>
+			    <label><input type="checkbox" name="checkbox2"> 其他</label>
+		    </div>
+		 </div>
+		<div class="weui-cell">
+			<button class="weui-btn weui-btn_primary">提交</button>
+		</div>
+		<div class="weui-cell">
+			<a href="javascript:history.go(-1)">返回上一页</a>
+		</div>
+	</form>
+</div>	
+
+{% include 'footer_js.html' %}

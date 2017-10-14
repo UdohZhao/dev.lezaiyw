@@ -15,6 +15,7 @@ class indexCtrl extends baseCtrl{
       $this->display('index','index.html');
       die;
     }
+    
   }
 
 }

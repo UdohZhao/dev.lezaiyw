@@ -1,0 +1,20 @@
+a:foucs{color: 0;}
+.weui-cell__hd{margin-right: 20px;}
+p.uid{margin-bottom: 0;color: #878787;font-size: 10px;}
+.mg_money i{display: inline-block;width: 15px;height: 18px;background: url(/apps/wap/views/index/img/center_icon.png) no-repeat -52px -3px ;}
+.weui-cell__ft{color: #f00;line-height: 20px;}
+.weui-cell_access .red:after{border-color: #f00;}
+.ywGlod{width: 100%;height: 100px;padding: 20px;border-top:1px solid #E8E8E8;border-bottom:1px solid
+ #E8E8E8; color: #999;font-size: 12px; background: #fff;margin-top: -1px;}
+.ywGlod .ywGlod_left,.ywGlod .ywGlod_right{width: 49%;float: left;text-align: center;}
+.ywGlod .ywGlod_left p,.ywGlod .ywGlod_right p{margin-bottom: 0;line-height: 30px;}
+.separator{border-right: 1px solid #e8e8e8;height: 100%;float: left;}
+.mg_money .icon_2{background-position: -67px -3px;}
+.mg_money .icon_3{background-position: -83px -3px;}
+.mg_money .icon_4{background-position: -98px -3px;}
+.mg_money .icon_5{background-position: -112px -3px;}
+
+
+
+/****************************** 个人资料style **********************************/
+.myMsg{margin-top:20px;}
