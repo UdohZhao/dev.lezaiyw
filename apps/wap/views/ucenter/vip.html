@@ -1,0 +1,40 @@
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/public/jquery-weui-build/dist/css/jquery-weui.css">
+<link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+{% endblock %}
+
+<!-- 用户ID 头像 -->
+<div class="container">
+	<div class="vip">
+		<div class="weui-cells">
+		  <a class="weui-cell weui-cell_access" >
+		  	<div class="weui-cell__bd ">
+		  		<img src="/apps/wap/views/index/img/avatar.png">
+		  		<p class="weui-btn">一个孤单的过路人</p>
+		  		<span class="weui-btn vip_yh">无优惠</span>
+		  	</div>
+		  </a>
+  		</div>
+	</div>
+</div>
+<!-- VIP 政策 -->
+<div class="vip_container pad"> 
+	<div class="title">
+		<h3>VIP等级说明</h3>
+	</div>
+	<div class="vip_img">
+		<img src="/apps/home/views/recharge/img/discounts.png">
+	</div>
+</div>
+<div class="weui-cell">
+	<a href="javascript:history.go(-1)">返回上一页</a>
+</div>
+{% include 'footer_js.html' %}
+
+{% block js %}
+
+ <script src="/apps/wap/views/ucenter/js/application.js"></script>
+
+{% endblock %}

@@ -6,7 +6,6 @@ body{background: #F5F5F5;}
 .lt{float: right;}
 .banner-box{margin-bottom: 20px;}
 .clear{clear: both;}
-.container{padding: 0 !important;}
 .swiper-slide img{width: 100%;}
 .indexSearch{margin-top:0px;position:absolute;top:.5rem;left: 25%;opacity: .8;}
 .input-group .form-control:last-child{border-radius:20px;text-indent: 30px;position: relative;}
@@ -32,7 +31,8 @@ body{background: #F5F5F5;}
 .weui-tab__bd .weui-tab__bd-item.weui-tab__bd-item--active{display: block;}
 .weui-tab__bd .weui-tab__bd-item{display: none;overflow: auto;}
 .weui-tab__bd{padding-top: 50px;}
-.weui-bar__item--on{background: #fff;border-bottom: 1px solid transparent;z-index: 10;clear: #f00;}
+.weui-tabbar .weui-bar__item--on{background: #fff;border-bottom: 1px solid transparent;z-index: 10;}
+.weui-bar__item--on .weui-tabbar__label{color: #f00;}
 .weui-bar__item--on:hover{color: #f00;}
 /* 为您推荐  style*/
 .container{background: #fff;margin-top: 10px;}

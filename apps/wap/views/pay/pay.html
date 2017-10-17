@@ -1,0 +1,67 @@
+
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/apps/wap/views/pay/css/pay.css">
+{% endblock %}
+
+<!-- section -->
+<div class="container">
+	<div class="weui-flex">
+	  <div class="weui-flex__item recharge">
+	  	<p>现拥有<span class="red"> 0 </span>玩币，约玩值：<span class="red"> 0 </span></p>
+	  </div>
+	</div>
+	<div class="rechargelist">
+		<h5>充值</h5>
+		<ul class="nav money-box">
+	        <li role="presentation" id="active1" class="active" onclick="rechargeMoney(10,'1');"><a href="javascript:;">10元</a></li>
+	        <li role="presentation" id="active2" onclick="rechargeMoney(20,'2');"><a href="javascript:;">20元</a></li>
+	        <li role="presentation" id="active3" onclick="rechargeMoney(30,'3');"><a href="javascript:;">30元</a></li>
+	        <li role="presentation" id="active4" onclick="rechargeMoney(50,'4');"><a href="javascript:;">50元</a></li>
+	        <li role="presentation" id="active5" onclick="rechargeMoney(100,'5');"><a href="javascript:;">100元</a></li>
+	        <li role="presentation" id="active6" onclick="rechargeMoney(200,'6');"><a href="javascript:;">200元</a></li>
+	    </ul>
+    </div>
+    <div class="rechargelist">
+    	<div class="weui-cells weui-cells_radio">
+    		<input type="hidden" name="money" value="0.01">
+		  <label class="weui-cell weui-check__label" for="x11">
+		  <div class="weui-cell__hd"><i class="icon zfb"></i></div>
+		    <div class="weui-cell__bd">支付宝支付</div>
+		    <div class="weui-cell__ft">
+		      <input type="radio" class="weui-check" name="type" value="0" id="x11">
+		      <span class="weui-icon-checked"></span>
+		    </div>
+		  </label>
+		  <label class="weui-cell weui-check__label" for="x12">
+		  	<div class="weui-cell__hd"><i class="icon wx"></i></div>
+		    <div class="weui-cell__bd">微信支付</div>
+		    <div class="weui-cell__ft">
+		      <input type="radio"  name="type" value="1" checked="checked" class="weui-check" id="x12" checked="checked">
+		      <span class="weui-icon-checked"></span>
+		    </div>
+		  </label>
+		</div>
+        <div class="weui-panel__hd">
+          * 兑换比例（1元 : 1玩币）
+        </div>
+        <div class="payBtn">
+            <button type="button" class="btn btn-danger btn-lg i-pay-btn" onclick="gotoPay();">去支付</button>
+          </div>
+    </div>
+</div>
+	<div class="weui-cells">
+	  <div class="weui-cell">
+	   	<a href="javascript:history.go(-1)">返回上一页</a>
+	  </div>
+	</div>
+</div>
+
+{% include 'footer_js.html' %}
+
+{% block js %}
+
+<script src="/apps/wap/views/pay/js/pay.js"></script>
+
+{% endblock %}

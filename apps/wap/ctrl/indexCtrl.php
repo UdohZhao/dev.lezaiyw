@@ -19,4 +19,13 @@ class indexCtrl extends baseCtrl{
     }
     
   }
+  public function detail(){
+    // Get
+    if (IS_GET === true) {
+      // display
+      $this->display('meet','index.html');
+      die;
+    }
+    
+  }
 }

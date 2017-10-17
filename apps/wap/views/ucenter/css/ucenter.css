@@ -17,4 +17,42 @@ p.uid{margin-bottom: 0;color: #878787;font-size: 10px;}
 
 
 /****************************** 个人资料style **********************************/
-.myMsg{margin-top:20px;}
+.myMsg{margin-top:10px;}
+.toolbar .title {line-height: .2rem;}
+
+
+/****************************** 申请入驻style **********************************/
+.popup__container{display: block;}
+.popup__overlay{position: fixed;top:0;left: 0;width: 100%;height: 100%;background-color:#666;opacity: .6;z-index: 99; }
+.popup__modal{position: absolute;width: 100%;padding:10px 20px;z-index: 999;top:0;right: 0;background-color:#fff; }
+a.weui-btn{width: 100%;}
+.applyList .weui-cells{margin-top: 0;}
+.applyList .weui-cell__hd img{width: 60%;}
+
+/****************************** service  style **********************************/
+.fs{font-size: 12px;}
+.pad{padding:10px;}
+.marAuto{margin:0 auto;}
+.alignCenter{text-align: center;}
+.service .service_group{padding:5px 10px;}
+.service .service_name h4{text-indent: 20px;}
+.service .serviceTlile  p{font-size: 12px;color: #333;margin-bottom: 0;line-height: 25px;}
+.container .cover-file{display: none;}
+.container .describe{width: 100%;height: 60px;border: 0;background-color:#f5f5f5; }
+.weui-label{color: #333;font-weight: normal;}
+
+/****************************** vup style **********************************/
+.vip{width: 100%;height: 200px;background: url(/apps/wap/views/index/img/2017-10-16_175753.png) no-repeat;
+	color: #fff;text-align: center;}
+.vip .weui-cells{background: initial;}
+.vip .weui-cells:after,
+.vip p.weui-btn:after{border: 0;}
+.vip p{margin:0;}
+.vip_yh{background-color:#EE7E40;width: 65px;font-size: 12px; line-height: 20px;}
+.vip_img img{width: 100%;}
+
+
+
+/***************************** realname style  *************************/
+.realname .title{line-height: 30px;margin:10px 20px;}
+.realname_group{background-color:# }

@@ -1,0 +1,77 @@
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/public/jquery-weui-build/dist/css/jquery-weui.css">
+<link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+{% endblock %}
+
+
+<form action="" class="service">
+	<div class="service_group">
+		<div class="service_name">
+		<h4>提示</h4>
+		</div>
+		<div class="container pad">
+			<div class="serviceTlile">
+				<p>段位要求:男生(大师/王者) 女生(黄金以上)</p>
+				<p>考核要求:大师、王者段位无论男女都需考核</p>
+				<p>其他段位无需考核，上传本人段位截图即可</p>
+			</div>
+		</div>
+	</div>
+	<div class="service_group">
+		<div class="service_name">
+		<h4>服务封面照(必填)</h4>
+		</div>
+		<div class="container marAuto alignCenter">
+			<div id="preview" class="pad ">
+		        <img id="imghead" src="/apps/home/views/layouts/img/breviary.png" class="img-responsivebreviary-img" onclick="$('#previewImg').click();" alt="点击上传封面图片" title="点击上传封面图片">
+		    </div>
+		    <input type="file" id="previewImg" name="cover_path" class="cover-file" onchange="previewImage(this)" accept="image/*">
+		</div>
+	</div>
+	<div class="service_group">
+		<div class="service_name">
+		<h4>服务描述</h4>
+	</div>
+		<div class="weui-cells weui-cells_form">
+			<div class="weui-cell">
+				<div class="weui-cell__bd">
+				    <textarea class="weui-textarea fs" name="describe" placeholder="一段好的描述能提高300%的接单率" rows="3"></textarea>
+				    <div class="weui-textarea-counter"><span>0</span>/200</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="service_group">
+		<div class="weui-cells weui-cells_form">
+		  <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">价格 / 局</label></div>
+		    <div class="weui-cell__bd">
+		      <input class="weui-input fs" type="number" name="price" pattern="[0-9]*" placeholder="请输入价格">
+		    </div>
+		  </div>
+		</div>
+		<div class="weui-cells weui-cells_form">
+		  <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">个性签名</label></div>
+		    <div class="weui-cell__bd">
+		      <input class="weui-input fs" type="text" name="i_label" placeholder="个性签名">
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<div class="service_group">
+		<input type="submit" name="" class="weui-btn weui-btn_primary" value="申请导师"> 
+	</div>
+	
+</form>
+
+
+{% include 'footer_js.html' %}
+
+{% block js %}
+
+ <script src="/apps/wap/views/ucenter/js/application.js"></script>
+
+{% endblock %}

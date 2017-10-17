@@ -1,0 +1,54 @@
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/public/jquery-weui-build/dist/css/jquery-weui.css">
+<link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+{% endblock %}
+<div class="realname">
+	<div class="title">实名认证</div>
+	<div class="container ">
+	<div class="realname_group">
+		<div class="row">
+	        <div class="col-md-4">
+	            <blockquote>
+	              <p>上传身份证正面照片</p>
+	            </blockquote>
+	            <img src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img">
+	          </div>
+	    </div>
+	</div>
+	<div class="realname_group">
+		<div class="row">
+	        <div class="col-md-4">
+	            <blockquote>
+	              <p>上传身份证背面照片</p>
+	            </blockquote>
+	            <img src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img">
+	        </div>
+	    </div>
+	</div>
+	<div class="realname_group">
+		<div class="row">
+	        <div class="col-md-4">
+	            <blockquote>
+	              <p>上传手持身份证照片</p>
+	            </blockquote>
+	            <img src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img">
+	        </div>
+	    </div>
+	</div>  
+	<!-- <div class="idcard-tips">
+		<p>*【审核通过】上传的资料符合规范！</p>
+	</div>   -->   
+</div>
+</div>
+
+
+
+{% include 'footer_js.html' %}
+
+{% block js %}
+
+ <script src="/apps/wap/views/ucenter/js/application.js"></script>
+
+{% endblock %}
