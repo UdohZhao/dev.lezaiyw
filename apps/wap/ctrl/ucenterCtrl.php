@@ -50,4 +50,9 @@ class ucenterCtrl extends baseCtrl{
       $this->display('ucenter','realname.html');
       die; 
   }
+  public function record(){
+      // display
+      $this->display('ucenter','record.html');
+      die; 
+  }
 }
