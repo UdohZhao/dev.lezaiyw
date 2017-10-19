@@ -17,5 +17,7 @@
 .service{padding:10px 20px;position: relative;}
 .service  h5{padding:10px 20px;font-size: 17px;border-left: 5px solid #eee;}
 .service .order{position: absolute;top:60px;right: 30px;}
-.service .order button{padding: 0 10px;font-size: 12px; }
+.service .order a{padding: 0 10px;font-size: 12px; }
 .postopRig{top:5px;right: 10px;}
+
+/**********************  order style ***********************/

@@ -19,4 +19,10 @@ class meetCtrl extends baseCtrl{
     }
     
   }
+   public function order(){
+ 
+      // display
+      $this->display('meet','order.html');
+
+  }
 }
