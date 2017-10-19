@@ -1,0 +1,146 @@
+{% include 'header.html' %}
+
+{% block css %}
+
+<link rel="stylesheet" href="/apps/wap/views/index/css/index.css">
+
+{% endblock %}
+  
+<!-- 搜索框 -->
+<div class="weui-search-bar" id="searchBar">
+  <form class="weui-search-bar__form">
+    <div class="weui-search-bar__box">
+      <i class="weui-icon-search"></i>
+      <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+      <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+    </div>
+    <label class="weui-search-bar__label" id="searchText">
+      <i class="weui-icon-search"></i>
+      <span>搜索</span>
+    </label>
+  </form>
+  <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+</div>
+
+<!-- 容器 -->
+<div class="weui-tab">
+  <div class="weui-navbar">
+    <a class="weui-navbar__item weui-bar__item--on" href="#tab1">推荐</a>
+    <a class="weui-navbar__item" href="#tab2">热门</a>
+	  <a class="weui-navbar__item" href="#tab3">新人</a>
+    <a href=""></a>
+  </div>
+
+  <div class="weui-tab__bd">
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+      <div class="oneBox">
+          <div class="item_list">
+            <a href="/wap/meet/index">
+                <div class="list posiR">
+                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
+                  <div class="label1 item_label">钻石</div>
+                </div>
+                <div class="item_bd">
+                  <p class="userName">蔡妹妹</p>
+                  <p>20 | 石家庄 | 1分钟</p>
+                  <div class="item_hd">
+                    <div class="weui-cell">
+                      <div class="weui-cell__bd">
+                        <span>接单<u>88</u>次</span>
+                      </div>
+                      <div class="weui-cell__ft"><span class="userName weui-cell__ft" style="color: #F92246;">￥<u style="font-size: 16px;">45</u>元/小时  </span></div>
+                    </div>
+                  </div>
+                  <div class="item_tag">
+                    <span>特殊才艺</span>
+                    <span>声音甜美</span>
+                  </div>
+                </div>
+            </a>
+          </div>
+          <div class="item_list">
+            <a href="/wap/meet/index">
+                <div class="list posiR">
+                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
+                  <div class="label1 item_label">钻石</div>
+                </div>
+                <div class="item_bd">
+                  <p class="userName">蔡妹妹</p>
+                  <p>20 | 石家庄 | 1分钟</p>
+                  <div class="item_hd">
+                    <div class="weui-cell">
+                      <div class="weui-cell__bd">
+                        <span>接单<u>88</u>次</span>
+                      </div>
+                      <div class="weui-cell__ft"><span class="userName weui-cell__ft" style="color: #F92246;">￥<u style="font-size: 16px;">45</u>元/小时  </span></div>
+                    </div>
+                  </div>
+                  <div class="item_tag">
+                    <span>特殊才艺</span>
+                    <span>声音甜美</span>
+                  </div>
+                </div>
+            </a>
+          </div>
+          <div class="item_list">
+            <a href="/wap/meet/index">
+                <div class="list posiR">
+                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
+                  <div class="label1 item_label">钻石</div>
+                </div>
+                <div class="item_bd">
+                  <p class="userName">蔡妹妹</p>
+                  <p>20 | 石家庄 | 1分钟</p>
+                  <div class="item_hd">
+                    <div class="weui-cell">
+                      <div class="weui-cell__bd">
+                        <span>接单<u>88</u>次</span>
+                      </div>
+                      <div class="weui-cell__ft"><span class="userName weui-cell__ft" style="color: #F92246;">￥<u style="font-size: 16px;">45</u>元/小时  </span></div>
+                    </div>
+                  </div>
+                  <div class="item_tag">
+                    <span>特殊才艺</span>
+                    <span>声音甜美</span>
+                  </div>
+                </div>
+            </a>
+          </div>
+          <div class="item_list">
+            <a href="/wap/meet/index">
+                <div class="list posiR">
+                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
+                  <div class="label1 item_label">钻石</div>
+                </div>
+                <div class="item_bd">
+                  <p class="userName">蔡妹妹</p>
+                  <p>20 | 石家庄 | 1分钟</p>
+                  <div class="item_hd">
+                    <div class="weui-cell">
+                      <div class="weui-cell__bd">
+                        <span>接单<u>88</u>次</span>
+                      </div>
+                      <div class="weui-cell__ft"><span class="userName weui-cell__ft" style="color: #F92246;">￥<u style="font-size: 16px;">45</u>元/小时  </span></div>
+                    </div>
+                  </div>
+                  <div class="item_tag">
+                    <span>特殊才艺</span>
+                    <span>声音甜美</span>
+                  </div>
+                </div>
+            </a>
+          </div>
+      </div>
+    </div>
+    <div id="tab2" class="weui-tab__bd-item">
+      <h1>页面二</h1>
+    </div>
+    <div id="tab3" class="weui-tab__bd-item">
+      <h1>页面三</h1>
+    </div>
+  </div>
+</div>
+
+
+
+{% include 'footer_js.html' %}

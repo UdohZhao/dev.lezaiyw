@@ -25,4 +25,10 @@ class meetCtrl extends baseCtrl{
       $this->display('meet','order.html');
 
   }
+  public function payment(){
+ 
+      // display
+      $this->display('meet','payment.html');
+
+  }
 }

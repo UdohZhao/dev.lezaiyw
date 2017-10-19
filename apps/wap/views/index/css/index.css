@@ -14,15 +14,6 @@ body{background: #F5F5F5;}
 	display: inline-block;width: 2.5rem;height: 2.5rem;z-index: 10;top:4px;left:4px;}
 
 
-/* 重置weui.css中在 首页nav 样式 */
-/*.swiper-container-horizontal .swiper-pagination{bottom: 20px;}
-.weui-grids{ z-index: 100;border-top-right-radius:260px 30px;border-top-left-radius:260px 30px;
-	margin-top: -20px;width: 100%;}
-.weui-grids .weui-grid{width: 25%;background: #fff;padding: 10px 5px 0;}
-.weui-grid:after,.weui-grid:before{border: 0;}
-.weui-grid__label{font-size: 10px;}
-.weui-grid__icon{width: 50px;height: 50px;}
-.weui-cell__ft{font-size: 10px;}*/
 .weui-tab{background: #fff;}
 .weui-navbar__item:after,.weui-navbar__item:before,
 .weui-tab__bd-item:after,.weui-tab__bd-item:before,
@@ -34,7 +25,7 @@ body{background: #F5F5F5;}
 .weui-tabbar .weui-bar__item--on{background: #fff;border-bottom: 1px solid transparent;z-index: 10;}
 .weui-bar__item--on .weui-tabbar__label{color: #f00;}
 .weui-bar__item--on:hover{color: #f00;}
-/* 为您推荐  style*/
+/* **************为您推荐  style**************/
 .container{background: #fff;margin-top: 10px;}
 .container h4{text-align: center;font-weight: 200;color: #F92246; }
 .oneBox{padding:5px 7px;width: 100%;}
@@ -46,11 +37,11 @@ body{background: #F5F5F5;}
 .label2{background: #F8CBA4;clear: both;top:4px;right: 5px;}
 .oneBox_list .userName{font-size: 14px;font-weight:100;line-height: 22px;color: #aaa;margin-bottom: 0;
 	display: block;}
-/* 线上lol  */
+/***************** 线上lol  ************/
 .more{text-align: right;font-size: 10px;color: #bbb;margin-right: 10px;position: absolute;right: 10px;
 	top:6px;}
 
-/* 固定底部 */
+/*********** 固定底部 *******************/
 .weui-tabbar{position: fixed;bottom: 0;background: #fff;}
 .footer_icon{display: inline-block;width:27px;height: 27px; }
 .footer_icon_1{background: url(/apps/wap/views/index/img/footer_icon_1.png) no-repeat;}
@@ -65,5 +56,18 @@ body{background: #F5F5F5;}
 
 
 
-/****************************** 个人资料style **********************************/
-.mgMsg{margin-top:20px;}
+/****************************** item  style **********************************/
+.alignRight{text-align: right;}
+u{text-decoration: blink;}
+.posiR{position: relative;}
+.posiA{position: absolute;}
+.oneBox .item_list{width: 47%;float: left;margin:0 20px 20px 0;position: relative;font-size: 12px;}
+.oneBox .item_list:nth-child(2),
+.oneBox .item_list:nth-child(4){margin-right: 0;}
+.item_bd .userName{line-height: 25px;font-size: 14px;}
+.item_label{bottom: 10px;right: 10px;background: #F8CBA4;}
+.item_tag span{display: inline-block;border: 1px solid #e8e8e8;padding: 3px 14px;border-radius: 5px;}
+.item_hd .weui-cell{padding: 0;}
+.item_screen{width: 50%;float: right;top:0;right: 0;z-index: 100;background-color: #fff;}
+.item_screen_list{width: 100%; line-height: 25px;padding:10px 20px;}
+.list_title .item_list span{display: inline-block;padding: 5px 10px;background-color:#ECEDF1;font-size: 12px; width: 30%;}

@@ -28,4 +28,9 @@ class indexCtrl extends baseCtrl{
     }
     
   }
+  public function item(){
+      // display
+      $this->display('index','item.html');
+      die; 
+  }
 }
