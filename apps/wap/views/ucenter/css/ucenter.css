@@ -29,6 +29,8 @@ p.uid{margin-bottom: 0;color: #878787;font-size: 10px;}
 .record_box li{line-height: 25px;text-align: center;}
 .record_box li span{display: inline-block;width: 25%;text-align: center;overflow: hidden;text-overflow: ellipsis;}
 .record_box li span.long{width: 47%;}
+.marginTop{margin-top: 20px;}
+.record_body .weui-tab__bd-item{padding: 10px;}
 
 
 

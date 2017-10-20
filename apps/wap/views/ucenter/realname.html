@@ -13,7 +13,9 @@
 		            <blockquote>
 		              <p>上传身份证正面照片</p>
 		            </blockquote>
-		            <img src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img">
+		            <div id="preview0">
+		            	<img id="imghead0" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传身份证正面照片" title="点击上传身份证正面照片">
+		            </div>
 		          </div>
 		    </div>
 		</div>
@@ -23,7 +25,9 @@
 		            <blockquote>
 		              <p>上传身份证背面照片</p>
 		            </blockquote>
-		            <img src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img">
+		            <div id="preview1">
+		            	<img id="imghead1" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg1').click();" alt="点击上传身份证正面照片" title="点击上传身份证正面照片">
+		            </div>
 		        </div>
 		    </div>
 		</div>
@@ -33,10 +37,17 @@
 		            <blockquote>
 		              <p>上传手持身份证照片</p>
 		            </blockquote>
-		            <img src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img">
+		            <div id="preview2">
+		            	<img id="imghead2" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg2').click();" alt="点击上传身份证正面照片" title="点击上传身份证正面照片">
+		            </div>
 		        </div>
 		    </div>
 		</div>  
+		<form id="idcardForm" action="/certificationInfo/add" method="post" enctype="multipart/form-data">
+            <input type="file" id="previewImg0" name="front_path" class="cover-file" onchange="previewImage(this,'preview0','imghead0','previewImg0')" accept="image/*">
+            <input type="file" id="previewImg1" name="back_path" class="cover-file" onchange="previewImage(this,'preview1','imghead1','previewImg1')" accept="image/*">
+            <input type="file" id="previewImg2" name="hand_path" class="cover-file" onchange="previewImage(this,'preview2','imghead2','previewImg2')" accept="image/*">
+          </form>
 		<div class="button_sp_area">
 			<button type="submit" class="weui-btn weui-btn_primary">提交审核</button>
 		</div>
@@ -60,6 +71,6 @@
 
 {% block js %}
 
- <script src="/apps/wap/views/ucenter/js/application.js"></script>
+ <script src="/apps/wap/views/ucenter/js/realname.js"></script>
 
 {% endblock %}

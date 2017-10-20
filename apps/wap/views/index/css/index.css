@@ -14,7 +14,7 @@ body{background: #F5F5F5;}
 	display: inline-block;width: 2.5rem;height: 2.5rem;z-index: 10;top:4px;left:4px;}
 
 
-.weui-tab{background: #fff;}
+.index_back{background: #fff;}
 .weui-navbar__item:after,.weui-navbar__item:before,
 .weui-tab__bd-item:after,.weui-tab__bd-item:before,
 .weui-grid:before{border: 0;}
@@ -26,7 +26,8 @@ body{background: #F5F5F5;}
 .weui-bar__item--on .weui-tabbar__label{color: #f00;}
 .weui-bar__item--on:hover{color: #f00;}
 /* **************为您推荐  style**************/
-.container{background: #fff;margin-top: 10px;}
+.index_container{background: #fff;margin-top: 10px;}
+.container{padding:0;}
 .container h4{text-align: center;font-weight: 200;color: #F92246; }
 .oneBox{padding:5px 7px;width: 100%;}
 .oneBox .oneBox_list{width: 31.5%;float: left;margin-right: 8px;position: relative;}
@@ -36,7 +37,8 @@ body{background: #F5F5F5;}
 .label{background:#F3626E;bottom: 50px;left:-5px;}
 .label2{background: #F8CBA4;clear: both;top:4px;right: 5px;}
 .oneBox_list .userName{font-size: 14px;font-weight:100;line-height: 22px;color: #aaa;margin-bottom: 0;
-	display: block;}
+	display: block; color: #F92246;}
+.oneBox_list .userName span{font-size: 16px;}
 /***************** 线上lol  ************/
 .more{text-align: right;font-size: 10px;color: #bbb;margin-right: 10px;position: absolute;right: 10px;
 	top:6px;}
@@ -57,6 +59,7 @@ body{background: #F5F5F5;}
 
 
 /****************************** item  style **********************************/
+.backg{background-color:#fff; }
 .alignRight{text-align: right;}
 u{text-decoration: blink;}
 .posiR{position: relative;}

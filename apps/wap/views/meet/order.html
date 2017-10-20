@@ -9,21 +9,43 @@
 
 <div class="order pad">
 	<form>
-		<div class="weui-cells backColor">
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		    <div class="weui-cell__bd">
-		      <p>服务项目</p>
-		    </div>
-		    <div class="weui-cell__ft red">线上LOL</div>
-		  </a>
-		</div>
-		<div class="weui-cells">
-		  <div class="weui-cell">
-		    <div class="weui-cell__bd">
-		      <p>价格</p>
-		    </div>
-		    <div class="weui-cell__ft " ><span class="unit-price">30</span>元 / 局</div>
+		<div class="weui-cells ">
+		  <div class="weui-cell weui-cell_access">
+		    <div class="weui-cell__bd">订单信息</div>
 		  </div>
+		</div>
+		<div class="weui-cells backColor fs">
+
+			<div class="weui-panel weui-panel_access">
+			  <div class="weui-panel__bd">
+			    <div class="weui-media-box weui-media-box_appmsg">
+			      <div class="weui-media-box__hd">
+			        <img class="weui-media-box__thumb" src="/apps/wap/views/index/img/avatar.png">
+			      </div>
+			      <div class="weui-media-box__bd">
+			        <h4 class="weui-media-box__title">一个温暖的路人</h4>
+			        <p class="weui-media-box__desc">接单时间 0：00-24:00</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		  	<div class="weui-cell">
+			    <div class="weui-cell__bd">服务项目</div>
+			    <div class="weui-cell__ft">线上LOL</div>
+		  	</div>		  	
+
+		  	<div class="weui-cell">
+			    <div class="weui-cell__bd">价格</div>
+			    <div class="weui-cell__ft " ><span class="unit-price">30</span>元 / 局</div>
+		  	</div>
+		  	<div class="weui-cell">
+			    <div class="weui-cell__bd">总金额</div>
+			    <div class="weui-cell__ft" >￥<span class="service-price-indent">0.00</span></div>
+		  </div>
+		  <div class="weui-cell">
+			    <div class="weui-cell__bd">当前约玩币</div>
+			    <div class="weui-cell__ft " ><span id="numSpan">0</span></div>
+		  	</div>
 		</div>
 		<div class="weui-cells orderTime pad">
 			<div class="row indent-row">
@@ -52,18 +74,12 @@
 			<div class="weui-cells weui-cells_form">
 			  <div class="weui-cell">
 			    <div class="weui-cell__bd">
-			      <textarea class="weui-textarea" placeholder="请说明你的要求" rows="3"></textarea>
+			      <textarea class="weui-textarea" name=""  placeholder="请说明你的要求" rows="3"></textarea>
 			      <div class="weui-textarea-counter"><span>0</span>/200</div>
 			    </div>
 			  </div>
 			</div>
-		<div class="weui-cells">
-		  <div class="weui-cell">
-		    <div class="weui-cell__bd">
-		      <p>总金额</p>
-		    </div>
-		    <div class="weui-cell__ft" >￥<span class="service-price-indent">0.00</span></div>
-		  </div>
+		<div class="weui-cells">	  
 		</div>
 		<div class="weui-cells">
 		  <div class="weui-cell">
@@ -74,10 +90,10 @@
 		  </div>
 		</div>
 		<div class="weui-cells">
-			<a href="/wap/meet/payment" class="weui-btn weui-btn_primary">提交订单</a>
+			<button type="button" class="weui-btn weui-btn_primary" onclick="iPay({{data.users.id}},{{u.id}},{{data.onsData.id}},0,'{{u.phone}}','{{data.users.phone}}','{{data.onsData.price}}','{{data.units}}','{{u.balance}}','{{data.onscCname}}');">立即支付</button> 
 		</div>
 		<div class="weui-cells">
-			<p class="red">* 支付成功后将短信通知陪玩导师，请保持电话畅通。</p>
+			<p class="red texTap">* 支付成功后将短信通知陪玩导师，请保持电话畅通。</p>
 		</div>
 	</form>
 		<div class="weui-cells">

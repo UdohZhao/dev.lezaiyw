@@ -16,3 +16,4 @@
 .weui-cell__ft{vertical-align: middle;}
 .weui-cell__hd .wx{background: url(/apps/wap/views/index/img/wx.png) no-repeat;}
 .weui-cell__hd .zfb{background: url(/apps/wap/views/index/img/zfb.png) no-repeat;}
+.weui-cell img{width: 100%;}
