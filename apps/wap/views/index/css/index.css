@@ -67,8 +67,8 @@ u{text-decoration: blink;}
 .oneBox .item_list{width: 47%;float: left;margin:0 20px 20px 0;position: relative;font-size: 12px;}
 .oneBox .item_list:nth-child(2),
 .oneBox .item_list:nth-child(4){margin-right: 0;}
-.item_bd .userName{line-height: 25px;font-size: 14px;}
-.item_label{bottom: 10px;right: 10px;background: #F8CBA4;}
+.item_bd .userName{line-height: 30px;font-size: 14px;display: inline-block;width: 75px;}
+.item_label{bottom: 10px;left: 10px;background: #F8CBA4;}
 .item_tag span{display: inline-block;border: 1px solid #e8e8e8;padding: 3px 14px;border-radius: 5px;}
 .item_hd .weui-cell{padding: 0;}
 .item_screen{width: 50%;float: right;top:0;right: 0;z-index: 100;background-color: #fff;}
