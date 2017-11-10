@@ -3,5 +3,5 @@
   height: 50px;
 }
 .cover-file{
-  display: none;
+  display: none!important;
 }
