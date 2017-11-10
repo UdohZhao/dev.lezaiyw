@@ -21,7 +21,8 @@ class serviceCategoryCtrl extends baseCtrl{
   /**
    * 添加服务类别页面
    */
-  public function add(){
+  public function add()
+  {
     // Get
     if (IS_GET === true) {
       // id
@@ -36,9 +37,25 @@ class serviceCategoryCtrl extends baseCtrl{
       die;
     }
     // Ajax
-    if (IS_AJAX === true) {
+    if (IS_AJAX === true)
+    {
+      if (isset($_FILES['icon_path']))
+      {
+        // 文件上传
+        $res = upFiles('icon_path');
+        if ($res['code'] == 1)
+        {
+          echo J(R(3,$res['msg'],false));
+          die;
+        }
+        $icon_path = $res['data'];
+      }
+      else
+      {
+        $icon_path = isset($_POST['icon_path']) ? $_POST['icon_path'] : '';
+      }
       // data
-      $data = $this->getData();
+      $data = $this->getData($icon_path);
       // 防止重复添加
       $id = $this->db->getCcname($data['cname'],$data['type']);
       if ($id && $id != $this->id) {
@@ -66,8 +83,9 @@ class serviceCategoryCtrl extends baseCtrl{
   /**
    * 初始化数据
    */
-  private function getData(){
+  private function getData($icon_path){
     // data
+    $data['icon_path'] = $icon_path;
     $data['cname'] = isset($_POST['cname']) ? htmlspecialchars($_POST['cname']) : '';
     $data['units'] = isset($_POST['units']) ? $_POST['units'] : 0;
     $data['sort'] = isset($_POST['sort']) ? $_POST['sort'] : 0;
@@ -108,6 +126,26 @@ class serviceCategoryCtrl extends baseCtrl{
         die;
       }
       $res = $this->db->del($this->id);
+      if ($res) {
+        echo J(R(0,'受影响的操作 :)',true));
+        die;
+      } else {
+        echo J(R(1,'请尝试刷新页面后重试 :(',false));
+        die;
+      }
+    }
+  }
+
+  /**
+   * 删除图标
+   */
+  public function delIcon()
+  {
+    // Ajax
+    if (IS_AJAX === true) {
+      $icon_path = isset($_POST['icon_path']) ? $_POST['icon_path'] : '';
+      @unlink(ICUNJI.$icon_path);
+      $res = $this->db->save($this->id,array('icon_path'=>''));
       if ($res) {
         echo J(R(0,'受影响的操作 :)',true));
         die;

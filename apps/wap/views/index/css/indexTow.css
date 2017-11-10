@@ -1,0 +1,17 @@
+.swiper-b-h{
+  height: 200px;
+}
+.swiper-b-img{
+  width: 100%;
+  height: 100%;
+}
+.cover-img{
+  height: 150px!important;
+}
+.u-nickname{
+  font-size: 14px;
+  font-weight:100;
+  line-height: 22px;
+  margin-bottom: 0;
+  display: block;
+}

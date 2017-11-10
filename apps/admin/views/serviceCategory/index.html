@@ -32,6 +32,7 @@
           <thead>
             <tr>
               <th>#</th>
+              <th>图标</th>
               <th>名称</th>
               <th>单位</th>
               <th>排序</th>
@@ -49,6 +50,7 @@
                   <span class="text-danger">{禁用}</span>
                 {% endif %}
               </td>
+              <td><img src="{{v.icon_path}}" class="img-responsive"></td>
               <td>{{ v.cname }}</td>
               <td>
               {% if v.units == 0 %}

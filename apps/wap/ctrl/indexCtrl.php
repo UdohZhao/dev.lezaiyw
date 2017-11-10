@@ -4,15 +4,20 @@ use core\lib\conf;
 use apps\wap\model\banner;
 use apps\wap\model\serviceCategory;
 use apps\wap\model\service;
+use apps\wap\model\users;
 class indexCtrl extends baseCtrl{
   public $bdb;
   public $scdb;
   public $sdb;
+  public $udb;
+  public $scid;
   // 构造方法
   public function _auto(){
     $this->bdb = new banner();
     $this->scdb = new serviceCategory();
     $this->sdb = new service();
+    $this->udb = new users();
+    $this->scid = isset($_GET['scid']) ? intval($_GET['scid']) : 0;
   }
 
   /**
@@ -34,6 +39,8 @@ class indexCtrl extends baseCtrl{
       {
         foreach ($data['sData'] AS $k => $v)
         {
+          // 读取用户记录
+          $data['sData'][$k]['uData'] = $this->udb->getcRow($v['uid']);
           $data['sData'][$k]['units'] = $this->scdb->getunitsRow($v['scid']);
           // 服务单位？0>时，1>局，2>首，3>次
           switch ($data['sData'][$k]['units']) {
@@ -72,8 +79,11 @@ class indexCtrl extends baseCtrl{
 
   }
   public function item(){
+    // Get
+    if (IS_GET === true) {
       // display
       $this->display('index','item.html');
       die;
+    }
   }
 }
