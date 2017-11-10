@@ -2,30 +2,28 @@
 
 {% block css %}
 
-
 {% endblock %}
 
 <!-- banner start -->
   <div class=" banner-box">
     <div class="container">
        <div class="swiper-container " data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="/apps/wap/views/index/img/banner-1.png"></div>
-            <div class="swiper-slide"><img src="/apps/wap/views/index/img/banner-1.png"></div>
-            <div class="swiper-slide"><img src="/apps/wap/views/index/img/banner-1.png"></div>
-            <div class="swiper-slide"><img src="/apps/wap/views/index/img/banner-1.png"></div>
+        <div class="swiper-wrapper swiper-b-h">
+          {% for k,v in data.bData %}
+            <div class="swiper-slide"><img class="swiper-b-img" src="{{v.path}}"></div>
+          {% endfor %}
         </div>
         <div class="swiper-pagination"></div>
       </div>
     </div>
-  </div>  
+  </div>
   <!-- banner end -->
 
   <!-- search start -->
-  <div class="input-group col-md-3 indexSearch">  
+  <div class="input-group col-md-3 indexSearch">
       <i></i>
-      <input type="text" class="form-control" placeholder="搜索昵称" / >  
- </div>  
+      <input type="text" class="form-control" placeholder="搜索昵称" / >
+ </div>
   <!-- search end -->
 
   <!-- nav start -->
@@ -183,7 +181,7 @@
 <!-- 热门推荐 -->
   <div class="oneBox">
 <div class="container index_container">
-  <h4>热门推荐</h4>
+  <h4 style="position: relative;">热门推荐<a href="javascript:;" class="more lt">+MORE</a></h4>
   <div class="oneBox">
     <div class="oneBox_list">
       <a href="/wap/meet/index">
@@ -221,7 +219,7 @@
   </div>
 </div>
 <!-- 线上LOL -->
-<div class="container">
+<div class="container index_container">
   <h4 style="position: relative;">线上LOL<a href="javascript:;" class="more lt">+MORE</a></h4>
   <div class="oneBox">
     <div class="oneBox_list">
@@ -257,7 +255,7 @@
   </div>
 </div>
 <!-- 王者荣耀 -->
-<div class="container">
+<div class="container index_container">
   <h4 style="position: relative;">王者荣耀<a href="javascript:;" class="more lt">+MORE</a></h4>
   <div class="oneBox">
     <div class="oneBox_list">

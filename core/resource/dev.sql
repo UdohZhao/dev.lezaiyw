@@ -121,6 +121,7 @@ CREATE TABLE `cash_value`(
 # 服务类别表
 CREATE TABLE `service_category`(
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '服务类别表主键id',
+  `icon_path` varchar(255) NOT NULL COMMENT 'icon图标路径',
   `cname` varchar(50) NOT NULL COMMENT '名称',
   `units` tinyint(1) UNSIGNED NOT NULL COMMENT '单位？0>时，1>局，2>首，3>次',
   `sort` tinyint(3) UNSIGNED NOT NULL COMMENT '排序',

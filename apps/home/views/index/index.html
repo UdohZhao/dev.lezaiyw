@@ -20,7 +20,7 @@
               {% if data.bannerData %}
                 {% for k,v in data.bannerData %}
                 <div {% if k == 0 %}class="item active"{% else %}class="item"{% endif %}>
-                  <img src="{{v.path}}">
+                  <img class="swiper-b-img" src="{{v.path}}">
                   <div class="carousel-caption">
                   </div>
                 </div>
