@@ -25,4 +25,12 @@ class serviceCategory extends model{
     return $this->query($sql)->fetchAll(2);
   }
 
+  /**
+   * 读取相关单位
+   */
+  public function getunitsRow($id)
+  {
+    return $this->get($this->table,'units',['id'=>$id]);
+  }
+
 }
