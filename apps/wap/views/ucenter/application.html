@@ -1,0 +1,117 @@
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/public/jquery-weui-build/dist/css/jquery-weui.css">
+<link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+{% endblock %}
+
+<!-- section -->
+<div class="row myMsg">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-11 ">
+		<h4>基本资料</h4>
+	</div>
+</div>
+<div class="container">
+	<form action="javascript:;" class="form">
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">出生年月</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="date" name="" class="weui-input">
+		    </div>
+		</div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="" name="" class="weui-input" placeholder="请输入昵称">
+		    </div>
+		 </div>
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label" for="sex">性别</label></div>
+		    <div class="weui-cell__bd">
+			    <input class="weui-input" id="sex" type="text" value="请选择"> 
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">年龄</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input" placeholder="请输入年龄">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label for="home-city" class="weui-label">所在城市</label></div>
+	        <div class="weui-cell__bd">
+	          <input class="weui-input" id="home-city" type="text">
+	        </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label" for="name">个性标签</label></div>
+		    <div class="weui-cell__bd">
+			    <input class="weui-input" id="selfdom_tag" type="text" value="任意选2项">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">个性签名</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">身高(cm)</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">体重(kg)</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">职业</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">兴趣爱好</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="text" name="" class="weui-input">
+		    </div>
+		 </div>
+		 <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">魅力部位</label></div>
+		    <div class="weui-cell__bd">
+			    <input class="weui-input" id="hobby" type="text" value="不超过3项">
+		    </div>
+		 </div>
+		<div class="weui-cell">
+			<button class="weui-btn weui-btn_primary">提交</button>
+		</div>
+		<div class="weui-cell">
+			<a class="weui-btn weui-btn_warn" href="/wap/ucenter/applypw">申请陪玩服务</a>
+		</div>
+		<div class="weui-cell">
+			<a href="javascript:history.go(-1)">返回上一页</a>
+		</div>
+	</form>
+</div>	
+	<!-- 遮罩层 -->
+
+<div id="full" class="popup__container">
+	<div class="popup__overlay"></div>
+	<div class="popup__modal">
+	  <h1>听娱神游约玩"陪玩协议</h1>
+	    <p>
+			人，许多路总是在走过的时候才知道对错。——题记 这世间有千百条路，但是适合自己的只有一条;这世界会遇千百人，但是适合在一起的只有一人;这时空会有许多记忆，但是慢慢的都是过眼云烟。人啊!活在这个世界有什么会是你的，我觉得除了"心"是你的，其他的都是万物给你的。 这一生生不来死不带走，我们在亲人的欢笑中到来，又在亲人的悲伤中离开。我们从哪里来又从哪里去，来来去去就是一个瞬间，只不过走过时空飞舞终究会明白一些，人活一世一切顺其自然，再争不是你的始终也会留不住，再努力不属于你的也终究会离开。不必祈求，不必当真，一切淡然处之。 这一生，有太多的欲望，太多的执念。欲望越深需要的就会越多，那么包袱就会越来越重;执念太深烦恼就会越多，那么责任就会越多。世间之事，无奇不有，放下一些包袱，丢弃一些责任，任时光飞舞，一切安好。 人啊!开心也好，失落也好，何必苦了自己，累了自己。或许，我们明白走过蹒跚学步再到青涩年华再到人生暮年，这一短暂的一生终究会有一些包袱和执念在身上，可是我们是否想过我们为了什么呢? 上帝对我们每个人最公平的就是昨天和今天，生和死，其他的一切都是夸夸其谈，没有公平的东西。所以，人生路上我们要学会自救和改变局势，让人生平凡的路上还是有一些烟和火。可是，人最掌控不了的就是死，因为生命可贵又短暂，稍有不注意就是一生一世。 人，怎么活着无所谓。可以富贵的走过此生，也可以贫贱的走过余生，但是要明白无论怎么走过此生，终究有一种生活方式是你的。富的我们求不得，穷的我们无须多求，前者也好，后者也摆对得起自己才是真。 世间所有的东西只有通过自己的努力所得到的才是你的，知识通过大脑的刷新沉淀在骨髓里，有一天他会因为质变而发光发热;财富通过自己的双手而得到，可是再富有没有爱自己的人和自己独有的兴趣爱好也是徒有;名誉通过自己的勤奋而拥有，可是许多的言语都是恭维又有何用? 人生在世无论时空、地位、身份，三两知己，足矣，再多的人留在身边需要的时候无影无踪又有何用?人和人交的是心，谈的是生活，久了方能明白，哪些人是贵人，那些人是生活的多余，哪些人是客。岁月就好像一把筛子，把留的住的人沉淀下去，把留不住的带到记忆的深处。 人活一世有的东西过了就过了，永远回不去，回得去的只有记忆，我们在记忆的深处回味，可是人的记忆是有限的，她会随着时间的推移慢慢在时光的深处化为泡影，成为永远的迷，一直陪你走到人生的尽头。</p>
+	<a href="javascript:;" class="weui-btn weui-btn_primary close-popup">同意并进行下一步</a>
+	  </div>
+</div>
+{% include 'footer_js.html' %}
+
+{% block js %}
+
+ <script src="/apps/wap/views/ucenter/js/application.js"></script>
+
+{% endblock %}

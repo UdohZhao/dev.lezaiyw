@@ -1,0 +1,28 @@
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- 引入 jquery.validate.min.js -->
+    <script src="/public/jquery-validation-1.16.0/dist/jquery.validate.min.js"></script>
+    <script src="/public/jquery-validation-1.16.0/lib/jquery.form.js"></script>
+    <script src="/public/jquery-weui-build/dist/js/jquery-weui.min.js"></script>
+    <script src='/public/jquery-weui-build/dist/js/swiper.js' charset='utf-8'></script>
+    <script src='/public/jquery-weui-build/dist/lib/fastclick.js' charset='utf-8'></script>
+    <script src='/public/jquery-weui-build/dist/js/city-picker.min.js' charset='utf-8'></script>
+   
+    <script type="text/javascript">
+         $(function(){
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            speed: 1000,
+            loop: true,
+            observer:true,
+            observeParents:true,
+            autoplayDisableOnInteraction : false,
+            autoplay:1500
+        });
+    })
+        var swiper_nav = new Swiper('.swiper-container_nav');
+    </script>
+    

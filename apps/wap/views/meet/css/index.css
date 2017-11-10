@@ -1,0 +1,37 @@
+
+.meetPage{background: url(/apps/wap/views/index/img/detail_back.png) no-repeat;}
+.index .weui-cells{background-color:transparent; color: #fff;font-size: 12px;}
+.weui-cell__hd{padding-right: 20px;}
+.index .weui-cells:before{border: 0;}
+.index .weui-cell_access:active{background:transparent;}
+.weui-cells:after{border: 0;}
+.my_msg{font-size: 12px;padding: 10px;position: relative;}
+.my_msg p{text-indent: 20px;}
+.my_msg p:first-child{font-size: 15px;font-weight: bold;}
+.my_msg .online{position: absolute;top: 15px;right: 20px;font-size: 14px;}
+
+/* 服务信息 style */
+.posRel{position: relative;}
+.posAbS{position: absolute;}
+.red{color: red;font-size: 16px;font-weight: bold;}
+.weui-navbar__item{background: #fff;}
+.weui-navbar:after{border: 0;}
+.container .weui-bar__item--on{border-bottom: 3px solid #f00;}
+.service{padding:10px 20px;position: relative;}
+.service  h5{padding:10px 20px;font-size: 17px;border-left: 5px solid #eee;}
+.service .order{position: absolute;top:60px;right: 30px;}
+.service .order a{padding: 0 10px;font-size: 12px; }
+.postopRig{top:5px;right: 10px;}
+
+
+/**********************  order style ***********************/
+.pad{padding: 10px;}
+.backColor{ background-color:#fff; }
+.texTap{text-indent: 20px;line-height: 30px;margin:0;padding:5px;}
+.fs{font-size: 14px;}
+
+/************************ payment style   *****************/
+.paymeny p{margin-bottom: 0;}
+.weui-cell__hd .icon{display: inline-block;width: 25px;height: 25px; vertical-align: middle;margin-right: 10px;}
+.weui-cell__hd .wx{background: url(/apps/wap/views/index/img/wx.png) no-repeat;}
+.weui-cell__hd .zfb{background: url(/apps/wap/views/index/img/zfb.png) no-repeat;}

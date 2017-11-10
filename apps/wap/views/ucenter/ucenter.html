@@ -1,0 +1,50 @@
+{% include 'header.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+{% endblock %}
+
+<div class="row myMsg">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-11 ">
+		<h4>个人资料</h4>
+	</div>
+</div>	
+
+<div class="container">
+	<form action="javascript:;" class="form">
+		<div class="weui-cell">
+		    <div class="weui-cell__bd"><label class="weui-label">头像</label></div>
+		    <div class="weui-cell__ft">
+		      <img src="/apps/wap/views/index/img/avatar.png">
+		    </div>
+		</div>
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="" name="" class="weui-input" placeholder="请输入昵称">
+		    </div>
+		</div>
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">QQ</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="" name="" class="weui-input" placeholder="请输入QQ">
+		    </div>
+		</div>
+		<div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">手机</label></div>
+		    <div class="weui-cell__bd">
+		      <input type="" name="" class="weui-input" placeholder="请输入手机号码">
+		    </div>
+		</div>
+		<div class="weui-cell">
+			<button class="weui-btn weui-btn_primary">提交</button>
+		</div>
+		<div class="weui-cell">
+			<a href="javascript:history.go(-1)">返回上一页</a>
+		</div>
+	</form>
+</div>	
+
+
+{% include 'footer_js.html' %}

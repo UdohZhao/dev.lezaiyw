@@ -1,0 +1,19 @@
+.container{padding: 0;}
+.recharge{margin:10px auto;}
+.recharge p{text-align: center;font-size: 14px;margin:0;}
+.recharge p .red{color: #f00;font-size: 20px;}
+.rechargelist{padding:10px 20px 0;background-color:#f5f5f5; }
+.money-box li{width: 31%;float: left;background-color: #e8e8e8;margin:10px 5px 0;border-radius: 5px;}
+.money-box li.active{background-color: #FE7079;}
+.money-box li:nth-child(1),.money-box li:nth-child(4){margin-left: 0;}
+.money-box li:nth-child(3),.money-box li:nth-child(6){margin-right: 0;}
+.nav>li a:hover{background-color:#FE7079; border-radius: 5px;}
+.money-box li.active a{color: #fff;}
+.money-box li a{text-align: center;}
+.i-pay-btn{width: 30%;}
+
+.weui-cell__hd .icon{display: inline-block;width: 25px;height: 25px; vertical-align: middle;margin-right: 10px;}
+.weui-cell__ft{vertical-align: middle;}
+.weui-cell__hd .wx{background: url(/apps/wap/views/index/img/wx.png) no-repeat;}
+.weui-cell__hd .zfb{background: url(/apps/wap/views/index/img/zfb.png) no-repeat;}
+.weui-cell img{width: 100%;}

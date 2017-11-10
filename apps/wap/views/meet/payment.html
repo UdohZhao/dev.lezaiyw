@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+
+{% block css %}
+
+<link rel="stylesheet" href="/apps/wap/views/meet/css/index.css">
+{% endblock %}
+
+<div class="paymeny pad">
+	<div class="weui-cells">
+	  <div class="weui-cell">
+	    <div class="weui-cell__hd"><img src="/apps/wap/views/index/img/avatar.png"></div>
+	    <div class="weui-cell__bd">
+	      <p>一个孤单的路人</p>
+	      <p>线上LOL</p>
+	      <p>42*1小时</p>
+	    </div>
+	    <div class="weui-cell__ft">合计：<span class="red">￥42.00</span></div>
+	  </div>
+	</div>
+	<div class="page_bd">
+		<div class="weui-cells__title">支付方式</div>
+	</div>
+	<div class="weui-cells weui-cells_radio">
+	  <label class="weui-cell weui-check__label" for="x11">
+	  	<div class="weui-cell__hd"><i class="icon wx"></i></div>
+	    <div class="weui-cell__bd">
+	      <p>微信支付</p>
+	    </div>
+	    <div class="weui-cell__ft">
+	      <input type="radio" class="weui-check" name="radio1" id="x11">
+	      <span class="weui-icon-checked"></span>
+	    </div>
+	  </label>
+	  <label class="weui-cell weui-check__label" for="x12">
+	  	<div class="weui-cell__hd"><i class="icon zfb"></i></div>
+	    <div class="weui-cell__bd">
+	      <p>玩币支付(剩余 0 玩币)</p>
+	    </div>
+	    <div class="weui-cell__ft">
+	      <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+	      <span class="weui-icon-checked"></span>
+	    </div>
+	  </label>
+	</div>
+	<div class="weui-cells">
+		<div class="weui-cell">
+			<a href="javascript:history.go(-1);">返回上一页</a>
+		</div>
+	</div>
+	<div class="weui-cells">
+		<div class="weui-cell">
+			<a  href="javascript:;" class="weui-btn weui-btn_primary">立即支付</a>
+		</div>
+	</div>
+</div>
+
+{% include 'footer_js.html' %}

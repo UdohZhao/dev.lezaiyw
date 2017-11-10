@@ -1,0 +1,78 @@
+a:foucs{color: 0;}
+.weui-cell__hd{margin-right: 20px;}
+p.uid{margin-bottom: 0;color: #878787;font-size: 10px;}
+.mg_money i{display: inline-block;width: 15px;height: 18px;background: url(/apps/wap/views/index/img/center_icon.png) no-repeat -52px -3px ;}
+.weui-cell__ft{color: #f00;line-height: 20px;}
+.weui-cell_access .red:after{border-color: #f00;}
+.ywGlod{width: 100%;height: 100px;padding: 20px;border-top:1px solid #E8E8E8;border-bottom:1px solid
+ #E8E8E8; color: #999;font-size: 12px; background: #fff;margin-top: -1px;}
+.ywGlod .ywGlod_left,.ywGlod .ywGlod_right{width: 49%;float: left;text-align: center;}
+.ywGlod .ywGlod_left p,.ywGlod .ywGlod_right p{margin-bottom: 0;line-height: 30px;}
+.separator{border-right: 1px solid #e8e8e8;height: 100%;float: left;}
+.mg_money .icon_2{background-position: -67px -3px;}
+.mg_money .icon_3{background-position: -83px -3px;}
+.mg_money .icon_4{background-position: -98px -3px;}
+.mg_money .icon_5{background-position: -112px -3px;}
+
+
+
+/****************************** ucenter style **********************************/
+.myMsg{margin-top:10px;}
+.toolbar .title {line-height: .2rem;}
+
+
+/****************************** record style **********************************/
+.green{color: green;}
+.record_title{margin-top: 10px;background-color: #fff;text-align: center;}
+.record_body .weui-bar__item--on {background-color: #62A8EA;color: #fff;}
+.record_box{width: 100%;background-color:#fff;overflow: hidden;margin-top: 20px; }
+.record_box li{line-height: 25px;text-align: center;}
+.record_box li span{display: inline-block;width: 25%;text-align: center;overflow: hidden;text-overflow: ellipsis;}
+.record_box li span.long{width: 47%;}
+.marginTop{margin-top: 20px;}
+.record_body .weui-tab__bd-item{padding: 10px;}
+
+
+
+/****************************** vip style **************************************/
+
+.vip{width: 100%;height: 200px;background: url(/apps/wap/views/index/img/2017-10-16_175753.png) no-repeat;
+	color: #fff;text-align: center;}
+.vip .weui-cells{background: initial;}
+.vip .weui-cells:after,
+.vip p.weui-btn:after{border: 0;}
+.vip p{margin:0;}
+.vip_yh{background-color:#EE7E40;width: 65px;font-size: 12px; line-height: 20px;}
+.vip_img img{width: 100%;}
+
+/***************************** realname style  *************************************/
+.realname .title{line-height: 30px;margin:10px 20px;}
+.realname_group{margin: 20px auto;}
+.realname_group .row img{display: inline;}
+.idcard-tips{margin-top: 20px;color: #f00;}
+
+
+/****************************** application style **********************************/
+.popup__container{display: block;}
+.popup__overlay{position: fixed;top:0;left: 0;width: 100%;height: 100%;background-color:#666;opacity: .6;z-index: 99; }
+.popup__modal{position: absolute;width: 100%;padding:10px 20px;z-index: 999;top:0;right: 0;background-color:#fff; }
+a.weui-btn{width: 100%;}
+.applyList .weui-cells{margin-top: 0;}
+.applyList .weui-cell__hd img{width: 60%;}
+
+/****************************** service  style **********************************/
+.fs{font-size: 12px;}
+.pad{padding:10px;}
+.marAuto{margin:0 auto;}
+.alignCenter{text-align: center;}
+.service .service_group{padding:5px 10px;}
+.service .service_name h4{text-indent: 20px;}
+.service .serviceTlile  p{font-size: 12px;color: #333;margin-bottom: 0;line-height: 25px;}
+.container .cover-file{display: none;}
+.container .describe{width: 100%;height: 60px;border: 0;background-color:#f5f5f5; }
+.weui-label{color: #333;font-weight: normal;}
+
+
+
+
+

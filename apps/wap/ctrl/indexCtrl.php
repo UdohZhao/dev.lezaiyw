@@ -11,8 +11,26 @@ class indexCtrl extends baseCtrl{
    * WAP端首页
    */
   public function index(){
-    echo 'WAP端首页';
-    die;
+    // Get
+    if (IS_GET === true) {
+      // display
+      $this->display('index','index.html');
+      die;
+    }
+    
   }
-
+  public function detail(){
+    // Get
+    if (IS_GET === true) {
+      // display
+      $this->display('meet','index.html');
+      die;
+    }
+    
+  }
+  public function item(){
+      // display
+      $this->display('index','item.html');
+      die; 
+  }
 }
