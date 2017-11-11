@@ -7,159 +7,109 @@
 
 {% endblock %}
 
-
 	<!-- Page -->
 <div class="meetPage">
   <div class="container index">
   		<div class="weui-cells">
     		  <div class="weui-cell weui-cell_access" >
-    		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/avatar.png"></div>
+    		  	<div class="weui-cell__hd"><img class="avatar-img" src="{{data.users.avatar}}"></div>
     		    <div class="weui-cell__bd">
-    		      <p>一个孤单的路人</p>
-    		      <p class="uid" >接单时间 0：00-24:00</p>
-    		      <div><img src="/apps/wap/views/index/img/approve.png"></div>
-    		    </div>
+    		      <p>
+                {{data.users.nickname}}
+                {% if data.users.istatus == 1 %}
+                <img src="/apps/wap/views/index/img/approve.png">
+                {% endif %}
+              </p>
+              <p>{{data.users.age}} | {{data.users.city}} |
+                {% if data.users.status == 0 %}离线{% endif %}
+                {% if data.users.status == 1 %}在线{% endif %}
+                {% if data.users.status == 2 %}冻结{% endif %}
+              </p>
+              <!-- <p class="selfie-p">* 点击头像观看自拍视频</p> -->
+            </div>
     		  </div>
     		</div>
   </div>
+    <video class="video-box" controls>
+        <source src="{{data.usersInfo.video_path}}" type="video/mp4">
+        <p>设备不支持</p>
+    </video>
   	<div class="my_msg index_container">
-  		<p>魅力值： <span style="color: red;">2813</span></p>
-  		<p>声音甜美，乖巧粘人</p>
-  		<div class="online">22 | 重庆 | 53分钟</div>
+  		<p>魅力值： <span style="color: red;">{{data.users.charm}}</span></p>
+      <p>身高：{{data.usersInfo.stature}}CM</p>
+      <p>体重：{{data.usersInfo.weight}}Kg</p>
+      <p>职业：{{data.usersInfo.occupation}}</p>
+      <p>魅力部位：{{data.usersInfo.charm_part}}</p>
+      <p>兴趣爱好：{{data.usersInfo.interests}}</p>
+  		<div class="online">{{data.users.i_label}}</div>
   	</div>
 </div>
 	<!-- 服务信息 -->
 <div class="container index_container">
 	<div class="weui-tab">
   <div class="weui-navbar">
-    <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
-      球球大作战
+    {% for k,v in data.sData %}
+    <a {% if scid == v.scData.id %} class="weui-navbar__item weui-bar__item--on" {% else %} class="weui-navbar__item" {% endif %} href="/wap/meet/index/uid/{{uid}}/scid/{{v.scData.id}}/sid/{{v.id}}">
+      {{v.scData.cname}}
     </a>
-    <a class="weui-navbar__item" href="#tab2">
-      LOL
-    </a>
-    <a class="weui-navbar__item" href="#tab3">
-      王者荣耀
-    </a>
+    {% endfor %}
   </div>
   <div class="weui-tab__bd">
-    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
     	<div class="service">
-      		<h5>基本服务信息</h5>
-      		<p>慢些走</p>
-      		<p>接单数 : 0</p>
-      		<p>语音
+      		<h5>服务基础信息</h5>
+      		<p>{{data.onsData.i_label}}</p>
+      		<p>接单数：{{data.onsData.or_quantity}}</p>
+      		<p>
       			<audio controls>
-                  <source src="{{data.onsData.voice}}" type="audio/mpeg">
-                </audio>
+              <source src="{{data.onsData.voice}}" type="audio/mpeg">
+            </audio>
       		</p>
       		<div class="order">
-      			<p><span class="red">30.00</span>元/局</p>
-      			<div><a href="/wap/meet/order" class="weui-btn weui-btn_warn" >下单约TA</a></div>
+      			<p><span class="red">{{data.onsData.price}}</span>元／{{data.units}}</p>
+      			<div>
+              {% if data.users.status == 1 and data.users.id != u.id %}
+                <a href="/wap/meet/order/uid/{{u.id}}" class="weui-btn weui-btn_warn" >下单约TA</a>
+              {% endif %}
+            </div>
       		</div>
       	</div>
       	<div class="service">
       		<h5>介绍</h5>
-      		<p>我用沉默告诉你我喝醉了</p>
+      		<p>
+            {% autoescape false %}
+              {{data.onsData.describe}}
+            {% endautoescape %}
+          </p>
       	</div>
-      	<div class="service">
-      		<h5>评论</h5>
-      		<p>暂无评论~~</p>
-      	</div>
-    </div>
-    <div id="tab2" class="weui-tab__bd-item">
-      <div class="service">
-      		<h5>基本服务信息</h5>
-      		<p>最强王者</p>
-      		<p>接单数 : 4</p>
-      		<p>语音
-      			<audio controls>
-                  <source src="{{data.onsData.voice}}" type="audio/mpeg">
-                </audio>
-      		</p>
-      		<div class="order">
-      			<p><span class="red">50.00</span>元/局</p>
-      			<div><a href="/wap/meet/order"  class="weui-btn weui-btn_warn" >下单约TA</a></div>
-      		</div>
-      	</div>
-      	<div class="service">
-      		<h5>介绍</h5>
-      		<p>是否找个接口继续苟活</p>
-      	</div>
-      	<div class="service">
-      		<h5>评论</h5>
-      		<div class="weui-panel weui-panel_access">
-			  	<div class="weui-panel__bd">
-				    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-				      <div class="weui-media-box__hd">
-				        <img class="weui-media-box__thumb" src="/apps/wap/views/index/img/avatar.png">
-				      </div>
-				      <div class="weui-media-box__bd posRel">
-				        <h6 class="weui-media-box__title">一位温暖的路人</h6>
-				        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-				        <div class="posAbS red postopRig">好评</div>
-				      </div>
-				    </a>
-				    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-				      <div class="weui-media-box__hd">
-				        <img class="weui-media-box__thumb" src="/apps/wap/views/index/img/avatar.png">
-				      </div>
-				      <div class="weui-media-box__bd posRel">
-				        <h6 class="weui-media-box__title">杀意决</h6>
-				        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-				        <div class="posAbS red postopRig">好评</div>
-				      </div>
-				    </a>
-			  	</div>
-			</div>
-      	</div>
-    </div>
-    <div id="tab3" class="weui-tab__bd-item">
-      <div class="service">
-      		<h5>基本服务信息</h5>
-      		<p>大师</p>
-      		<p>接单数 : 654</p>
-      		<p>语音
-      			<audio controls>
-                  <source src="{{data.onsData.voice}}" type="audio/mpeg">
-                </audio>
-      		</p>
-      		<div class="order">
-      			<p><span class="red">80.00</span>元/局</p>
-      			<div><a href="/wap/meet/order" class="weui-btn weui-btn_warn" >下单约TA</a></div>
-      		</div>
-      	</div>
-      	<div class="service">
-      		<h5>介绍</h5>
-      		<p>这里写你的描绘信息~~</p>
-      	</div>
-      	<div class="service">
-      		<h5>评论</h5>
-      		<div class="weui-panel weui-panel_access">
-			  	<div class="weui-panel__bd">
-				    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-				      <div class="weui-media-box__hd">
-				        <img class="weui-media-box__thumb" src="/apps/wap/views/index/img/avatar.png">
-				      </div>
-				      <div class="weui-media-box__bd posRel">
-				        <h6 class="weui-media-box__title">一位温暖的路人</h6>
-				        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-				        <div class="posAbS red postopRig">好评</div>
-				      </div>
-				    </a>
-				    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-				      <div class="weui-media-box__hd">
-				        <img class="weui-media-box__thumb" src="/apps/wap/views/index/img/avatar.png">
-				      </div>
-				      <div class="weui-media-box__bd posRel">
-				        <h6 class="weui-media-box__title">杀意决</h6>
-				        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-				        <div class="posAbS red postopRig">好评</div>
-				      </div>
-				    </a>
-			  	</div>
-			</div>
-      	</div>
+              {% if data.onsData.comment %}
+              <div class="weui-panel weui-panel_access">
+              <div class="weui-panel__hd">评论</div>
+              <div class="weui-panel__bd">
+              {% for k,v in data.onsData.comment %}
+              <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                  <img class="weui-media-box__thumb" src="{{v.avatar}}">
+                </div>
+                <div class="weui-media-box__bd">
+                  <h5 class="weui-media-box__title">{{v.nickname}}（{{v.ctime|date('Y-m-d')}}）
+                    <span class="evaluate-i">
+                    {% if v.status == 0 %}好评{% endif %}
+                    {% if v.status == 1 %}中评{% endif %}
+                    {% if v.status == 2 %}差评{% endif %}
+                    </span>
+                  </h5>
+                  <p></p>
+                  <p class="weui-media-box__desc">{{v.content}}</p>
+                </div>
+              </a>
+              {% endfor %}
+              </div>
+              </div>
+              {% else %}
+              <p class="weui-panel__hd">暂无评论~</p>
+              {% endif %}
+
     </div>
   </div>
 </div>

@@ -18,41 +18,41 @@ class ucenterCtrl extends baseCtrl{
   public function ucenter(){
       // display
       $this->display('ucenter','ucenter.html');
-      die; 
+      die;
   }
   public function pay(){
       // display
       $this->display('ucenter','pay.html');
-      die; 
+      die;
   }
   public function application(){
       // display
       $this->display('ucenter','application.html');
-      die; 
+      die;
   }
   public function vip(){
       // display
       $this->display('ucenter','vip.html');
-      die; 
+      die;
   }
   public function applypw(){
       // display
       $this->display('ucenter','applypw.html');
-      die; 
+      die;
   }
   public function service(){
       // display
       $this->display('ucenter','service.html');
-      die; 
+      die;
   }
   public function realname(){
       // display
       $this->display('ucenter','realname.html');
-      die; 
+      die;
   }
   public function record(){
       // display
       $this->display('ucenter','record.html');
-      die; 
+      die;
   }
 }

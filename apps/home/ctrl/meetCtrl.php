@@ -31,9 +31,11 @@ class meetCtrl extends baseCtrl{
   }
 
   // 约陪玩页面
-  public function index(){
+  public function index()
+  {
     // Get
-    if (IS_GET === true) {
+    if (IS_GET === true)
+    {
       // 线上游戏
       $data['online'] = $this->scdb->getRows(0);
       // 线上娱乐
@@ -80,9 +82,11 @@ class meetCtrl extends baseCtrl{
   /**
    * 个人详细信息
    */
-  public function detail(){
+  public function detail()
+  {
     // Get
-    if (IS_GET === true) {
+    if (IS_GET === true)
+    {
       // 读取用户个人信息
       $data['users'] = $this->udb->getRow($this->uid);
       $data['users']['i_label'] = implode('，', unserialize($data['users']['i_label']));

@@ -17,6 +17,6 @@ class payCtrl extends baseCtrl{
       $this->display('pay','pay.html');
       die;
     }
-    
+
   }
 }
