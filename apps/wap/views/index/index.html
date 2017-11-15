@@ -91,36 +91,38 @@
       </div>
   </div>
 </div>
+
 </div>
 <!-- nav end -->
 
 <!-- 主体内容 -->
 <!-- 热门推荐 -->
 <div class="oneBox">
-<div class="container index_container">
-  <h4 style="position: relative;">热门推荐<!-- <a href="javascript:;" class="more lt">+MORE</a> --></h4>
-  <div class="oneBox">
-    {% for k,v in data.sData %}
-    <div class="oneBox_list">
-      <a href="/wap/meet/index/uid/{{v.uid}}/scid/{{v.scid}}/sid/{{v.id}}">
-          <div class="list">
-            <img class="cover-img" src="{{v.cover_path}}">
-          </div>
-          <div class="label label1">
-            {% if v.uData.istatus == 1 %}
-              真人认证
-            {% endif %}
-          </div>
-          <div class="label2 label1">
-            {% if v.uData.status == 0 %}离线{% endif %}
-            {% if v.uData.status == 1 %}在线{% endif %}
-            {% if v.uData.status == 2 %}冻结{% endif %}
-          </div>
-          <p class="u-nickname">{{v.uData.nickname}}</p>
-          <p class="userName" >￥<span >{{v.price}}</span>元/{{v.units}}</p>
-      </a>
+  <div class="container index_container">
+    <h4 style="position: relative;">热门推荐<!-- <a href="javascript:;" class="more lt">+MORE</a> --></h4>
+    <div class="oneBox">
+      {% for k,v in data.sData %}
+      <div class="oneBox_list">
+        <a href="/wap/meet/index/uid/{{v.uid}}/scid/{{v.scid}}/sid/{{v.id}}">
+            <div class="list">
+              <img class="cover-img" src="{{v.cover_path}}">
+            </div>
+            <div class="label label1">
+              {% if v.uData.istatus == 1 %}
+                真人认证
+              {% endif %}
+            </div>
+            <div class="label2 label1">
+              {% if v.uData.status == 0 %}离线{% endif %}
+              {% if v.uData.status == 1 %}在线{% endif %}
+              {% if v.uData.status == 2 %}冻结{% endif %}
+            </div>
+            <p class="u-nickname">{{v.uData.nickname}}</p>
+            <p class="userName" >￥<span >{{v.price}}</span>元/{{v.units}}</p>
+        </a>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 {% include 'footer.html' %}
