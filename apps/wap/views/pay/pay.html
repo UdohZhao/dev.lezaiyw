@@ -9,7 +9,7 @@
 <div class="container">
 	<div class="weui-flex">
 	  <div class="weui-flex__item recharge">
-	  	<p>现拥有<span class="red"> 0 </span>玩币，约玩值：<span class="red"> 0 </span></p>
+	  	<p>现拥有<span class="red"> {{data.balance}} </span>玩币，约玩值：<span class="red"> {{data.contribution}} </span></p>
 	  </div>
 	</div>
 	<div class="rechargelist">
@@ -30,7 +30,7 @@
 		  <div class="weui-cell__hd"><i class="icon zfb"></i></div>
 		    <div class="weui-cell__bd">支付宝支付</div>
 		    <div class="weui-cell__ft">
-		      <input type="radio" class="weui-check" name="type" value="0" id="x11">
+		      <input type="radio" class="weui-check" name="type" value="0" id="x11" checked="checked">
 		      <span class="weui-icon-checked"></span>
 		    </div>
 		  </label>
@@ -38,7 +38,7 @@
 		  	<div class="weui-cell__hd"><i class="icon wx"></i></div>
 		    <div class="weui-cell__bd">微信支付</div>
 		    <div class="weui-cell__ft">
-		      <input type="radio"  name="type" value="1" checked="checked" class="weui-check" id="x12" checked="checked">
+		      <input type="radio"  name="type" value="1" class="weui-check" id="x12" >
 		      <span class="weui-icon-checked"></span>
 		    </div>
 		  </label>

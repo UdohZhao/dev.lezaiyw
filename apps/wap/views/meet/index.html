@@ -4,6 +4,7 @@
 {% block css %}
 
 <link rel="stylesheet" href="/apps/wap/views/meet/css/index.css">
+<link rel="stylesheet" href="/public/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
 
 {% endblock %}
 
@@ -69,7 +70,7 @@
       			<p><span class="red">{{data.onsData.price}}</span>元／{{data.units}}</p>
       			<div>
               {% if data.users.status == 1 and data.users.id != u.id %}
-                <a href="/wap/meet/order/uid/{{u.id}}" class="weui-btn weui-btn_warn" >下单约TA</a>
+                <a  class="weui-btn weui-btn_warn" onclick="indent({{u.id}});">下单约TA</a>
               {% endif %}
             </div>
       		</div>
@@ -115,4 +116,73 @@
 </div>
 </div>
 
+<!-- 下单 modal -->
+<div id="iModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog i-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">听娱神游约玩</h4>
+      </div>
+      <div class="modal-body">
+        <blockquote>
+          <p>订单信息</p>
+        </blockquote>
+          <div class="row indent-row">
+            <div class="col-md-2">
+              <img src="{{data.users.avatar}}" class="img-responsive avatar-img">
+            </div>
+            <div class="col-md-5">
+              <p class="nickname-text">昵称：{{data.users.nickname}}</p>
+              <p>服务：{{data.onscCname}}</p>
+            </div>
+            <div class="col-md-5">
+              <p class="service-price-p">总价：<span class="service-price-indent">{{data.onsData.price}}</span>元／{{data.units}}</p>
+              <p>单价：<sapn class="unit-price">{{data.onsData.price}}</sapn> x <span id="numSpan">1</span>{{data.units}}</p>
+              <p>您当前约玩币：{{u.balance}}</p>
+            </div>
+          </div>
+        <blockquote>
+          <p>下单时间</p>
+        </blockquote>
+          <div class="row indent-row">
+            <div class="col-xs-12">
+              <div class="form-inline">
+                <div class="form-group">
+                  <label for="exampleInputName2">日期</label>
+                  <input type="text" class="form-control" id="datetimepickerDade" name="startDate" readonly="readonly" value="{{data.currentDate}}">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="form-inline">
+                <div class="form-group">
+                  <label for="exampleInputName2">时间</label>
+                  <input type="text" class="form-control" id="datetimepickerTime" name="startTime" readonly="readonly" placeholder="请选择服务开始时间">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 num-md">
+              <input class="alignment num-select" value="1" data-step="1" data-min="1" data-max="23" data-digit="0" name="num" />
+            </div>
+          </div>
+        <blockquote>
+          <p class="pay-tips">* 支付成功后将短信通知陪玩导师，请保持电话畅通。</p>
+        </blockquote>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" onclick="iPay('{{data.users.id}}','4','{{data.onsData.id}}','0','{{from_phone}}','{{data.users.phone}}','{{data.onsData.price}}','{{data.units}}','{{u.balance}}','{{data.onscCname}}');">立即支付</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% include 'footer.html' %}
+{% block js %}
+    <script src="/public/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/public/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="/public/jQuery-num-alignment/js/num-alignment.js"></script>
+    <script src="/apps/wap/views/meet/js/index.js"></script>
+
+  {% endblock %}  

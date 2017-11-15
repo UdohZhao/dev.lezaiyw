@@ -22,13 +22,8 @@
 .service .order{position: absolute;top:60px;right: 30px;}
 .service .order a{padding: 0 10px;font-size: 12px; }
 .postopRig{top:5px;right: 10px;}
-
-
-/**********************  order style ***********************/
-.pad{padding: 10px;}
-.backColor{ background-color:#fff; }
-.texTap{text-indent: 20px;line-height: 30px;margin:0;padding:5px;}
-.fs{font-size: 14px;}
+.num-md{padding:0 15px;}
+.num-select{width: 100px;}
 
 /************************ payment style   *****************/
 .paymeny p{margin-bottom: 0;}
