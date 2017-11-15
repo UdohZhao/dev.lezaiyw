@@ -17,96 +17,6 @@
         }
         ]
      })
-    // 个性标签
-    $("#selfdom_tag").select({
-      title: "个性标签(任意选2项)",
-      multi: true,
-      min:1,
-      max:2,
-      items: [
-        {
-          title: "特殊才艺",
-          value: 1
-        },
-        {
-          title: "颜值担当",
-          value: 2
-        },
-        {
-          title: "逗比休闲",
-          value: 3
-        },
-        {
-          title: "声音甜美",
-          value: 4
-        },
-        {
-          title: "乖巧粘人",
-          value: 5
-        },
-        {
-          title: "情感知心",
-          value: 6
-        },
-        {
-          title: "爽朗直率",
-          value: 7
-        },
-        {
-          title: "激情四射",
-          value: 8
-        }
-      ]
-            });
-    //魅力部位
-    $("#hobby").select({
-        title: "魅力部位(不超过3项)",
-        multi: true,
-        min:1,
-        max:3,
-        items: [
-          {
-            title: "眼睛",
-            value: 1
-          },
-          {
-            title: "鼻子",
-            value: 2
-          },
-          {
-            title: "耳朵",
-            value: 3
-          },
-          {
-            title: "嘴唇",
-            value: 4
-          },
-          {
-            title: "胸部",
-            value: 5
-          },
-          {
-            title: "腰部",
-            value: 6
-          },
-          {
-            title: "腿",
-            value: 7
-          },
-          {
-            title: "臀部",
-            value: 8
-          },
-          {
-            title: "手",
-            value: 9
-          },
-          {
-            title: "其他",
-            value: 10
-          }
-        ]
-    });
   //   选取城市
   $("#home-city").cityPicker({
     title: "选择城市",
@@ -120,7 +30,73 @@
    $(".close-popup").click(function(){
     $("#full").hide();
    })
+   
        
+  // 验证个人信息表单
+  $("#usersForm").validate({
+      focusInvalid: true,
+      rules: {
+        age: {
+          required: true
+        },
+        city: {
+          required: true
+        },
+        i_signature: {
+          required: true
+        },
+        stature: {
+          required: true,
+          digits: true
+        },
+        weight: {
+          required: true,
+          digits: true
+        },
+        interests: {
+          required: true
+        }
+      },
+      messages: {
+        age: {
+          required: "<span style='color:red;'>年龄不能为空 :(</span>"
+        },
+        city: {
+          required: "<span style='color:red;'>城市不能为空 :(</span>"
+        },
+        i_signature: {
+          required: "<span style='color:red;'>个性签名不能为空 :(</span>"
+        },
+        stature: {
+          required: "<span style='color:red;'>身高不能为空 :(</span>",
+          digits: "<span style='color:red;'>必须输入整数 :(</span>"
+        },
+        weight: {
+          required: "<span style='color:red;'>体重不能为空 :(</span>",
+          digits: "<span style='color:red;'>必须输入整数 :(</span>"
+        },
+        interests: {
+          required: "<span style='color:red;'>兴趣爱好不能为空 :(</span>"
+        }
+      },
+ 
+  });
+
+  // 申请陪玩服务
+function gotoService(u,ui){
+  // 检测基本信息是否完善
+  if (u != 1 || ui != 1) {
+    swal("提示", "请完善基本资料后申请陪玩服务 :(", "error");
+  } else {
+    window.location.href = "/wap/ucenter/applyPw";
+  }
+}
+
+
+
+
+
+
   // service 
 
 $(function(){
@@ -180,6 +156,8 @@ $(function(){
   });
 
 })
+
+
 
 //图片上传预览    IE是用了滤镜。
 function previewImage(file)
