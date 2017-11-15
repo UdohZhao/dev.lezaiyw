@@ -21,17 +21,10 @@
 		    </div>
 		</div>
 		<div class="weui-cell">
-<<<<<<< HEAD
-		    <div class="weui-cell__hd"><label class="weui-label" for="sex">性别</label></div>
-		    <div class="weui-cell__bd">
-			    <input class="weui-input" id="sex" type="text" value="请选择">
-		    </div>
-=======
 		    <div class="weui-cell__hd"><label for="sex" class="weui-label">请选择性别</label></div>
 	        <div class="weui-cell__bd">
 	          <input class="weui-input" id="sex" type="text" name="sex">
 	        </div>
->>>>>>> 35462f5ed437f84b83f03f37942d48fef54f7f86
 		 </div>
 
 		 <div class="weui-cell">
@@ -95,132 +88,11 @@
 			<button class="weui-btn weui-btn_warn" type="button" onclick="gotoService(1,0);">申请陪玩服务</button>
 		</div>
 		<div class="weui-cell">
-			<a href="javascript:history.go(-1)">返回上一页</a>
+			<a href="javascript:history.go(-1)"><- 返回上一页</a>
 		</div>
 	</form>
 
-	111
-
 </div>
-
-<!-- Page -->
-<div class="page animsition">
-  <div class="page-content">
-    <div class="panel">
-      <div class="panel-heading">
-        <h3 class="panel-title"></h3>
-      </div>
-      <div class="panel-body">
-        <blockquote>
-          <p>基本资料</p>
-        </blockquote>
-        <form class="form-horizontal" id="usersForm" action="/enter/add" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">出身日期</label>
-            <div class="col-sm-10">
-              <input type="text" name="birthday" value="{{data.users.birthday|date('Y-m-d')}}" readonly class="form_datetime form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">性别</label>
-            <div class="col-sm-10">
-              <label class="radio-inline">
-                <input type="radio" name="sex" value="0" {% if data.users.sex == 0 %}checked="checked"{% endif %}> 女
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="sex" value="1" {% if data.users.sex == 1 %}checked="checked"{% endif %}> 男
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">年龄</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="age" placeholder="请输入年龄" value="{{data.users.age}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">所在城市</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="city" placeholder="请输入目前所在城市" value="{{data.users.city}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">个性标签(任意选2项)</label>
-            <div class="col-sm-10">
-              {% for k,v in i_label %}
-              <label class="checkbox-inline">
-                <input type="checkbox" name="i_label[]" value="{{v}}"> {{v}}
-              </label>
-              {% endfor %}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">个性签名</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="i_signature" placeholder="请输入个性签名" value="{{data.users.i_signature}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">身高(cm)</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="stature" placeholder="请输入身高" value="{{data.users_info.stature}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">体重(kg)</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="weight" placeholder="请输入体重" value="{{data.users_info.weight}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">职业</label>
-            <div class="col-sm-10">
-              <select class="form-control" name="occupation">
-                {% for k,v in occupation %}
-                <option value="{{v}}">{{v}}</option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">兴趣爱好</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="interests" placeholder="请输入兴趣爱好" value="{{data.users_info.interests}}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">魅力部位(不超过3项)</label>
-            <div class="col-sm-10">
-              {% for k,v in charm_part %}
-              <label class="checkbox-inline">
-                <input type="checkbox" name="charm_part[]" value="{{v}}"> {{v}}
-              </label>
-              {% endfor %}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">个人视频</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" placeholder="请上传10秒左右的自拍视频，我是听娱神游约玩的某某某～" readonly="readonly">
-            </div>
-            <div class="col-sm-2">
-              <button type="button" class="btn btn-primary" onclick="$('#video_path').click();">选择</button>
-              <input type="hidden" id="video_path_text" name="video_path_text" value="{{data.users_info.video_path}}">
-              <input type="file" id="video_path" name="video_path" accept="video/mp4" style="display: none;">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">提交修改</button>
-              <button type="button" class="btn btn-primary" onclick="gotoService({{data.u}},{{data.ui}});">申请陪玩服务</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Page -->
 
 
 	<!-- 遮罩层 -->
