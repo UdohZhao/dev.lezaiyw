@@ -80,6 +80,32 @@ $(function() {
           required: "<span style='color:red;'>兴趣爱好不能为空 :(</span>"
         }
       },
+      submitHandler: function(form){
+        // 获取选中的视频
+        var video_path = $("#video_path").val();
+        var video_path_text = $("#video_path_text").val();
+        if (video_path == '' && video_path_text == '') {
+          swal("提交失败", "请上传10秒左右个人自拍视频MP4格式 :(", "error");
+        } else {
+          $(form).ajaxSubmit({
+              dataType:"json",
+              success:function(res){
+                console.log(res);
+                // res
+                if (res.code == 0) {
+                  swal("提交成功", res.msg, "success");
+                  setTimeout("window.location.reload();",2000);
+                } else {
+                  swal("提交失败", res.msg, "error");
+                }
+              },
+              error:function(e){
+                console.log(e);
+                swal("未知错误 :(", "请刷新页面后重试!", "error");
+              }
+          });
+        }
+      }
 
   });
 

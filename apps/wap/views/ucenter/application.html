@@ -58,13 +58,13 @@
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">身高(cm)</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="text" name="stature" class="weui-input">
+		      <input type="text" name="stature" class="weui-input" value="{{data.users.stature}}">
 		    </div>
 		 </div>
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">体重(kg)</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="text" name="weight" class="weui-input">
+		      <input type="text" name="weight" class="weui-input" value="{{data.users.weight}}">
 		    </div>
 		 </div>
 		 <div class="weui-cell">
@@ -76,7 +76,7 @@
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">兴趣爱好</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="text" name="interests" class="weui-input">
+		      <input type="text" name="interests" class="weui-input" value="{{data.users.interests}}">
 		    </div>
 		 </div>
 		 <div class="weui-cell">
@@ -84,6 +84,19 @@
 		    <div class="weui-cell__bd">
 			    <input class="weui-input" name="charm_part[]" id="hobby" type="text" value="不超过3项">
 		    </div>
+		 </div>
+		 <div class="weui-cell posR">
+		 	<div class="weui-cell__hd">
+		 		<label for="inputEmail3" class="weui-label control-label">个人视频</label>
+		 	</div>
+            <div class="col-xs-9">
+              <input type="text" class="form-control" placeholder="请上传10秒左右的自拍视频" readonly="readonly">
+            </div>
+            <div class="col-xs-4 posAb topRight">
+              <button type="button" class="btn btn-primary" onclick="$('#video_path').click();">选择</button>
+              <input type="hidden" id="video_path_text" name="video_path_text" value="{{data.users_info.video_path}}">
+              <input type="file" id="video_path" name="video_path" accept="video/mp4" style="display: none;">
+            </div>
 		 </div>
 		<div class="weui-cell">
 			<button class="weui-btn weui-btn_primary" type="submit">提交</button>
