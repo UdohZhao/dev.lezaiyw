@@ -69,6 +69,7 @@ class ucenterCtrl extends baseCtrl{
       $this->assign('i_label',conf::get('I_LABEL','home'));
       $this->assign('occupation',conf::get('OCCUPATION','home'));
       $this->assign('charm_part',conf::get('CHARM_PART','home'));
+
       // display
       $this->display('ucenter','ucenter.html');
       die;
