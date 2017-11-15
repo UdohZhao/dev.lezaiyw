@@ -102,11 +102,30 @@ class ucenterCtrl extends baseCtrl{
       {
         $data['ui'] = 0;
       }
+      $i_label = conf::get('I_LABEL','home');
+      $occupation = conf::get('OCCUPATION','home');
+      $charm_part = conf::get('CHARM_PART','home');
+      // 组装数据
+      foreach ($i_label AS $k => $v)
+      {
+        $data['i_label'][$k]['title'] = $v;
+        $data['i_label'][$k]['value'] = $v;
+      }
+      $data['i_label'] = json_encode($data['i_label'],JSON_UNESCAPED_UNICODE);
+      foreach ($occupation AS $k => $v)
+      {
+        $data['occupation'][$k]['title'] = $v;
+        $data['occupation'][$k]['value'] = $v;
+      }
+      $data['occupation'] = json_encode($data['occupation'],JSON_UNESCAPED_UNICODE);
+      foreach ($charm_part AS $k => $v)
+      {
+        $data['charm_part'][$k]['title'] = $v;
+        $data['charm_part'][$k]['value'] = $v;
+      }
+      $data['charm_part'] = json_encode($data['charm_part'],JSON_UNESCAPED_UNICODE);
       // assign
       $this->assign('data',$data);
-      $this->assign('i_label',conf::get('I_LABEL','home'));
-      $this->assign('occupation',conf::get('OCCUPATION','home'));
-      $this->assign('charm_part',conf::get('CHARM_PART','home'));
       // display
       $this->display('ucenter','application.html');
       die;

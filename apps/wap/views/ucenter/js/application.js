@@ -1,20 +1,23 @@
 $(function() {
   FastClick.attach(document.body);
 });
-     //性别
-     $("#sex").select({
-        title:"请选择性别",
-        items:[
+
+
+  // 选择性别
+  $("#sex").select({
+      title:"请选择性别",
+      items:[
         {
           title:"男",
           value:1
         },
         {
           title:"女",
-          value:2
+          value:0
         }
-        ]
-     })
+      ]
+   })
+
   //   选取城市
   $("#home-city").cityPicker({
     title: "选择城市",

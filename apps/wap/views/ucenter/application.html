@@ -23,20 +23,24 @@
 		<div class="weui-cell">
 		    <div class="weui-cell__hd"><label for="sex" class="weui-label">请选择性别</label></div>
 	        <div class="weui-cell__bd">
-	          <input class="weui-input" id="sex" type="text" name="sex" value="男">
+	        	{% if data.users.sex == 1 %}
+	          	<input class="weui-input" id="sex" type="text" name="sex" value="男">
+	        	{% else %}
+	        		<input class="weui-input" id="sex" type="text" name="sex" value="女">
+	        	{% endif %}
 	        </div>
 		 </div>
 
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">年龄</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="text" name="age" class="weui-input" placeholder="请输入年龄">
+		      <input type="text" name="age" class="weui-input" placeholder="请输入年龄" value="{{data.users.age}}">
 		    </div>
 		 </div>
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">所在城市</label></div>
 	        <div class="weui-cell__bd">
-	          <input class="weui-input" placeholder="请输出城市" type="text" name="city">
+	          <input class="weui-input" placeholder="请输出城市" type="text" name="city" value="{{data.users.city}}">
 	        </div>
 		 </div>
 		 <div class="weui-cell">
@@ -124,22 +128,17 @@
 <script src="/public/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
 <script src="/public/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
+
+
+
+
 	//选择个性标签
 	$("#selfdom_tag").select({
       title: "个性标签(任意选2项)",
       multi: true,
       min:1,
       max:2,
-      items: [
-        {title: "特殊才艺",value: 1},
-        {title: "颜值担当",value: 2},
-        {title: "逗比休闲",value: 3},
-        {title: "声音甜美",value: 4},
-        {title: "乖巧粘人",value: 5},
-        {title: "情感知心",value: 6},
-        {title: "爽朗直率",value: 7},
-        {title: "激情四射",value: 8}
-      ]
+      items: {% autoescape false %}{{data.i_label}}{% endautoescape %}
 	});
     //选择魅力部位
     $("#hobby").select({
@@ -147,34 +146,11 @@
         multi: true,
         min:1,
         max:3,
-        items: [
-          { title: "眼睛", value: 1},
-          { title: "鼻子", value: 2},
-          { title: "耳朵", value: 3},
-          { title: "嘴唇", value: 4},
-          { title: "胸部", value: 5},
-          { title: "腰部", value: 6},
-          { title: "腿",   value: 7},
-          { title: "臀部", value: 8},
-          { title: "手",   value: 9},
-          { title: "其他", value: 10}
-        ]
+        items: {% autoescape false %}{{data.charm_part}}{% endautoescape %}
     });
     $("#occupation").select({
     	title:"选择职业",
-    	items:[
-    		{title:"学生",value:"学生"},
-    		{title:"主播",value:"主播"},
-    		{title:"医生",value:"医生"},
-    		{title:"护士",value:"护士"},
-    		{title:"模特",value:"模特"},
-    		{title:"教师",value:"教师"},
-    		{title:"公务员",value:"公务员"},
-    		{title:"个体经营",value:"个体经营"},
-    		{title:"上班族",value:"上班族"},
-    		{title:"其他",value:"其他"}
-    	]
-
+    	items: {% autoescape false %}{{data.occupation}}{% endautoescape %}
     })
     //调用日期插件
   $("#date").calendar();
