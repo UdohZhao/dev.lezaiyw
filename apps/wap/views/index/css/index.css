@@ -56,7 +56,14 @@ body{background: #F5F5F5;}
 .weui-tabbar__item:hover .footer_icon_2{background: url(/apps/wap/views/index/img/footer_icon_2_hover.png) no-repeat;}
 .weui-tabbar__item:hover .footer_icon_4{background: url(/apps/wap/views/index/img/footer_icon_4_hover.png) no-repeat;}
 
+/*  登陆弹出框样式 *****/
+#full .margAuto{margin:200px 0;text-align: center;background-color: #a2a2a2;}
 
+.popup_bd{ width: 60%; background-color: #fff;padding:10px 20px;margin: 0 auto;border: 1px style#fff;border-radius: 5px;}
+.margAuto a{color: #f00;}
+.posR{position: relative;padding :0 15px;}
+.posAb{position: absolute;top:22px;right: 15px;}
+.posR label{width: 100%;}
 
 /****************************** item  style **********************************/
 .backg{background-color:#fff; }
