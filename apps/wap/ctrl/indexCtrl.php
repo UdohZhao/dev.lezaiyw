@@ -78,12 +78,52 @@ class indexCtrl extends baseCtrl{
     }
 
   }
-  public function item(){
+
+  /**
+   * 服务类别列表
+   */
+  public function item()
+  {
     // Get
-    if (IS_GET === true) {
+    if (IS_GET === true)
+    {
+      // 读取服务类别名称
+      $data['scName'] = $this->scdb->getCname($this->scid);
+      // 读取当前服务单位
+      $units = $this->scdb->getunitsRow($this->scid);
+      // 服务单位？0>时，1>局，2>首，3>次
+      switch ($units) {
+        case '0':
+          $units = '时';
+          break;
+        case '1':
+          $units = '局';
+          break;
+        case '2':
+          $units = '首';
+          break;
+        case '3':
+          $units = '次';
+          break;
+        default:
+          $units = '时';
+          break;
+      }
+      // 服务单位
+      $data['units'] = $units;
+      // 读取服务
+      $data['sData'] = $this->sdb->getCorrelation($this->scid,2,1);
+      // 读取个人信息
+      foreach ($data['sData'] AS $k => $v) {
+        $data['sData'][$k]['uData'] = $this->udb->getcRow($v['uid']);
+        $data['sData'][$k]['uData']['i_label'] = unserialize($data['sData'][$k]['uData']['i_label']);
+      }
+      // assign
+      $this->assign('data',$data);
       // display
       $this->display('index','item.html');
       die;
     }
   }
+
 }

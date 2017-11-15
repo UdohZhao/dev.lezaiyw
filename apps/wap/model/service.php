@@ -30,4 +30,29 @@ class service extends model
     return $this->query($sql)->fetchAll(2);
   }
 
+  /**
+  * 读取相关记录
+  */
+  public function getCorrelation($scid,$type,$status)
+  {
+    // sql
+    $sql = "
+      SELECT
+              *
+      FROM
+              `$this->table`
+      WHERE
+              1 = 1
+      AND
+              scid = '$scid'
+      AND
+              type = '$type'
+      AND
+              status = '$status'
+      ORDER BY
+              id DESC
+    ";
+    return $this->query($sql)->fetchAll(2);
+  }
+
 }

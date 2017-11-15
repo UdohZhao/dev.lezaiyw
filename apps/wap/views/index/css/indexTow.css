@@ -14,4 +14,14 @@
   line-height: 22px;
   margin-bottom: 0;
   display: block;
+  padding-left: 5px;
+}
+.price-info{
+  color: #FF0000;
+  font-size: 14px;
+  padding-left: 5px;
+  float: right;
+}
+.item_list{
+  background-color: #ffffff;
 }
