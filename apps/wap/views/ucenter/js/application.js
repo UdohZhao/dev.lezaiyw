@@ -1,8 +1,6 @@
-
-
-     $(function() {
-    FastClick.attach(document.body);
-    });
+$(function() {
+  FastClick.attach(document.body);
+});
      //性别
      $("#sex").select({
         title:"请选择性别",
@@ -120,13 +118,13 @@
    $(".close-popup").click(function(){
     $("#full").hide();
    })
-       
-  // service 
+
+  // service
 
 $(function(){
 
   // 初始化UEditor
-  var ue = UE.getEditor('container');
+  //var ue = UE.getEditor('container');
 
   // 验证服务表单
   $("#serviceForm").validate({
