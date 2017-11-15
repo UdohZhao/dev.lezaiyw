@@ -14,3 +14,32 @@ function rechargeMoney(money,active){
   $("input[name='money']").attr("value",money);
 }
 
+// 去支付
+function gotoPay(){
+  // 获取用户充值金额
+  var money = $("input[name='money']").val();
+  // 获取支付渠道
+  var type = $("input[name='type']:checked").val();
+  var url;
+  if (type == 0) {
+    window.location.href = "/alipay/index/m/"+money;
+  } else {
+    swal("提示","微信支付稍后开通 :(","error");
+    // url = "/wxpay/index";
+    // // Ajax
+    // $.ajax({
+    //   type: "POST",
+    //   url: url,
+    //   data: {
+    //     money: money
+    //   },
+    //   dataType: "JSON",
+    //   success: function (res) {
+    //     console.log(res);
+    //   },
+    //   error: function (e) {
+    //     console.log(e);
+    //   }
+    // });
+  }
+}
