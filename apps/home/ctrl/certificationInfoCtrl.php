@@ -6,7 +6,8 @@ class certificationInfoCtrl extends baseCtrl{
   public $db;
   public $id;
   // 构造方法
-  public function _auto(){
+  public function _auto()
+  {
     // 没有登录不让访问
     if (!isset($_SESSION['homeUserinfo'])) {
       header("Location:/");

@@ -1,8 +1,6 @@
-
-
-     $(function() {
-    FastClick.attach(document.body);
-    });
+$(function() {
+  FastClick.attach(document.body);
+});
      //性别
      $("#sex").select({
         title:"请选择性别",
@@ -30,8 +28,8 @@
    $(".close-popup").click(function(){
     $("#full").hide();
    })
-   
-       
+
+
   // 验证个人信息表单
   $("#usersForm").validate({
       focusInvalid: true,
@@ -79,7 +77,7 @@
           required: "<span style='color:red;'>兴趣爱好不能为空 :(</span>"
         }
       },
- 
+
   });
 
   // 申请陪玩服务
@@ -91,73 +89,6 @@ function gotoService(u,ui){
     window.location.href = "/wap/ucenter/applyPw";
   }
 }
-
-
-
-
-
-
-  // service 
-
-$(function(){
-
-  // 初始化UEditor
-  var ue = UE.getEditor('container');
-
-  // 验证服务表单
-  $("#serviceForm").validate({
-      focusInvalid: true,
-      rules: {
-        price: {
-          required: true,
-          number: true
-        },
-        i_label: {
-          required: true
-        }
-      },
-      messages: {
-        price: {
-          required: "<span style='color:red;'>价格不能为空 :(</span>",
-          number: "<span style='color:red;'>必须输入合法的数字（整数，小数） :(</span>"
-        },
-        i_label: {
-          required: "<span style='color:red;'>个性标签不能为空 :(</span>"
-        }
-      },
-      submitHandler: function(form){
-        // 获取选中的封面图片，服务描述
-        var cover_path = $("#previewImg").val();
-        var describe = ue.getContent();
-        if (cover_path == '') {
-          alert("提示","请上传服务封面图片 :(","error");
-        } else if (describe == '' || describe == false) {
-          alert("提示","请描述服务 :(","error");
-        } else {
-          $(form).ajaxSubmit({
-              dataType:"json",
-              success:function(res){
-                console.log(res);
-                // res
-                if (res.code == 0) {
-                  alert("提交成功", res.msg, "success");
-                  setTimeout("window.location.reload();",2000);
-                } else {
-                  alert("提交失败", res.msg, "error");
-                }
-              },
-              error:function(e){
-                console.log(e);
-                alert("未知错误 :(", "请刷新页面后重试!", "error");
-              }
-          });
-        }
-      }
-  });
-
-})
-
-
 
 //图片上传预览    IE是用了滤镜。
 function previewImage(file)

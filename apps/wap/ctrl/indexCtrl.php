@@ -4,19 +4,16 @@ use core\lib\conf;
 use apps\wap\model\banner;
 use apps\wap\model\serviceCategory;
 use apps\wap\model\service;
-use apps\wap\model\users;
 class indexCtrl extends baseCtrl{
   public $bdb;
   public $scdb;
   public $sdb;
-  public $udb;
   public $scid;
   // 构造方法
   public function _auto(){
     $this->bdb = new banner();
     $this->scdb = new serviceCategory();
     $this->sdb = new service();
-    $this->udb = new users();
     $this->scid = isset($_GET['scid']) ? intval($_GET['scid']) : 0;
   }
 
