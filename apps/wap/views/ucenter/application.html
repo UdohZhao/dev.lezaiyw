@@ -17,13 +17,13 @@
 		<div class="weui-cell">
 		    <div class="weui-cell__hd"><label for="date" class="weui-label">出生日期</label></div>
 		    <div class="weui-cell__bd">
-		      <input class="weui-input" id="date" type="text" name="birthday">
+		      <input class="weui-input" id="date" type="text" name="birthday" value="{{data.users.birthday|date('Y-m-d')}}">
 		    </div>
 		</div>
 		<div class="weui-cell">
 		    <div class="weui-cell__hd"><label for="sex" class="weui-label">请选择性别</label></div>
 	        <div class="weui-cell__bd">
-	          <input class="weui-input" id="sex" type="text" name="sex">
+	          <input class="weui-input" id="sex" type="text" name="sex" value="男">
 	        </div>
 		 </div>
 
@@ -85,7 +85,7 @@
 			<button class="weui-btn weui-btn_primary" type="submit">提交</button>
 		</div>
 		<div class="weui-cell">
-			<button class="weui-btn weui-btn_warn" type="button" onclick="gotoService(1,0);">申请陪玩服务</button>
+			<button class="weui-btn weui-btn_warn" type="button" onclick="gotoService(1,1);">申请陪玩服务</button>
 		</div>
 		<div class="weui-cell">
 			<a href="javascript:history.go(-1)"><- 返回上一页</a>
@@ -135,20 +135,12 @@
         {title: "颜值担当",value: 2},
         {title: "逗比休闲",value: 3},
         {title: "声音甜美",value: 4},
-<<<<<<< HEAD
-        { title: "乖巧粘人", value: 5},
-=======
         {title: "乖巧粘人",value: 5},
->>>>>>> liujie
         {title: "情感知心",value: 6},
         {title: "爽朗直率",value: 7},
         {title: "激情四射",value: 8}
       ]
-<<<<<<< HEAD
-            });
-=======
-        });
->>>>>>> liujie
+	});
     //选择魅力部位
     $("#hobby").select({
         title: "魅力部位(不超过3项)",
