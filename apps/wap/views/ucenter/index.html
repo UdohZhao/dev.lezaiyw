@@ -1,38 +1,22 @@
 {% include 'header.html' %}
 
 {% block css %}
+
 <link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+
 {% endblock %}
 	<!-- 验证登陆 -->
-
   	<div class="weui-cells">
 	  <a class="weui-cell weui-cell_access" href="/wap/ucenter/ucenter">
-	  	<div class="weui-cell__hd avatarImg"><img src="/apps/wap/views/index/img/avatar.png"></div>
+	  	<div class="weui-cell__hd avatarImg"><img src="{{u.avatar}}"></div>
 	    <div class="weui-cell__bd">
-	      <p>一个孤单的路人</p>
-	      <p class="uid" >UID:170608</p>
+	      <p>{{u.nickname}}</p>
+	      <p class="uid" >UID:{{u.id}}</p>
 	    </div>
 	    <div class="weui-cell__ft">
 	    </div>
 	  </a>
   	</div>
-<<<<<<< HEAD
-
-  	<!-- 跳出登陆框 -->
-		<div id="full" class="popup__container ">
-			<div class="popup__overlay"></div>
-			<div class="popup__modal margAuto">
-				<div class="popup_bd">
-					<h4>提示</h4>
-					<p>为了更好的用户体验，请先<a href="JavaScript:;" onclick="login();">登录</a></p>
-				</div>
-			  </div>
-		</div>
-
-=======
-
-
->>>>>>> d081ab4f2dd2f19690a409ce6eb337a4210123de
  	<div class="weui-cells">
 	  <a class="weui-cell weui-cell_access" href="/wap/ucenter/record">
 	  	<div class="weui-cell__hd mg_money"><i></i></div>
@@ -43,12 +27,12 @@
 	</div>
 	<div class="ywGlod">
 	  <div class="ywGlod_left ">
-	  	<p>0.00</p>
+	  	<p>{{u.balance}}</p>
 	  	<p>约玩币</p>
 	  </div>
 	  <div class="separator"></div>
 	  <div class="ywGlod_right">
-	  	<p>0</p>
+	  	<p>{{u.contribution}}</p>
 	  	<p>约玩值</p>
 	  </div>
 	</div>
@@ -83,8 +67,4 @@
 
 {% include 'footer.html' %}
 
-{% block js %}
 
-<script src="/apps/wap/views/ucenter/js/ucenter.js"></script>
-
-{% endblock %}
