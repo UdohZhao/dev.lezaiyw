@@ -25,17 +25,18 @@ class __TwigTemplate_70cceff6e8a232a2de9232655bd62038cddbb578d280bb53e8b1fbcbed3
         $this->displayBlock('css', $context, $blocks);
         // line 6
         echo "
+
 <!-- banner start -->
   <div class=\" banner-box\">
     <div class=\"container\">
        <div class=\"swiper-container \" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay=\"1000\">
         <div class=\"swiper-wrapper swiper-b-h\">
           ";
-        // line 12
+        // line 13
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "bData", array()));
         foreach ($context['_seq'] as $context["k"] => $context["v"]) {
-            // line 13
+            // line 14
             echo "            <div class=\"swiper-slide\"><img class=\"swiper-b-img\" src=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "path", array()), "html", null, true);
             echo "\"></div>
@@ -44,7 +45,7 @@ class __TwigTemplate_70cceff6e8a232a2de9232655bd62038cddbb578d280bb53e8b1fbcbed3
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['k'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
+        // line 16
         echo "        </div>
         <div class=\"swiper-pagination\"></div>
       </div>
@@ -77,199 +78,201 @@ class __TwigTemplate_70cceff6e8a232a2de9232655bd62038cddbb578d280bb53e8b1fbcbed3
     <div id=\"tab1\" class=\"weui-tab__bd-item weui-tab__bd-item--active\">
       <div class=\"weui-grids\">
         ";
-        // line 46
+        // line 47
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "scData", array()));
         foreach ($context['_seq'] as $context["k"] => $context["v"]) {
-            // line 47
+            // line 48
             echo "        ";
             if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "type", array()) == 0)) {
-                // line 48
+                // line 49
                 echo "        <a href=\"/wap/index/item/scid/";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "id", array()), "html", null, true);
                 echo "\" class=\"weui-grid js_grid\">
           <div class=\"weui-grid__icon\">
             <img src=\"";
-                // line 50
+                // line 51
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "icon_path", array()), "html", null, true);
                 echo "\">
           </div>
           <p class=\"weui-grid__label\">
             ";
-                // line 53
+                // line 54
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "cname", array()), "html", null, true);
                 echo "
           </p>
         </a>
         ";
             }
-            // line 57
+            // line 58
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['k'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 58
+        // line 59
         echo "      </div>
     </div>
     <div id=\"tab2\" class=\"weui-tab__bd-item\">
       <div class=\"weui-grids\">
         ";
-        // line 62
+        // line 63
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "scData", array()));
         foreach ($context['_seq'] as $context["k"] => $context["v"]) {
-            // line 63
+            // line 64
             echo "        ";
             if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "type", array()) == 1)) {
-                // line 64
+                // line 65
                 echo "        <a href=\"/wap/index/item/scid/";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "id", array()), "html", null, true);
                 echo "\" class=\"weui-grid js_grid\">
           <div class=\"weui-grid__icon\">
             <img src=\"";
-                // line 66
+                // line 67
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "icon_path", array()), "html", null, true);
                 echo "\">
           </div>
           <p class=\"weui-grid__label\">
             ";
-                // line 69
+                // line 70
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "cname", array()), "html", null, true);
                 echo "
           </p>
         </a>
         ";
             }
-            // line 73
+            // line 74
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['k'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 74
+        // line 75
         echo "      </div>
     </div>
     <div id=\"tab3\" class=\"weui-tab__bd-item\">
       <div class=\"weui-grids\">
         ";
-        // line 78
+        // line 79
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "scData", array()));
         foreach ($context['_seq'] as $context["k"] => $context["v"]) {
-            // line 79
+            // line 80
             echo "        ";
             if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "type", array()) == 2)) {
-                // line 80
+                // line 81
                 echo "        <a href=\"/wap/index/item/scid/";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "id", array()), "html", null, true);
                 echo "\" class=\"weui-grid js_grid\">
           <div class=\"weui-grid__icon\">
             <img src=\"";
-                // line 82
+                // line 83
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "icon_path", array()), "html", null, true);
                 echo "\">
           </div>
           <p class=\"weui-grid__label\">
             ";
-                // line 85
+                // line 86
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "cname", array()), "html", null, true);
                 echo "
           </p>
         </a>
         ";
             }
-            // line 89
+            // line 90
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['k'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 90
+        // line 91
         echo "      </div>
   </div>
 </div>
+
 </div>
 <!-- nav end -->
 
 <!-- 主体内容 -->
 <!-- 热门推荐 -->
 <div class=\"oneBox\">
-<div class=\"container index_container\">
-  <h4 style=\"position: relative;\">热门推荐<!-- <a href=\"javascript:;\" class=\"more lt\">+MORE</a> --></h4>
-  <div class=\"oneBox\">
-    ";
-        // line 102
+  <div class=\"container index_container\">
+    <h4 style=\"position: relative;\">热门推荐<!-- <a href=\"javascript:;\" class=\"more lt\">+MORE</a> --></h4>
+    <div class=\"oneBox\">
+      ";
+        // line 104
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->getSourceContext(), ($context["data"] ?? null), "sData", array()));
         foreach ($context['_seq'] as $context["k"] => $context["v"]) {
-            // line 103
-            echo "    <div class=\"oneBox_list\">
-      <a href=\"/wap/meet/index/uid/";
-            // line 104
+            // line 105
+            echo "      <div class=\"oneBox_list\">
+        <a href=\"/wap/meet/index/uid/";
+            // line 106
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "uid", array()), "html", null, true);
             echo "/scid/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "scid", array()), "html", null, true);
             echo "/sid/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "id", array()), "html", null, true);
             echo "\">
-          <div class=\"list\">
-            <img class=\"cover-img\" src=\"";
-            // line 106
+            <div class=\"list\">
+              <img class=\"cover-img\" src=\"";
+            // line 108
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "cover_path", array()), "html", null, true);
             echo "\">
-          </div>
-          <div class=\"label label1\">
-            ";
-            // line 109
+            </div>
+            <div class=\"label label1\">
+              ";
+            // line 111
             if ((twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "uData", array()), "istatus", array()) == 1)) {
-                // line 110
-                echo "              真人认证
-            ";
+                // line 112
+                echo "                真人认证
+              ";
             }
-            // line 112
-            echo "          </div>
-          <div class=\"label2 label1\">
-            ";
             // line 114
+            echo "            </div>
+            <div class=\"label2 label1\">
+              ";
+            // line 116
             if ((twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "uData", array()), "status", array()) == 0)) {
                 echo "离线";
             }
-            // line 115
-            echo "            ";
+            // line 117
+            echo "              ";
             if ((twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "uData", array()), "status", array()) == 1)) {
                 echo "在线";
             }
-            // line 116
-            echo "            ";
+            // line 118
+            echo "              ";
             if ((twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "uData", array()), "status", array()) == 2)) {
                 echo "冻结";
             }
-            // line 117
-            echo "          </div>
-          <p class=\"u-nickname\">";
-            // line 118
+            // line 119
+            echo "            </div>
+            <p class=\"u-nickname\">";
+            // line 120
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "uData", array()), "nickname", array()), "html", null, true);
             echo "</p>
-          <p class=\"userName\" >￥<span >";
-            // line 119
+            <p class=\"userName\" >￥<span >";
+            // line 121
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "price", array()), "html", null, true);
             echo "</span>元/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["v"], "units", array()), "html", null, true);
             echo "</p>
-      </a>
-    </div>
-    ";
+        </a>
+      </div>
+      ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['k'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 123
-        echo "  </div>
+        // line 125
+        echo "    </div>
+  </div>
 </div>
 ";
-        // line 125
-        $this->loadTemplate("footer.html", "index/index.html", 125)->display($context);
+        // line 128
+        $this->loadTemplate("footer.html", "index/index.html", 128)->display($context);
     }
 
     // line 3
@@ -292,7 +295,7 @@ class __TwigTemplate_70cceff6e8a232a2de9232655bd62038cddbb578d280bb53e8b1fbcbed3
 
     public function getDebugInfo()
     {
-        return array (  279 => 4,  276 => 3,  272 => 125,  268 => 123,  256 => 119,  252 => 118,  249 => 117,  244 => 116,  239 => 115,  235 => 114,  231 => 112,  227 => 110,  225 => 109,  219 => 106,  210 => 104,  207 => 103,  203 => 102,  189 => 90,  183 => 89,  176 => 85,  170 => 82,  164 => 80,  161 => 79,  157 => 78,  151 => 74,  145 => 73,  138 => 69,  132 => 66,  126 => 64,  123 => 63,  119 => 62,  113 => 58,  107 => 57,  100 => 53,  94 => 50,  88 => 48,  85 => 47,  81 => 46,  48 => 15,  39 => 13,  35 => 12,  27 => 6,  25 => 3,  22 => 2,  20 => 1,);
+        return array (  282 => 4,  279 => 3,  275 => 128,  270 => 125,  258 => 121,  254 => 120,  251 => 119,  246 => 118,  241 => 117,  237 => 116,  233 => 114,  229 => 112,  227 => 111,  221 => 108,  212 => 106,  209 => 105,  205 => 104,  190 => 91,  184 => 90,  177 => 86,  171 => 83,  165 => 81,  162 => 80,  158 => 79,  152 => 75,  146 => 74,  139 => 70,  133 => 67,  127 => 65,  124 => 64,  120 => 63,  114 => 59,  108 => 58,  101 => 54,  95 => 51,  89 => 49,  86 => 48,  82 => 47,  49 => 16,  40 => 14,  36 => 13,  27 => 6,  25 => 3,  22 => 2,  20 => 1,);
     }
 
     public function getSourceContext()
@@ -302,6 +305,7 @@ class __TwigTemplate_70cceff6e8a232a2de9232655bd62038cddbb578d280bb53e8b1fbcbed3
 {% block css %}
 <link rel=\"stylesheet\" href=\"/apps/wap/views/index/css/indexTow.css\">
 {% endblock %}
+
 
 <!-- banner start -->
   <div class=\" banner-box\">
@@ -389,36 +393,38 @@ class __TwigTemplate_70cceff6e8a232a2de9232655bd62038cddbb578d280bb53e8b1fbcbed3
       </div>
   </div>
 </div>
+
 </div>
 <!-- nav end -->
 
 <!-- 主体内容 -->
 <!-- 热门推荐 -->
 <div class=\"oneBox\">
-<div class=\"container index_container\">
-  <h4 style=\"position: relative;\">热门推荐<!-- <a href=\"javascript:;\" class=\"more lt\">+MORE</a> --></h4>
-  <div class=\"oneBox\">
-    {% for k,v in data.sData %}
-    <div class=\"oneBox_list\">
-      <a href=\"/wap/meet/index/uid/{{v.uid}}/scid/{{v.scid}}/sid/{{v.id}}\">
-          <div class=\"list\">
-            <img class=\"cover-img\" src=\"{{v.cover_path}}\">
-          </div>
-          <div class=\"label label1\">
-            {% if v.uData.istatus == 1 %}
-              真人认证
-            {% endif %}
-          </div>
-          <div class=\"label2 label1\">
-            {% if v.uData.status == 0 %}离线{% endif %}
-            {% if v.uData.status == 1 %}在线{% endif %}
-            {% if v.uData.status == 2 %}冻结{% endif %}
-          </div>
-          <p class=\"u-nickname\">{{v.uData.nickname}}</p>
-          <p class=\"userName\" >￥<span >{{v.price}}</span>元/{{v.units}}</p>
-      </a>
+  <div class=\"container index_container\">
+    <h4 style=\"position: relative;\">热门推荐<!-- <a href=\"javascript:;\" class=\"more lt\">+MORE</a> --></h4>
+    <div class=\"oneBox\">
+      {% for k,v in data.sData %}
+      <div class=\"oneBox_list\">
+        <a href=\"/wap/meet/index/uid/{{v.uid}}/scid/{{v.scid}}/sid/{{v.id}}\">
+            <div class=\"list\">
+              <img class=\"cover-img\" src=\"{{v.cover_path}}\">
+            </div>
+            <div class=\"label label1\">
+              {% if v.uData.istatus == 1 %}
+                真人认证
+              {% endif %}
+            </div>
+            <div class=\"label2 label1\">
+              {% if v.uData.status == 0 %}离线{% endif %}
+              {% if v.uData.status == 1 %}在线{% endif %}
+              {% if v.uData.status == 2 %}冻结{% endif %}
+            </div>
+            <p class=\"u-nickname\">{{v.uData.nickname}}</p>
+            <p class=\"userName\" >￥<span >{{v.price}}</span>元/{{v.units}}</p>
+        </a>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 {% include 'footer.html' %}", "index/index.html", "/home/wwwroot/dev.lezaiyw.vag/wwwroot/apps/wap/views/index/index.html");
