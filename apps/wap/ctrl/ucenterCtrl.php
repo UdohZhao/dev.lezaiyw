@@ -64,8 +64,6 @@ class ucenterCtrl extends baseCtrl{
       {
         $data['ui'] = 0;
       }
-      see($data);
-      die;
       // assign
       $this->assign('data',$data);
       $this->assign('i_label',conf::get('I_LABEL','home'));
