@@ -55,7 +55,7 @@
 		    <div class="weui-cell__ft">
 		      <div class="weui-cell__ft avatarImg">
 			      <div id="preview0">
-			            	<img id="imghead0" src="/apps/wap/views/index/img/avatar.png" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传图像" title="点击上传头像" >
+			            	<img id="imghead0" src="{{u.avatar}}" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传图像" title="点击上传头像" >
 			        </div>
 			        <form id="idcardForm" action="/certificationInfo/add" method="post" enctype="multipart/form-data">
 	            	<input type="file" id="previewImg0" name="front_path" class="cover-file" onchange="previewImage(this,'preview0','imghead0','previewImg0')" accept="image/*">
@@ -66,19 +66,19 @@
 		<div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="" name="" class="weui-input" placeholder="请输入昵称">
+		      <input type="" name="nickname" value="{{u.nickname}}" class="weui-input" placeholder="请输入昵称">
 		    </div>
 		</div>
 		<div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">QQ</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="" name="" class="weui-input" placeholder="请输入QQ">
+		      <input type="" name="qq" class="weui-input" placeholder="请输入QQ">
 		    </div>
 		</div>
 		<div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">手机</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="" name="" class="weui-input" placeholder="请输入手机号码">
+		      <input type="" name="phone" class="weui-input" placeholder="请输入手机号码">
 		    </div>
 		</div>
 		<div class="weui-cell">
