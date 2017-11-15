@@ -3,11 +3,12 @@
 {% block css %}
 
 <link rel="stylesheet" href="/apps/wap/views/index/css/index.css">
+<link rel="stylesheet" href="/apps/wap/views/index/css/indexTow.css">
 
 {% endblock %}
-  
+
 <!-- 搜索框 -->
-<div class="weui-search-bar" id="searchBar">
+<!-- <div class="weui-search-bar" id="searchBar">
   <form class="weui-search-bar__form">
     <div class="weui-search-bar__box">
       <i class="weui-icon-search"></i>
@@ -20,80 +21,52 @@
     </label>
   </form>
   <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
-</div>
+</div> -->
 
 <!-- 容器 -->
 <div class="weui-tab">
   <div class="weui-navbar">
-    <a class="weui-navbar__item weui-bar__item--on" href="#tab1">推荐</a>
+    <!-- <a class="weui-navbar__item weui-bar__item--on" href="#tab1">推荐</a>
     <a class="weui-navbar__item" href="#tab2">热门</a>
 	  <a class="weui-navbar__item" href="#tab3">新人</a>
-    <a href=""></a>
+    <a href=""></a> -->
+    <a class="weui-navbar__item" href="#tab1">{{data.scName}}</a>
   </div>
 
   <div class="weui-tab__bd">
     <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
       <div class="oneBox">
+
+          {% for k,v in data.sData %}
           <div class="item_list">
-            <a href="/wap/meet/index">
+            <a href="/wap/meet/index/uid/{{v.uid}}/scid/{{v.scid}}/sid/{{v.id}}">
                 <div class="list posiR">
-                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
-                  <div class="label1 item_label">真人认证</div>
-                  <div class="label2 label1">在线</div>
+                  <img class="cover-img" src="{{v.cover_path}}">
+                  <div class="label1 item_label">
+                  {% if v.uData.istatus == 1 %}
+                    真人认证
+                  {% endif %}
+                  </div>
+                  <div class="label2 label1">
+                  {% if v.uData.status == 0 %}离线{% endif %}
+                  {% if v.uData.status == 1 %}在线{% endif %}
+                  {% if v.uData.status == 2 %}冻结{% endif %}
+                  </div>
                 </div>
-                <div class="item_bd">
-                  <span class="userName">蔡妹妹</span>
-                  <span class="userName" style="color: #F92246;">￥<b >233</b>元/局</span>
-                </div>
+                <p class="u-nickname">{{v.uData.nickname}}</p>
+                <p class="price-info" >￥<span >{{v.price}}</span>元/{{data.units}}</p>
             </a>
           </div>
-          <div class="item_list">
-            <a href="/wap/meet/index">
-                <div class="list posiR">
-                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
-                  <div class="label1 item_label">真人认证</div>
-                  <div class="label2 label1">在线</div>
-                </div>
-                <div class="item_bd">
-                  <span class="userName">蔡妹妹</span>
-                  <span class="userName" style="color: #F92246;">￥<b >233</b>元/局</span>
-                </div>
-            </a>
-          </div>
-          <div class="item_list">
-            <a href="/wap/meet/index">
-                <div class="list posiR">
-                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
-                  <div class="label1 item_label">真人认证</div>
-                  <div class="label2 label1">在线</div>
-                </div>
-                <div class="item_bd">
-                  <span class="userName">蔡妹妹</span>
-                  <span class="userName" style="color: #F92246;">￥<b >233</b>元/局</span>
-                </div>
-            </a>
-          </div>
-          <div class="item_list">
-            <a href="/wap/meet/index">
-                <div class="list posiR">
-                  <img src="/apps/wap/views/index/img/hot-3.jpeg">
-                  <div class="label1 item_label">真人认证</div>
-                  <div class="label2 label1">在线</div>
-                </div>
-                <div class="item_bd">
-                  <span class="userName">蔡妹妹</span>
-                  <span class="userName" style="color: #F92246;">￥<b >233</b>元/局</span>
-                </div>
-            </a>
-          </div>
+          {% endfor %}
+
       </div>
     </div>
-    <div id="tab2" class="weui-tab__bd-item">
+    <!-- <div id="tab2" class="weui-tab__bd-item">
       <h1>页面二</h1>
     </div>
     <div id="tab3" class="weui-tab__bd-item">
       <h1>页面三</h1>
-    </div>
+    </div> -->
   </div>
 </div>
 

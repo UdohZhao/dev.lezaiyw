@@ -33,4 +33,12 @@ class serviceCategory extends model{
     return $this->get($this->table,'units',['id'=>$id]);
   }
 
+  /**
+   * 读取类别名称
+   */
+  public function getCname($id)
+  {
+    return $this->get($this->table,'cname',['id'=>$id]);
+  }
+
 }
