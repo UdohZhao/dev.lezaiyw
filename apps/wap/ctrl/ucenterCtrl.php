@@ -2,8 +2,16 @@
 namespace apps\wap\ctrl;
 use core\lib\conf;
 use apps\home\model\certificationInfo;
+use apps\home\model\usersInfo;
+use apps\home\model\serviceCategory;
+use apps\home\model\service;
 class ucenterCtrl extends baseCtrl{
-
+  public $db;
+  public $uidb;
+  public $scdb;
+  public $sdb;
+  public $scid;
+  public $sid;
   // 构造方法
   public function _auto()
   {
@@ -14,6 +22,12 @@ class ucenterCtrl extends baseCtrl{
     }
     $this->db = new certificationInfo();
     $this->id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    $this->uidb = new usersInfo();
+    $this->scdb = new serviceCategory();
+    $this->sdb = new service();
+    $this->scid = isset($_GET['scid']) ? intval($_GET['scid']) : 1;
+    $this->sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+    $this->assign('scid',$this->scid);
   }
 
   /**
@@ -30,18 +44,73 @@ class ucenterCtrl extends baseCtrl{
    */
   public function ucenter()
   {
+    // Get
+    if (IS_GET === true)
+    {
+      // 读取当前用户信息
+      $data['users'] = $this->udb->getcRow($this->u['id']);
+      if ($data['users']) {
+        $data['u'] = 1;
+      } else {
+        $data['u'] = 0;
+      }
+      // 读取当前用户详细信息
+      $data['users_info'] = $this->uidb->getRow($this->u['id']);
+      if ($data['users_info'])
+      {
+        $data['ui'] = 1;
+      }
+      else
+      {
+        $data['ui'] = 0;
+      }
+      see($data);
+      die;
+      // assign
+      $this->assign('data',$data);
+      $this->assign('i_label',conf::get('I_LABEL','home'));
+      $this->assign('occupation',conf::get('OCCUPATION','home'));
+      $this->assign('charm_part',conf::get('CHARM_PART','home'));
       // display
       $this->display('ucenter','ucenter.html');
       die;
+    }
   }
 
   /**
    * 申请入驻
    */
-  public function application(){
+  public function application()
+  {
+    // Get
+    if (IS_GET === true)
+    {
+      // 读取当前用户信息
+      $data['users'] = $this->udb->getcRow($this->u['id']);
+      if ($data['users']) {
+        $data['u'] = 1;
+      } else {
+        $data['u'] = 0;
+      }
+      // 读取当前用户详细信息
+      $data['users_info'] = $this->uidb->getRow($this->u['id']);
+      if ($data['users_info'])
+      {
+        $data['ui'] = 1;
+      }
+      else
+      {
+        $data['ui'] = 0;
+      }
+      // assign
+      $this->assign('data',$data);
+      $this->assign('i_label',conf::get('I_LABEL','home'));
+      $this->assign('occupation',conf::get('OCCUPATION','home'));
+      $this->assign('charm_part',conf::get('CHARM_PART','home'));
       // display
       $this->display('ucenter','application.html');
       die;
+    }
   }
 
   public function applypw(){
