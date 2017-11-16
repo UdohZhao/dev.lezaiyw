@@ -224,11 +224,9 @@ function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
 
     //初始化日志
     $logHandler= new CLogFileHandler(ICUNJI."/vendor/wxpay/wxlogs/".date('Ymd').'.log');
-    $log = \Log::Init($logHandler, 15);
+    $log = Log::Init($logHandler, 15);
 
-    $tools = new \JsApiPay();
-    return $tools;
-
+    $tools = new JsApiPay();
 
     if(empty($openId)) $openId = $tools->GetOpenid();
 

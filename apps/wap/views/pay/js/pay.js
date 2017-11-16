@@ -24,29 +24,30 @@ function gotoPay(){
   if (type == 0) {
     window.location.href = "/alipay/index/m/"+money+"/wap/1";
   } else {
-    // // Ajax
-    $.ajax({
-      type: "GET",
-      url: "/alipay/wxPay/m/"+money+"/wap/1",
-      dataType: "JSON",
-      success: function (res) {
-        console.log(res);
-        return false;
-        if (typeof WeixinJSBridge == "undefined"){
-           if( document.addEventListener ){
-               document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-           }else if (document.attachEvent){
-               document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-               document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-           }
-        }else{
-           onBridgeReady(res);
-        }
-      },
-      error: function (e) {
-        console.log(e);
-      }
-    });
+    swal("提示","稍后开放微信支付 :(","error");
+    // Ajax
+    // $.ajax({
+    //   type: "GET",
+    //   url: "/alipay/wxPay/m/"+money+"/wap/1",
+    //   dataType: "JSON",
+    //   success: function (res) {
+    //     console.log(res);
+    //     return false;
+    //     if (typeof WeixinJSBridge == "undefined"){
+    //        if( document.addEventListener ){
+    //            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    //        }else if (document.attachEvent){
+    //            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+    //            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+    //        }
+    //     }else{
+    //        onBridgeReady(res);
+    //     }
+    //   },
+    //   error: function (e) {
+    //     console.log(e);
+    //   }
+    // });
   }
 }
 
