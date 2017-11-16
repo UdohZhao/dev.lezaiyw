@@ -147,7 +147,7 @@ class alipayCtrl extends \core\icunji{
    */
   public function synchronization(){
     // if
-    if ($this->wap == 1)
+    if (isHttpsMobile())
     {
       header('Location:/wap/pay/pay');
     }
