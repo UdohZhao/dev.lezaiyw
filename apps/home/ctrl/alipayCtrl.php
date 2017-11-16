@@ -177,9 +177,6 @@ class alipayCtrl extends \core\icunji{
     // Ajax
     if (IS_AJAX === true) {
 
-      echo J($_GET);
-      die;
-
       //商户订单号，商户网站订单系统中唯一订单号，必填
       $out_trade_no = createIn($_SESSION['homeUserinfo']['id']);
 
@@ -195,6 +192,7 @@ class alipayCtrl extends \core\icunji{
       die;
 
     }
+
   }
 
   // 微信支付回调
