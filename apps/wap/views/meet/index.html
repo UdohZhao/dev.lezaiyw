@@ -93,15 +93,16 @@
                   <img class="weui-media-box__thumb" src="{{v.avatar}}">
                 </div>
                 <div class="weui-media-box__bd">
-                  <h5 class="weui-media-box__title">{{v.nickname}}（{{v.ctime|date('Y-m-d')}}）
+                  <h5 class="weui-media-box__title">{{v.nickname}}
                     <span class="evaluate-i">
-                    {% if v.status == 0 %}好评{% endif %}
+                    {% if v.status == 0 %}好评{% endif %} 
                     {% if v.status == 1 %}中评{% endif %}
                     {% if v.status == 2 %}差评{% endif %}
                     </span>
                   </h5>
                   <p></p>
                   <p class="weui-media-box__desc">{{v.content}}</p>
+                  <p class="weui-media-box__desc">{{v.ctime|date('Y-m-d  h:m')}}</p>
                 </div>
               </a>
               {% endfor %}

@@ -128,6 +128,8 @@ class ucenterCtrl extends baseCtrl{
       }
       $data['charm_part'] = json_encode($data['charm_part'],JSON_UNESCAPED_UNICODE);
       // assign
+      // see($data);
+      // die;
       $this->assign('data',$data);
       // display
       $this->display('ucenter','application.html');
