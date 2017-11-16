@@ -1,8 +1,9 @@
 {% include 'header.html' %}
 
 {% block css %}
-
+<link rel="stylesheet" type="text/css" href="/public/jquery-weui-build/dist/css/jquery-weui.css">
 <link rel="stylesheet" href="/apps/wap/views/ucenter/css/ucenter.css">
+
 
 {% endblock %}
   	<div class="weui-cells">
@@ -55,7 +56,7 @@
 	  </a>
 	</div>
 	<div class="weui-cells">
-	  <a class="weui-cell weui-cell_access" href="tencent://message/?uin=800814441&amp;Site=&amp;Menu=yes">
+	  <a class="weui-cell weui-cell_access" href="javascript:;" id="Notescontact">
 	  	<div class="weui-cell__hd mg_money"><i class="icon_5"></i></div>
 	    <div class="weui-cell__bd">
 	      <p>联系客服</p>
@@ -65,5 +66,9 @@
 	</div>
 
 {% include 'footer.html' %}
-
+<script type="text/javascript">
+	$(document).on("click", "#Notescontact", function() {
+        $.alert("QQ:88888888", "联系客服");
+      });
+</script>
 
