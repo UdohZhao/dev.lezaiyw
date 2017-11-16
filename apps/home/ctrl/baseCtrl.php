@@ -11,7 +11,7 @@ class baseCtrl extends \core\icunji{
     if(method_exists($this,'_auto'))
         $this->_auto();
     // 手机端访问跳转
-    if (isMobile())
+    if (isHttpsMobile())
     {
       header("Location:/wap");
       die;
