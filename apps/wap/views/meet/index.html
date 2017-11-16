@@ -172,7 +172,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary" onclick="iPay('{{data.users.id}}','4','{{data.onsData.id}}','0','{{from_phone}}','{{data.users.phone}}','{{data.onsData.price}}','{{data.units}}','{{u.balance}}','{{data.onscCname}}');">立即支付</button>
+        <button type="button" class="btn btn-primary" onclick="iPay({{data.users.id}},{{u.id}},{{data.onsData.id}},0,'{{u.phone}}','{{data.users.phone}}','{{data.onsData.price}}','{{data.units}}','{{u.balance}}','{{data.onscCname}}');">立即支付</button>
       </div>
     </div>
   </div>
@@ -185,4 +185,4 @@
     <script type="text/javascript" src="/public/jQuery-num-alignment/js/num-alignment.js"></script>
     <script src="/apps/wap/views/meet/js/index.js"></script>
 
-  {% endblock %}  
+  {% endblock %}

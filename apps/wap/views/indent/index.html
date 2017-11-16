@@ -10,208 +10,251 @@
 <div class="weui-tab">
   <div class="weui-navbar">
     <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
-      全部订单
+      待确认
     </a>
     <a class="weui-navbar__item" href="#tab2">
-      未完成订单
+      已接单
     </a>
     <a class="weui-navbar__item" href="#tab3">
-      待评价
+      进行中
     </a>
     <a class="weui-navbar__item" href="#tab4">
-      已结束
+      结束
     </a>
   </div>
   <div class="weui-tab__bd">
-    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active pad">
-      <div class="weui-form-preview marginTop " >
-        <div class="weui-form-preview__hd">
-          <label class="weui-form-preview__label">付款金额</label>
-          <em class="weui-form-preview__value">¥2400.00</em>
+    {% if data %}
+
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active pad">
+          {% for k,v in data %}
+          {% if v.type == 0 %}
+            <div class="weui-form-preview">
+              <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">订单金额</label>
+                <em class="weui-form-preview__value">¥{{v.total_price}}／{{v.showinfo}}</em>
+              </div>
+              <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单编号</label>
+                  <span class="weui-form-preview__value">{{v.inumber}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单创建时间</label>
+                  <span class="weui-form-preview__value">{{v.creation_time|date('Y-m-d H:i:s')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约开始时间</label>
+                  <span class="weui-form-preview__value">{{v.maa_start_time|date('Y-m-d H:i')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约服务</label>
+                  <span class="weui-form-preview__value">{{v.onsc_cname}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">来自用户手机号码</label>
+                  <span class="weui-form-preview__value">{{v.from_phone}}</span>
+                </div>
+              </div>
+              <div class="weui-form-preview__ft">
+                {% if v.type == 0 and v.status == 0 and u.istatus == 1 %}
+                <a class="weui-form-preview__btn weui-form-preview__btn_default" onclick="cancel({{v.id}},{{v.from_uid}},'{{v.total_price}}');">取消订单</a>
+                <button type="button" class="weui-form-preview__btn weui-form-preview__btn_primary" onclick="confirm({{v.id}},'{{v.from_phone}}','{{v.inumber}}',{{v.sid}});">确认接单</button>
+                {% endif %}
+                {% if v.type == 0 and v.status == 1 %}
+                  <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:"><span class="text-danger">* 已取消订单</span></a>
+                {% endif %}
+                {% if v.type == 0 and v.status == 0 and u.istatus == 0 %}
+                  <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:"><span class="text-danger">* 待陪玩主播接单</span></a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% endfor %}
         </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单号</label>
-            <span class="weui-form-preview__value">20171011545055574</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">结束时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:10:56</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:00:00</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约服务</label>
-            <span class="weui-form-preview__value">线下LOL</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单金额</label>
-            <span class="weui-form-preview__value">￥100.00/1局</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">来自手机号</label>
-            <span class="weui-form-preview__value">13500000001</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">状态</label>
-            <span class="weui-form-preview__value">已结束</span>
-          </div>
+        <div id="tab2" class="weui-tab__bd-item pad">
+          {% for k,v in data %}
+          {% if v.type == 1 %}
+            <div class="weui-form-preview">
+              <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">订单金额</label>
+                <em class="weui-form-preview__value">¥{{v.total_price}}／{{v.showinfo}}</em>
+              </div>
+              <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单编号</label>
+                  <span class="weui-form-preview__value">{{v.inumber}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单创建时间</label>
+                  <span class="weui-form-preview__value">{{v.creation_time|date('Y-m-d H:i:s')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约开始时间</label>
+                  <span class="weui-form-preview__value">{{v.maa_start_time|date('Y-m-d H:i')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约服务</label>
+                  <span class="weui-form-preview__value">{{v.onsc_cname}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">来自用户手机号码</label>
+                  <span class="weui-form-preview__value">{{v.from_phone}}</span>
+                </div>
+              </div>
+              <div class="weui-form-preview__ft">
+                {% if v.type == 1 and v.status == 0 and u.istatus == 1 %}
+                <button type="button" class="weui-form-preview__btn weui-form-preview__btn_primary" onclick="start({{v.id}});">开始服务</button>
+                {% endif %}
+                {% if v.type == 1 and v.status == 0 and u.istatus == 0 %}
+                  <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:"><span class="text-danger">* 待陪玩主播开始服务</span></a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% endfor %}
         </div>
+        <div id="tab3" class="weui-tab__bd-item pad">
+          {% for k,v in data %}
+          {% if v.type == 2 %}
+            <div class="weui-form-preview">
+              <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">订单金额</label>
+                <em class="weui-form-preview__value">¥{{v.total_price}}／{{v.showinfo}}</em>
+              </div>
+              <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单编号</label>
+                  <span class="weui-form-preview__value">{{v.inumber}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单创建时间</label>
+                  <span class="weui-form-preview__value">{{v.creation_time|date('Y-m-d H:i:s')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约开始时间</label>
+                  <span class="weui-form-preview__value">{{v.maa_start_time|date('Y-m-d H:i')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约服务</label>
+                  <span class="weui-form-preview__value">{{v.onsc_cname}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">来自用户手机号码</label>
+                  <span class="weui-form-preview__value">{{v.from_phone}}</span>
+                </div>
+              </div>
+              <div class="weui-form-preview__ft">
+                {% if v.type == 2 and v.status == 0 and u.istatus == 1 %}
+                <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:"><span class="text-danger">* 待下单用户完成订单</span></a>
+                {% endif %}
+                {% if v.type == 2 and v.status == 0 and u.istatus == 0 %}
+                <button type="button" class="weui-form-preview__btn weui-form-preview__btn_primary" onclick="end({{v.id}},{{v.to_uid}},'{{v.total_price}}');">完成订单</button>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% endfor %}
+
+        </div>
+        <div id="tab4" class="weui-tab__bd-item pad">
+          {% for k,v in data %}
+          {% if v.type == 3 %}
+            <div class="weui-form-preview">
+              <div class="weui-form-preview__hd">
+                <label class="weui-form-preview__label">订单金额</label>
+                <em class="weui-form-preview__value">¥{{v.total_price}}／{{v.showinfo}}</em>
+              </div>
+              <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单编号</label>
+                  <span class="weui-form-preview__value">{{v.inumber}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">订单创建时间</label>
+                  <span class="weui-form-preview__value">{{v.creation_time|date('Y-m-d H:i:s')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约开始时间</label>
+                  <span class="weui-form-preview__value">{{v.maa_start_time|date('Y-m-d H:i')}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">预约服务</label>
+                  <span class="weui-form-preview__value">{{v.onsc_cname}}</span>
+                </div>
+                <div class="weui-form-preview__item">
+                  <label class="weui-form-preview__label">来自用户手机号码</label>
+                  <span class="weui-form-preview__value">{{v.from_phone}}</span>
+                </div>
+              </div>
+              <div class="weui-form-preview__ft">
+                {% if v.type == 3 and v.status == 0 and u.istatus == 1 %}
+                <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:"><span class="text-danger">* 待下单用户评论</span></a>
+                {% endif %}
+                {% if v.type == 3 and v.status == 3 %}
+                <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:"><span class="text-success">* 已评论</span></a>
+                {% endif %}
+                {% if v.type == 3 and v.status == 0 and u.istatus == 0 %}
+                <button type="button" class="weui-form-preview__btn weui-form-preview__btn_primary" onclick="estimate({{v.id}},{{v.sid}});">立即评论</button>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+    {% else %}
+      <blockquote>
+        {% if u.istatus == 1 %}
+          <p>暂无订单，完善服务资料更有可能获得青睐 ～</p>
+        {% else %}
+          <p>暂无订单，去看看需要的陪玩服务 ～</p>
+        {% endif %}
+      </blockquote>
+    {% endif %}
+  </div>
+</div>
+<!-- 立即评价 start -->
+<div id="estimateModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">立即评价</h4>
       </div>
-      <div class="weui-form-preview marginTop ">
-        <div class="weui-form-preview__hd">
-          <label class="weui-form-preview__label">付款金额</label>
-          <em class="weui-form-preview__value">¥2400.00</em>
-        </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单号</label>
-            <span class="weui-form-preview__value">20171011545055574</span>
+      <div class="modal-body">
+        <form class="form-horizontal" id="estimateForm" method="post">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">评价状态</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="status" value="0" checked="checked"> 好评
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="status" value="1"> 中评
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="status" value="2"> 差评
+              </label>
+            </div>
           </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">结束时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:10:56</span>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">评价内容</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="content" placeholder="请用一句话表述 ～">
+            </div>
           </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:00:00</span>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">提 交</button>
+            </div>
           </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约服务</label>
-            <span class="weui-form-preview__value">线下LOL</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单金额</label>
-            <span class="weui-form-preview__value">￥100.00/1局</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">来自手机号</label>
-            <span class="weui-form-preview__value">13500000001</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">状态</label>
-            <span class="weui-form-preview__value">已结束</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="tab2" class="weui-tab__bd-item pad">
-      <div class="weui-form-preview marginTop " >
-        <div class="weui-form-preview__hd">
-          <label class="weui-form-preview__label">付款金额</label>
-          <em class="weui-form-preview__value">¥2400.00</em>
-        </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单号</label>
-            <span class="weui-form-preview__value">20171011545055574</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">结束时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:10:56</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:00:00</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约服务</label>
-            <span class="weui-form-preview__value">线下LOL</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单金额</label>
-            <span class="weui-form-preview__value">￥100.00/1局</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">来自手机号</label>
-            <span class="weui-form-preview__value">13500000001</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">状态</label>
-            <span class="weui-form-preview__value">已结束</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="tab3" class="weui-tab__bd-item pad">
-      <div class="weui-form-preview marginTop " >
-        <div class="weui-form-preview__hd">
-          <label class="weui-form-preview__label">付款金额</label>
-          <em class="weui-form-preview__value">¥2400.00</em>
-        </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单号</label>
-            <span class="weui-form-preview__value">20171011545055574</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">结束时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:10:56</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:00:00</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约服务</label>
-            <span class="weui-form-preview__value">线下LOL</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单金额</label>
-            <span class="weui-form-preview__value">￥100.00/1局</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">来自手机号</label>
-            <span class="weui-form-preview__value">13500000001</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">状态</label>
-            <span class="weui-form-preview__value">已结束</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="tab4" class="weui-tab__bd-item pad">
-      <div class="weui-form-preview marginTop " >
-        <div class="weui-form-preview__hd">
-          <label class="weui-form-preview__label">付款金额</label>
-          <em class="weui-form-preview__value">¥2400.00</em>
-        </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单号</label>
-            <span class="weui-form-preview__value">20171011545055574</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">结束时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:10:56</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约时间</label>
-            <span class="weui-form-preview__value">2017-10-09 09:00:00</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">预约服务</label>
-            <span class="weui-form-preview__value">线下LOL</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">订单金额</label>
-            <span class="weui-form-preview__value">￥100.00/1局</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">来自手机号</label>
-            <span class="weui-form-preview__value">13500000001</span>
-          </div>
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">状态</label>
-            <span class="weui-form-preview__value">已结束</span>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
+<!-- 立即评价 end -->
 {% include 'footer.html' %}
+
+{% block js %}
+<script src="/apps/home/views/indent/js/index.js"></script>
+{% endblock %}

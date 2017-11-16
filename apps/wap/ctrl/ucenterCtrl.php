@@ -20,6 +20,7 @@ class ucenterCtrl extends baseCtrl{
       header("Location:/wap");
       die;
     }
+    $this->assign('active','ucenter');
     $this->db = new certificationInfo();
     $this->id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     $this->uidb = new usersInfo();
@@ -86,9 +87,12 @@ class ucenterCtrl extends baseCtrl{
     {
       // 读取当前用户信息
       $data['users'] = $this->udb->getcRow($this->u['id']);
-      if ($data['users']) {
+      if ($data['users'])
+      {
         $data['u'] = 1;
-      } else {
+      }
+      else
+      {
         $data['u'] = 0;
       }
       // 读取当前用户详细信息
@@ -131,15 +135,62 @@ class ucenterCtrl extends baseCtrl{
     }
   }
 
-  public function applypw(){
+  /**
+   * 选择服务类别页面
+   */
+  public function applypw()
+  {
+    // Get
+    if (IS_GET == true)
+    {
+      // 读取服务类别
+      $data['scData'] = $this->scdb->getcRows(0);
+      // assign
+      $this->assign('data',$data);
       // display
       $this->display('ucenter','applypw.html');
       die;
+    }
   }
+
+  /**
+   * 申请服务界面
+   */
   public function service(){
+    // Get
+    if (IS_GET === true) {
+      // 读取当前服务类别名称
+      $data['scName'] = $this->scdb->getCnameRow($this->scid);
+      // 读取当前服务单位
+      $units = $this->scdb->getUnits($this->scid);
+      // 服务单位？0>时，1>局，2>首，3>次
+      switch ($units) {
+        case '0':
+          $units = '时';
+          break;
+        case '1':
+          $units = '局';
+          break;
+        case '2':
+          $units = '首';
+          break;
+        case '3':
+          $units = '次';
+          break;
+        default:
+          $units = '时';
+          break;
+      }
+      // 服务单位
+      $data['units'] = $units;
+      // 读取当前服务类别是否已经绑定
+      $data['sData'] = $this->sdb->getRow($this->scid);
+      // assign
+      $this->assign('data',$data);
       // display
       $this->display('ucenter','service.html');
       die;
+    }
   }
 
 

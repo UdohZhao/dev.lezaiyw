@@ -15,12 +15,13 @@
 	<div class="rechargelist">
 		<h5>充值</h5>
 		<ul class="nav money-box">
-	        <li role="presentation" id="active1" class="active" onclick="rechargeMoney(10,'1');"><a href="javascript:;">10元</a></li>
+	        <li role="presentation" id="active1" onclick="rechargeMoney(10,'1');"><a href="javascript:;">10元</a></li>
 	        <li role="presentation" id="active2" onclick="rechargeMoney(20,'2');"><a href="javascript:;">20元</a></li>
 	        <li role="presentation" id="active3" onclick="rechargeMoney(30,'3');"><a href="javascript:;">30元</a></li>
 	        <li role="presentation" id="active4" onclick="rechargeMoney(50,'4');"><a href="javascript:;">50元</a></li>
 	        <li role="presentation" id="active5" onclick="rechargeMoney(100,'5');"><a href="javascript:;">100元</a></li>
 	        <li role="presentation" id="active6" onclick="rechargeMoney(200,'6');"><a href="javascript:;">200元</a></li>
+          <li role="presentation" id="active0" class="active" onclick="rechargeMoney('0.01','0');"><a href="#">0.01元</a></li>
 	    </ul>
     </div>
     <div class="rechargelist">
@@ -51,7 +52,7 @@
           </div>
     </div>
 	</div>
-		
+
 		<div class="weui-cells">
 		  <div class="weui-cell">
 		   	<img src="/apps/home/views/recharge/img/discounts.png">
@@ -63,7 +64,7 @@
 		  </div>
 		</div>
 	</div>
-	
+
 
 {% include 'footer_js.html' %}
 

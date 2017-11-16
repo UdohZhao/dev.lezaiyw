@@ -18,7 +18,7 @@ p.uid{margin-bottom: 0;color: #878787;font-size: 10px;}
 
 
 
- 
+
 
 
 /****************************** ucenter style **********************************/
@@ -75,7 +75,7 @@ a.weui-btn{width: 100%;}
 .pad{padding:10px;}
 .marAuto{margin:0 auto;}
 .alignCenter{text-align: center;}
-.service .service_group{padding:5px 10px;}
+.service .service_group{padding:15px 15px;}
 .service .service_name h4{text-indent: 20px;}
 .service .serviceTlile  p{font-size: 12px;color: #333;margin-bottom: 0;line-height: 25px;}
 .container .cover-file{display: none;}
@@ -83,6 +83,11 @@ a.weui-btn{width: 100%;}
 .weui-label{color: #333;font-weight: normal;}
 
 
-
+.breviary-img{
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
 
 

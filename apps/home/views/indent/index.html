@@ -42,7 +42,7 @@
                         {% endif %}
                       </div>
                       <p>订单编号：{{v.inumber}}</p>
-                      <p>订单创建时间：{{v.creation_time|date('Y-m-d H:i:s')}}</p>
+                      <p>订单创建时间：{{v.creation_time|date('Y-m-d H:i')}}</p>
                       <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
                       <p>预约服务：{{v.onsc_cname}}</p>
                       <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
@@ -63,7 +63,7 @@
                         {% endif %}
                       </div>
                       <p>订单编号：{{v.inumber}}</p>
-                      <p>接单时间：{{v.accept_time|date('Y-m-d H:i:s')}}</p>
+                      <p>接单时间：{{v.accept_time|date('Y-m-d H:i')}}</p>
                       <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
                       <p>预约服务：{{v.onsc_cname}}</p>
                       <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
@@ -84,7 +84,7 @@
                         {% endif %}
                       </div>
                       <p>订单编号：{{v.inumber}}</p>
-                      <p>开始时间：{{v.start_time|date('Y-m-d H:i:s')}}</p>
+                      <p>开始时间：{{v.start_time|date('Y-m-d H:i')}}</p>
                       <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
                       <p>预约服务：{{v.onsc_cname}}</p>
                       <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>
@@ -108,7 +108,7 @@
                         {% endif %}
                       </div>
                       <p>订单编号：{{v.inumber}}</p>
-                      <p>结束时间：{{v.end_time|date('Y-m-d H:i:s')}}</p>
+                      <p>结束时间：{{v.end_time|date('Y-m-d H:i')}}</p>
                       <p>预约开始时间：{{v.maa_start_time|date('Y-m-d H:i')}}</p>
                       <p>预约服务：{{v.onsc_cname}}</p>
                       <p>订单金额：¥{{v.total_price}}／{{v.showinfo}}</p>

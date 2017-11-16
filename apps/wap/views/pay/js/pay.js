@@ -22,7 +22,7 @@ function gotoPay(){
   var type = $("input[name='type']:checked").val();
   var url;
   if (type == 0) {
-    window.location.href = "/alipay/index/m/"+money;
+    window.location.href = "/alipay/index/m/"+money+"/wap/1";
   } else {
     swal("提示","微信支付稍后开通 :(","error");
     // url = "/wxpay/index";

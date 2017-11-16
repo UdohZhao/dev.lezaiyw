@@ -6,16 +6,17 @@
 {% endblock %}
 
 
-<form action="" class="service">
+<form class="service" id="serviceForm" action="/enter/service/scid/{{scid}}/sid/{{data.sData.id}}" method="post" enctype="multipart/form-data">
 	<div class="service_group">
 		<div class="service_name">
-		<h4>提示</h4>
+		<h4>当前服务：{{data.scName}}</h4>
 		</div>
 		<div class="container pad">
 			<div class="serviceTlile">
-				<p>段位要求:男生(大师/王者) 女生(黄金以上)</p>
+				<!-- <p>段位要求:男生(大师/王者) 女生(黄金以上)</p>
 				<p>考核要求:大师、王者段位无论男女都需考核</p>
-				<p>其他段位无需考核，上传本人段位截图即可</p>
+				<p>其他段位无需考核，上传本人段位截图即可</p> -->
+				<!-- <p>当前服务：111</p> -->
 			</div>
 		</div>
 	</div>
@@ -24,10 +25,15 @@
 		<h4>服务封面照(必填)</h4>
 		</div>
 		<div class="container marAuto alignCenter">
-			<div id="preview" class="pad ">
-		        <img id="imghead" src="/apps/home/views/layouts/img/breviary.png" class="img-responsivebreviary-img" onclick="$('#previewImg').click();" alt="点击上传封面图片" title="点击上传封面图片">
-		    </div>
-		    <input type="file" id="previewImg" name="cover_path" class="cover-file" onchange="previewImage(this)" accept="image/*">
+      {% if data.sData.cover_path %}
+        <img src="{{data.sData.cover_path}}" class="img-responsive breviary-img" onclick="delFiles({{data.sData.id}},1,'{{data.sData.cover_path}}');" alt="点击删除封面图片" title="点击删除封面图片">
+        <input type="hidden" class="cover-file" id="previewImg" name="cover_path" value="{{data.sData.cover_path}}">
+      {% else %}
+      <div id="preview" class="pad ">
+        <img id="imghead" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg').click();" alt="点击上传封面图片" title="点击上传封面图片">
+      </div>
+      <input type="file" id="previewImg" name="cover_path" class="cover-file" onchange="previewImage(this)" accept="image/*">
+      {% endif %}
 		</div>
 	</div>
 	<div class="service_group">
@@ -37,8 +43,8 @@
 		<div class="weui-cells weui-cells_form">
 			<div class="weui-cell">
 				<div class="weui-cell__bd">
-				    <textarea class="weui-textarea fs" name="describe" placeholder="一段好的描述能提高300%的接单率" rows="3"></textarea>
-				    <div class="weui-textarea-counter"><span>0</span>/200</div>
+				    <textarea class="weui-textarea fs" id="describe" name="describe" placeholder="一段好的描述能提高300%的接单率" rows="3">{% autoescape false %}{{data.sData.describe}}{% endautoescape %}</textarea>
+				    <!-- <div class="weui-textarea-counter"><span>0</span>/200</div> -->
 				</div>
 			</div>
 		</div>
@@ -46,9 +52,9 @@
 	<div class="service_group">
 		<div class="weui-cells weui-cells_form">
 		  <div class="weui-cell">
-		    <div class="weui-cell__hd"><label class="weui-label">价格 / 局</label></div>
+		    <div class="weui-cell__hd"><label class="weui-label">价格／{{data.units}}</label></div>
 		    <div class="weui-cell__bd">
-		      <input class="weui-input fs" type="number" name="price" pattern="[0-9]*" placeholder="请输入价格">
+		      <input class="weui-input fs" type="number" name="price" placeholder="请输入价格／{{data.units}}" value="{{data.sData.price}}">
 		    </div>
 		  </div>
 		</div>
@@ -56,22 +62,36 @@
 		  <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">个性签名</label></div>
 		    <div class="weui-cell__bd">
-		      <input class="weui-input fs" type="text" name="i_label" placeholder="个性签名">
+		      <input class="weui-input fs" type="text" name="i_label" placeholder="请针对服务填写个性标签" value="{{data.sData.i_label}}">
+		    </div>
+		  </div>
+		</div>
+		<div class="weui-cells weui-cells_form">
+		  <div class="weui-cell">
+		    <div class="weui-cell__hd"><label class="weui-label">语音介绍(选填60秒内)</label></div>
+		    <div class="weui-cell__bd">
+        {% if data.sData.voice %}
+          <button type="button" class="btn btn-primary" onclick="delFiles({{data.sData.id}},2,'{{data.sData.voice}}');">删除音频</button>
+          <input type="hidden" id="inputFile" name="voice" value="{{data.sData.voice}}">
+        {% else %}
+          <!-- <input type="file" id="inputFile" name="voice" accept="audio/mp3"> -->
+          <div class="weui-uploader__input-box">
+            <input id="inputFile" class="weui-uploader__input" type="file" name="voice" accept="audio/mp3">
+          </div>
+        {% endif %}
 		    </div>
 		  </div>
 		</div>
 	</div>
 	<div class="service_group">
-		<input type="submit" name="" class="weui-btn weui-btn_primary" value="申请导师"> 
+		<input type="submit" class="weui-btn weui-btn_primary" value="申请导师">
 	</div>
-	
+
 </form>
 
 
 {% include 'footer_js.html' %}
 
 {% block js %}
-
- <script src="/apps/wap/views/ucenter/js/application.js"></script>
-
+<script src="/apps/wap/views/ucenter/js/service.js"></script>
 {% endblock %}

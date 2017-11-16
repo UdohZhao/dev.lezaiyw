@@ -14,30 +14,18 @@
 	</div>
 	<div class="container ">
 		<div class="weui-cells ">
-		  <a class="weui-cell weui-cell_access" href="/wap/ucenter/service">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon1.png"></div>
+      {% for k,v in data.scData %}
+      {% if v.type == 0 %}
+		  <a class="weui-cell weui-cell_access" href="/wap/ucenter/service/scid/{{v.id}}">
+		  	<div class="weui-cell__hd"><img src="{{v.icon_path}}"></div>
 		    <div class="weui-cell__bd">
-		      <p>线上LOL</p>
+		      {{v.cname}}
 		    </div>
 		    <div class="weui-cell__ft">
 		    </div>
 		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon3.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>王者荣耀</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_13.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>球球大作战</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
+      {% endif %}
+      {% endfor %}
 		</div>
 	</div>
 
@@ -50,54 +38,18 @@
 
 	<div class="container applyList">
 		<div class="weui-cells ">
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_10.png"></div>
+      {% for k,v in data.scData %}
+      {% if v.type == 1 %}
+		  <a class="weui-cell weui-cell_access" href="/wap/ucenter/service/scid/{{v.id}}">
+		  	<div class="weui-cell__hd"><img src="{{v.icon_path}}"></div>
 		    <div class="weui-cell__bd">
-		      <p>唱歌</p>
+		      {{v.cname}}
 		    </div>
 		    <div class="weui-cell__ft">
 		    </div>
 		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_16.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>恋爱指导</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon5.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>声优聊天</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_17.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>讲故事</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon8.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>虚拟恋人</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon6.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>视频聊天</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
+      {% endif %}
+      {% endfor %}
 		</div>
 	</div>
 
@@ -110,54 +62,18 @@
 
 	<div class="container applyList">
 		<div class="weui-cells ">
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon2.png"></div>
+      {% for k,v in data.scData %}
+      {% if v.type == 2 %}
+		  <a class="weui-cell weui-cell_access" href="/wap/ucenter/service/scid/{{v.id}}">
+		  	<div class="weui-cell__hd"><img src="{{v.icon_path}}"></div>
 		    <div class="weui-cell__bd">
-		      <p>线下LOL</p>
+		      {{v.cname}}
 		    </div>
 		    <div class="weui-cell__ft">
 		    </div>
 		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_15.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>陪看电影</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_18.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>陪吃饭</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_12.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>陪唱歌</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_20.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>陪逛街</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
-		  <a class="weui-cell weui-cell_access" href="javascript:;">
-		  	<div class="weui-cell__hd"><img src="/apps/wap/views/index/img/icon_19.png"></div>
-		    <div class="weui-cell__bd">
-		      <p>陪游玩</p>
-		    </div>
-		    <div class="weui-cell__ft">
-		    </div>
-		  </a>
+      {% endif %}
+      {% endfor %}
 		</div>
 	</div>
 </div>

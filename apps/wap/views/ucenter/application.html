@@ -46,7 +46,7 @@
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label" for="name">个性标签</label></div>
 		    <div class="weui-cell__bd">
-			    <input class="weui-input" name="i_label[]" id="selfdom_tag" type="text" value="任意选2项">
+			    <input class="weui-input" name="i_label" id="selfdom_tag" type="text" placeholder="任意选择2项">
 		    </div>
 		 </div>
 		 <div class="weui-cell">
@@ -70,7 +70,7 @@
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label for="occupation" class="weui-label">职业</label></div>
 		    <div class="weui-cell__bd">
-		      <input type="text" name="occupation" class="weui-input" id="occupation" >
+		      <input type="text" name="occupation" class="weui-input" id="occupation" value="{{data.users_info.occupation}}" >
 		    </div>
 		 </div>
 		 <div class="weui-cell">
@@ -82,7 +82,7 @@
 		 <div class="weui-cell">
 		    <div class="weui-cell__hd"><label class="weui-label">魅力部位</label></div>
 		    <div class="weui-cell__bd">
-			    <input class="weui-input" name="charm_part[]" id="hobby" type="text" value="不超过3项">
+			    <input class="weui-input" name="charm_part" id="hobby" type="text" placeholder="不超过3项">
 		    </div>
 		 </div>
 		 <div class="weui-cell posR">
@@ -102,7 +102,7 @@
 			<button class="weui-btn weui-btn_primary" type="submit">提交</button>
 		</div>
 		<div class="weui-cell">
-			<button class="weui-btn weui-btn_warn" type="button" onclick="gotoService(1,1);">申请陪玩服务</button>
+			<button class="weui-btn weui-btn_warn" type="button" onclick="gotoService({{data.u}},{{data.ui}});">申请陪玩服务</button>
 		</div>
 		<div class="weui-cell">
 			<a href="javascript:history.go(-1)"><- 返回上一页</a>

@@ -50,7 +50,7 @@ function numSelect(){
   var price = $(".unit-price").text();
   if (startTime == '') {
     $("input[name='num']").val(1);
-    alert("提示","请先选择服务开始时间 :(","error");
+    swal("提示","请先选择服务开始时间 :(","error");
   } else {
       // 动态赋值
       $("#numSpan").text(num);

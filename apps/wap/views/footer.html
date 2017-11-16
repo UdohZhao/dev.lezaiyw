@@ -2,33 +2,33 @@
 
 <!-- 固定底部 -->
   <div class="weui-tabbar">
-    <a href="/wap" class="weui-tabbar__item weui-bar__item--on">
+    <a href="/wap" {% if active == 'index' %} class="weui-tabbar__item weui-bar__item--on" {% else %} class="weui-tabbar__item" {% endif %}>
       <div class="weui-tabbar__icon">
         <i class="footer_icon footer_icon_1"></i>
       </div>
       <p class="weui-tabbar__label">首页</p>
     </a>
-    <a href="/wap/indent/index" class="weui-tabbar__item">
+    <a href="/wap/indent/index" {% if active == 'indent' %} class="weui-tabbar__item weui-bar__item--on" {% else %} class="weui-tabbar__item" {% endif %}>
       <div class="weui-tabbar__icon">
         <i class="footer_icon footer_icon_2"></i>
       </div>
       <p class="weui-tabbar__label">订单</p>
     </a>
-    <a href="/wap/pay/pay" class="weui-tabbar__item">
+    <a href="/wap/pay/pay" {% if active == 'pay' %} class="weui-tabbar__item weui-bar__item--on" {% else %} class="weui-tabbar__item" {% endif %}>
       <div class="weui-tabbar__icon">
         <i class="footer_icon footer_icon_3"></i>
       </div>
       <p class="weui-tabbar__label">充值</p>
     </a>
     {% if u %}
-    <a href="/wap/ucenter/index" class="weui-tabbar__item">
+    <a href="/wap/ucenter/index" {% if active == 'ucenter' %} class="weui-tabbar__item weui-bar__item--on" {% else %} class="weui-tabbar__item" {% endif %}>
       <div class="weui-tabbar__icon">
         <i class="footer_icon footer_icon_4"></i>
       </div>
       <p class="weui-tabbar__label">我的</p>
     </a>
     {% else %}
-    <a href="JavaScript:;" onclick="login();" class="weui-tabbar__item">
+    <a href="JavaScript:;" onclick="login();" {% if active == 'ucenter' %} class="weui-tabbar__item weui-bar__item--on" {% else %} class="weui-tabbar__item" {% endif %}>
       <div class="weui-tabbar__icon">
         <i class="footer_icon footer_icon_4"></i>
       </div>
