@@ -10,11 +10,6 @@ class alipayCtrl extends \core\icunji{
   public $udb;
   // 构造方法
   public function _initialize(){
-    require_once ICUNJI.'/vendor/alipay/pagepay/service/AlipayTradeService.php';
-    // 支付宝电脑支付接口
-    require_once ICUNJI.'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
-    // 支付宝手机支付接口
-    require_once ICUNJI.'/vendor/alipay/wappay/buildermodel/AlipayTradeWapPayContentBuilder.php';
     $this->m = isset($_GET['m']) ? $_GET['m'] : 0;
     $this->wap = isset($_GET['wap']) ? $_GET['wap'] : 0;
     $this->cvdb = new cashValue();
@@ -43,11 +38,17 @@ class alipayCtrl extends \core\icunji{
       //构造参数
       if ($this->wap == 1)
       {
+        // 支付宝手机支付接口
+        require_once ICUNJI.'/vendor/alipay/wappay/service/AlipayTradeService.php';
+        require_once ICUNJI.'/vendor/alipay/wappay/buildermodel/AlipayTradeWapPayContentBuilder.php';
         // 手机支付接口
         $payRequestBuilder = new \AlipayTradeWapPayContentBuilder();
       }
       else
       {
+        // 支付宝电脑支付接口
+        require_once ICUNJI.'/vendor/alipay/pagepay/service/AlipayTradeService.php';
+        require_once ICUNJI.'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
         // 电脑支付接口
         $payRequestBuilder = new \AlipayTradePagePayContentBuilder();
       }
