@@ -35,7 +35,7 @@ class alipayCtrl extends \core\icunji{
       $subject = '听娱神游约玩账户充值';
 
       //付款金额，必填
-      $total_amount = '0.01';
+      $total_amount = $this->m;
 
       //商品描述，可空
       $body = '用户在线约玩的货币';
@@ -61,29 +61,29 @@ class alipayCtrl extends \core\icunji{
 
       if ($this->wap == 1)
       {
-      /**
-       * pagePay 电脑支付请求
-       * @param $builder 业务参数，使用buildmodel中的对象生成。
-       * @param $return_url 同步跳转地址，公网可以访问
-       * @param $notify_url 异步通知地址，公网可以访问
-       * @return $response 支付宝返回的信息
-      */
-      $response = $aop->pagePay($payRequestBuilder,conf::get('return_url','alipay'),conf::get('notify_url','alipay'));
-      //输出表单
-      see($response);
-      die;
+        /**
+         * pagePay 手机支付请求
+         * @param $builder 业务参数，使用buildmodel中的对象生成。
+         * @param $return_url 同步跳转地址，公网可以访问
+         * @param $notify_url 异步通知地址，公网可以访问
+         * @return $response 支付宝返回的信息
+        */
+        $response = $aop->wapPay($payRequestBuilder,conf::get('return_url','alipay'),conf::get('notify_url','alipay'));
+        return ;
       }
       else
       {
-      /**
-       * pagePay 手机支付请求
-       * @param $builder 业务参数，使用buildmodel中的对象生成。
-       * @param $return_url 同步跳转地址，公网可以访问
-       * @param $notify_url 异步通知地址，公网可以访问
-       * @return $response 支付宝返回的信息
-      */
-      $response = $aop->wapPay($payRequestBuilder,conf::get('return_url','alipay'),conf::get('notify_url','alipay'));
-      return ;
+        /**
+         * pagePay 电脑支付请求
+         * @param $builder 业务参数，使用buildmodel中的对象生成。
+         * @param $return_url 同步跳转地址，公网可以访问
+         * @param $notify_url 异步通知地址，公网可以访问
+         * @return $response 支付宝返回的信息
+        */
+        $response = $aop->pagePay($payRequestBuilder,conf::get('return_url','alipay'),conf::get('notify_url','alipay'));
+        //输出表单
+        see($response);
+        die;
       }
 
     }
