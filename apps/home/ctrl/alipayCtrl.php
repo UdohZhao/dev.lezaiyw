@@ -44,7 +44,7 @@ class alipayCtrl extends \core\icunji{
       if ($this->wap == 1)
       {
         // 手机支付接口
-        $payRequestBuilder = new AlipayTradeWapPayContentBuilder();
+        $payRequestBuilder = new \AlipayTradeWapPayContentBuilder();
       }
       else
       {
