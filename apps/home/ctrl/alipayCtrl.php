@@ -174,8 +174,8 @@ class alipayCtrl extends \core\icunji{
    * 微信支付
    */
   public function wxPay(){
-    // Get
-    if (IS_GET === true) {
+    // Ajax
+    if (IS_AJAX === true) {
 
       //商户订单号，商户网站订单系统中唯一订单号，必填
       $out_trade_no = createIn($_SESSION['homeUserinfo']['id']);
