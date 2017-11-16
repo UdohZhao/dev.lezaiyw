@@ -217,6 +217,7 @@ return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid
  * @param  string   $attach     附加参数,我们可以选择传递一个参数,比如订单ID
  */
 function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
+
     require_once ICUNJI.'/vendor/wxpay/WxPay.Api.php';
     require_once ICUNJI.'/vendor/wxpay/WxPay.JsApiPay.php';
     require_once ICUNJI.'/vendor/wxpay/log.php';
@@ -226,9 +227,10 @@ function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
     $log = Log::Init($logHandler, 15);
 
     $tools = new JsApiPay();
+
     if(empty($openId)) $openId = $tools->GetOpenid();
 
-    $input = new WxPayUnifiedOrder();
+    $input = new \WxPayUnifiedOrder();
     $input->SetBody($goods);                 //商品名称
     $input->SetAttach($attach);                  //附加参数,可填可不填,填写的话,里边字符串不能出现空格
     $input->SetOut_trade_no($order_sn);          //订单号
@@ -237,10 +239,10 @@ function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
     $input->SetTime_expire(date("YmdHis", time() + 600));//支付超时
     $input->SetGoods_tag("1");
     //支付回调验证地址
-    $input->SetNotify_url(conf::get('SERVER_NAME','weapp')."/indent/notify");
+    $input->SetNotify_url(conf::get('SERVER_NAME','wxpay')."/alipay/notify");
     $input->SetTrade_type("JSAPI");              //支付类型
     $input->SetOpenid($openId);                  //用户openID
-    $order = WxPayApi::unifiedOrder($input);    //统一下单
+    $order = \WxPayApi::unifiedOrder($input);    //统一下单
 
     $jsApiParameters = $tools->GetJsApiParameters($order);
 

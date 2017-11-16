@@ -24,22 +24,45 @@ function gotoPay(){
   if (type == 0) {
     window.location.href = "/alipay/index/m/"+money+"/wap/1";
   } else {
-    swal("提示","微信支付稍后开通 :(","error");
-    // url = "/wxpay/index";
-    // // Ajax
+    swal("提示","稍后开放微信支付 :(","error");
+    // Ajax
     // $.ajax({
-    //   type: "POST",
-    //   url: url,
-    //   data: {
-    //     money: money
-    //   },
+    //   type: "GET",
+    //   url: "/alipay/wxPay/m/"+money+"/wap/1",
     //   dataType: "JSON",
     //   success: function (res) {
     //     console.log(res);
+    //     return false;
+    //     if (typeof WeixinJSBridge == "undefined"){
+    //        if( document.addEventListener ){
+    //            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    //        }else if (document.attachEvent){
+    //            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+    //            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+    //        }
+    //     }else{
+    //        onBridgeReady(res);
+    //     }
     //   },
     //   error: function (e) {
     //     console.log(e);
     //   }
     // });
   }
+}
+
+// 唤起微信支付
+function onBridgeReady(jsApiParameters){
+   WeixinJSBridge.invoke(
+       'getBrandWCPayRequest',
+       jsApiParameters,
+       function(res){
+           if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+            swal("提示","充值成功 :)","success");
+            setTimeout("window.location.reload();",3000);
+           } else {
+            swal("提示","您取消了支付 :(","error");
+           }
+       }
+   );
 }
