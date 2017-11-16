@@ -1,25 +1,23 @@
 <?php
 /* *
- * 功能：支付宝电脑网站alipay.trade.close (统一收单交易关闭接口)业务参数封装
+ * 功能：支付宝手机网站alipay.trade.fastpay.refund.query (统一收单交易退款查询)业务参数封装
  * 版本：2.0
- * 修改日期：2017-05-01
+ * 修改日期：2016-11-01
  * 说明：
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  */
 
 
-class AlipayTradeCloseContentBuilder
+class AlipayTradeFastpayRefundQueryContentBuilder
 {
 
     // 商户订单号.
     private $outTradeNo;
-
     // 支付宝交易号
-    private $tradeNo;
-
-    //卖家端自定义的的操作员 ID
-    private $operatorId;
-
+    private $tradeNo;  
+    // 请求退款接口时，传入的退款请求号，如果在退款请求时未传入，则该值为创建交易时的外部交易号
+    private $outRequestNo;
+    
     private $bizContentarr = array();
 
     private $bizContent = NULL;
@@ -53,17 +51,15 @@ class AlipayTradeCloseContentBuilder
         $this->outTradeNo = $outTradeNo;
         $this->bizContentarr['out_trade_no'] = $outTradeNo;
     }
-    public function getOperatorId()
+    public function getOutRequestNo()
     {
-    	return $this->operatorId;
+    	return $this->outRequestNo;
     }
-
-    public function setOperatorId($operatorId)
+    public function setOutRequestNo($outRequestNo)
     {
-    	$this->operatorId = $operatorId;
-    	$this->bizContentarr['operator_id'] = $operatorId;
+    	$this->outRequestNo = $outRequestNo;
+    	$this->bizContentarr['out_request_no'] = $outRequestNo;
     }
-
 }
 
 ?>
