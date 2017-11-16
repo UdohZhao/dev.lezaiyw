@@ -11,7 +11,10 @@ class alipayCtrl extends \core\icunji{
   // 构造方法
   public function _initialize(){
     require_once ICUNJI.'/vendor/alipay/pagepay/service/AlipayTradeService.php';
+    // 支付宝电脑支付接口
     require_once ICUNJI.'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
+    // 支付宝手机支付接口
+    require_once ICUNJI.'/vendor/alipay/wappay/buildermodel/AlipayTradeWapPayContentBuilder.php';
     $this->m = isset($_GET['m']) ? $_GET['m'] : 0;
     $this->wap = isset($_GET['wap']) ? $_GET['wap'] : 0;
     $this->cvdb = new cashValue();
@@ -38,7 +41,16 @@ class alipayCtrl extends \core\icunji{
       $body = '用户在线约玩的货币';
 
       //构造参数
-      $payRequestBuilder = new \AlipayTradePagePayContentBuilder();
+      if ($this->wap == 1)
+      {
+        // 手机支付接口
+        $payRequestBuilder = new AlipayTradeWapPayContentBuilder();
+      }
+      else
+      {
+        // 电脑支付接口
+        $payRequestBuilder = new \AlipayTradePagePayContentBuilder();
+      }
       $payRequestBuilder->setBody($body);
       $payRequestBuilder->setSubject($subject);
       $payRequestBuilder->setTotalAmount($total_amount);
@@ -47,20 +59,35 @@ class alipayCtrl extends \core\icunji{
 
       $aop = new \AlipayTradeService(conf::all('alipay'));
 
+      if ($this->wap == 1)
+      {
       /**
-       * pagePay 电脑网站支付请求
+       * pagePay 电脑支付请求
        * @param $builder 业务参数，使用buildmodel中的对象生成。
        * @param $return_url 同步跳转地址，公网可以访问
        * @param $notify_url 异步通知地址，公网可以访问
        * @return $response 支付宝返回的信息
       */
       $response = $aop->pagePay($payRequestBuilder,conf::get('return_url','alipay'),conf::get('notify_url','alipay'));
-
       //输出表单
       see($response);
       die;
+      }
+      else
+      {
+      /**
+       * pagePay 手机支付请求
+       * @param $builder 业务参数，使用buildmodel中的对象生成。
+       * @param $return_url 同步跳转地址，公网可以访问
+       * @param $notify_url 异步通知地址，公网可以访问
+       * @return $response 支付宝返回的信息
+      */
+      $response = $aop->wapPay($payRequestBuilder,conf::get('return_url','alipay'),conf::get('notify_url','alipay'));
+      return ;
+      }
 
     }
+
   }
 
   /**

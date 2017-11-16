@@ -1,8 +1,8 @@
 <?php
 /* *
- * 功能：支付宝电脑网站alipay.trade.close (统一收单交易关闭接口)业务参数封装
+ * 功能：支付宝手机网站alipay.trade.close (统一收单交易关闭接口)业务参数封装
  * 版本：2.0
- * 修改日期：2017-05-01
+ * 修改日期：2016-11-01
  * 说明：
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  */
@@ -16,7 +16,6 @@ class AlipayTradeCloseContentBuilder
 
     // 支付宝交易号
     private $tradeNo;
-
     //卖家端自定义的的操作员 ID
     private $operatorId;
 
@@ -57,7 +56,7 @@ class AlipayTradeCloseContentBuilder
     {
     	return $this->operatorId;
     }
-
+    
     public function setOperatorId($operatorId)
     {
     	$this->operatorId = $operatorId;
