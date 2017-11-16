@@ -218,8 +218,6 @@ return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid
  */
 function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
 
-    return 111;
-
     require_once ICUNJI.'/vendor/wxpay/WxPay.Api.php';
     require_once ICUNJI.'/vendor/wxpay/WxPay.JsApiPay.php';
     require_once ICUNJI.'/vendor/wxpay/log.php';
@@ -229,6 +227,7 @@ function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
     $log = Log::Init($logHandler, 15);
 
     $tools = new JsApiPay();
+    return $tools;
     if(empty($openId)) $openId = $tools->GetOpenid();
 
     $input = new WxPayUnifiedOrder();
