@@ -9,6 +9,12 @@ class indexCtrl extends baseCtrl{
   public $bdb;
   // 构造方法
   public function _auto(){
+    // 手机端访问跳转
+    if (isHttpsMobile())
+    {
+      header("Location:/wap");
+      die;
+    }
     $this->assign('active','index');
     $this->sdb = new service();
     $this->scdb = new serviceCategory();
