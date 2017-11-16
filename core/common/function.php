@@ -217,6 +217,9 @@ return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid
  * @param  string   $attach     附加参数,我们可以选择传递一个参数,比如订单ID
  */
 function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
+
+    return 111;
+
     require_once ICUNJI.'/vendor/wxpay/WxPay.Api.php';
     require_once ICUNJI.'/vendor/wxpay/WxPay.JsApiPay.php';
     require_once ICUNJI.'/vendor/wxpay/log.php';
@@ -241,8 +244,6 @@ function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
     $input->SetTrade_type("JSAPI");              //支付类型
     $input->SetOpenid($openId);                  //用户openID
     $order = WxPayApi::unifiedOrder($input);    //统一下单
-
-    return $order;
 
     $jsApiParameters = $tools->GetJsApiParameters($order);
 

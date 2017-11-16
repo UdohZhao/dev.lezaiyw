@@ -31,6 +31,7 @@ function gotoPay(){
       dataType: "JSON",
       success: function (res) {
         console.log(res);
+        return false;
         if (typeof WeixinJSBridge == "undefined"){
            if( document.addEventListener ){
                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
