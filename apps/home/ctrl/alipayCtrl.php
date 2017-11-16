@@ -35,7 +35,7 @@ class alipayCtrl extends \core\icunji{
       $subject = '听娱神游约玩账户充值';
 
       //付款金额，必填
-      $total_amount = $this->m;
+      $total_amount = '0.01';
 
       //商品描述，可空
       $body = '用户在线约玩的货币';
