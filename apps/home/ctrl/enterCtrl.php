@@ -61,13 +61,37 @@ class enterCtrl extends baseCtrl{
     // Ajax
     if (IS_AJAX === true) {
       // 获取个性标签&魅力部位选中个数
-      $i_label = isset($_POST['i_label']) ? count($_POST['i_label']) : 0;
-      $charm_part = isset($_POST['charm_part']) ? count($_POST['charm_part']) : 0;
-      if ($i_label == 0 || $i_label > 2) {
+      if (isset($_POST['i_label']) && is_array($_POST['i_label']))
+      {
+        $i_label = count($_POST['i_label']);
+      }
+      else if (isset($_POST['i_label']) && $_POST['i_label'] != '')
+      {
+        $i_label = count(explode(',', $_POST['i_label']));
+      }
+      else
+      {
+        $i_label = 0;
+      }
+      if (isset($_POST['charm_part']) && is_array($_POST['charm_part']))
+      {
+        $charm_part = count($_POST['charm_part']);
+      }
+      else if (isset($_POST['charm_part']) && $_POST['charm_part'] != '')
+      {
+        $charm_part = count(explode(',', $_POST['charm_part']));
+      }
+      else
+      {
+        $charm_part = 0;
+      }
+      //$i_label = isset($_POST['i_label']) ? count($_POST['i_label']) : 0;
+      //$charm_part = isset($_POST['charm_part']) ? count($_POST['charm_part']) : 0;
+      if (!isset($i_label) || $i_label == 0 || $i_label > 2) {
         echo J(R(2,'请至少选中1项个性标签或者选中的个性标签超过2项 :(',false));
         die;
       }
-      if ($charm_part == 0 || $charm_part > 3) {
+      if (!isset($charm_part) || $charm_part == 0 || $charm_part > 3) {
         echo J(R(3,'请至少选中1项魅力部位或者选中的魅力部位超过3项 :(',false));
         die;
       }
@@ -112,6 +136,12 @@ class enterCtrl extends baseCtrl{
   private function getData($video_path){
     // data
     $data['users']['birthday'] = isset($_POST['birthday']) ? strtotime($_POST['birthday']) : time();
+    if ($_POST['sex'] == '男') {
+      $_POST['sex'] = 1;
+    }
+    if ($_POST['sex'] == '女') {
+      $_POST['sex'] = 0;
+    }
     $data['users']['sex'] = isset($_POST['sex']) ? $_POST['sex'] : 0;
     $data['users']['age'] = isset($_POST['age']) ? htmlspecialchars($_POST['age']) : 0;
     $data['users']['city'] = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';

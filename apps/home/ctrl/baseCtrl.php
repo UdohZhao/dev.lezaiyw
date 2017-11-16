@@ -10,6 +10,12 @@ class baseCtrl extends \core\icunji{
     //控制器初始化
     if(method_exists($this,'_auto'))
         $this->_auto();
+    // 手机端访问跳转
+    if (isHttpsMobile())
+    {
+      header("Location:/wap");
+      die;
+    }
     // 加载路径
     $this->assign('src','/apps/home/views');
     // 站点名称

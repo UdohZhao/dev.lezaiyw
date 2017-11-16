@@ -91,7 +91,7 @@
               <p>上传身份证正面照片</p>
             </blockquote>
             <div id="preview0">
-              <img id="imghead0" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传身份证正面照片" title="点击上传身份证正面照片">
+              <img id="imghead0" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg0').click();" alt="点击上传身份证正面照片" title="点击上传身份证正面照片">
             </div>
           </div>
           <div class="col-md-4">
@@ -99,7 +99,7 @@
               <p>上传身份证背面照片</p>
             </blockquote>
             <div id="preview1">
-              <img id="imghead1" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg1').click();" alt="点击上传身份证背面照片" title="点击上传身份证背面照片">
+              <img id="imghead1" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg1').click();" alt="点击上传身份证背面照片" title="点击上传身份证背面照片">
             </div>
           </div>
           <div class="col-md-4">
@@ -107,16 +107,16 @@
               <p>上传手持身份证照片</p>
             </blockquote>
             <div id="preview2">
-              <img id="imghead2" src="{{src}}/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg2').click();" alt="点击上传手持身份证照片" title="点击上传手持身份证照片">
+              <img id="imghead2" src="/apps/home/views/layouts/img/breviary.png" class="img-responsive breviary-img" onclick="$('#previewImg2').click();" alt="点击上传手持身份证照片" title="点击上传手持身份证照片">
             </div>
           </div>
         </div>
         <blockquote class="idcard-tips">
           <p>* 请上传清晰的照片将极大可能增加审核成功率 ！！！</p>
           <form id="idcardForm" action="/certificationInfo/add" method="post" enctype="multipart/form-data">
-            <input type="file" id="previewImg0" name="front_path" class="cover-file" onchange="previewImage(this,'preview0','imghead0','previewImg0')" accept="image/*">
-            <input type="file" id="previewImg1" name="back_path" class="cover-file" onchange="previewImage(this,'preview1','imghead1','previewImg1')" accept="image/*">
-            <input type="file" id="previewImg2" name="hand_path" class="cover-file" onchange="previewImage(this,'preview2','imghead2','previewImg2')" accept="image/*">
+            <input type="file" id="previewImg0" name="front_path" class="cover-file" onchange="previewImage(this,'preview0','imghead0','previewImg0')" accept="image/*" style="display: none;">
+            <input type="file" id="previewImg1" name="back_path" class="cover-file" onchange="previewImage(this,'preview1','imghead1','previewImg1')" accept="image/*" style="display: none;">
+            <input type="file" id="previewImg2" name="hand_path" class="cover-file" onchange="previewImage(this,'preview2','imghead2','previewImg2')" accept="image/*" style="display: none;">
           </form>
           <button type="button" class="btn btn-danger" onclick="apply();">申请实名认证</button>
         </blockquote>

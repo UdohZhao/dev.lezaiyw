@@ -50,7 +50,7 @@ function numSelect(){
   var price = $(".unit-price").text();
   if (startTime == '') {
     $("input[name='num']").val(1);
-    alert("提示\r请先选择服务开始时间 :(","error");
+    swal("提示","请先选择服务开始时间 :(","error");
   } else {
       // 动态赋值
       $("#numSpan").text(num);
@@ -76,7 +76,7 @@ function iPay(to_uid,from_uid,sid,ibid,from_phone,to_phone,unit_price,units,bala
     swal("提示","请先选择服务开始时间 :(","error");
   } else if (from_phone == '') {
     swal("提示","您还没有设置手机号码，请先完善 :(","error");
-    
+
   } else if (balance < totalPrice) {
     swal({
       title: "提示",
@@ -101,8 +101,8 @@ function iPay(to_uid,from_uid,sid,ibid,from_phone,to_phone,unit_price,units,bala
     });
   } else {
       console.log(to_uid,from_uid,sid,ibid,from_phone,to_phone,unit_price,num,num+units,balance,startDate,startTime,totalPrice,onscCname);
-      
-      Ajax
+
+      // Ajax
       $.ajax({
         type: "POST",
         url: "/indent/add",

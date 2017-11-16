@@ -89,9 +89,17 @@ class meetCtrl extends baseCtrl{
     {
       // 读取用户个人信息
       $data['users'] = $this->udb->getRow($this->uid);
-      $data['users']['i_label'] = implode('，', unserialize($data['users']['i_label']));
+      $data['users']['i_label'] = unserialize($data['users']['i_label']);
+      if (is_array($data['users']['i_label']))
+      {
+        $data['users']['i_label'] = implode('，', $data['users']['i_label']);
+      }
       $data['usersInfo'] = $this->uidb->getRow($this->uid);
-      $data['usersInfo']['charm_part'] = implode('，', unserialize($data['usersInfo']['charm_part']));
+      $data['usersInfo']['charm_part'] = unserialize($data['usersInfo']['charm_part']);
+      if (is_array($data['usersInfo']['charm_part']))
+      {
+        $data['usersInfo']['charm_part'] = implode('，', $data['usersInfo']['charm_part']);
+      }
       // 读取当前用户关联的服务
       $data['sData'] = $this->sdb->getDrows($this->uid,2,1);
       foreach ($data['sData'] AS $k => $v) {

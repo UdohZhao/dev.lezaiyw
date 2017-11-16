@@ -11,6 +11,7 @@ class indexCtrl extends baseCtrl{
   public $scid;
   // 构造方法
   public function _auto(){
+    $this->assign('active','index');
     $this->bdb = new banner();
     $this->scdb = new serviceCategory();
     $this->sdb = new service();

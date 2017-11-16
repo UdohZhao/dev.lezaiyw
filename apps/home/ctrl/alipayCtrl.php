@@ -5,6 +5,7 @@ use apps\home\model\cashValue;
 use apps\home\model\users;
 class alipayCtrl extends \core\icunji{
   public $m;
+  public $wap;
   public $cvdb;
   public $udb;
   // 构造方法
@@ -12,6 +13,7 @@ class alipayCtrl extends \core\icunji{
     require_once ICUNJI.'/vendor/alipay/pagepay/service/AlipayTradeService.php';
     require_once ICUNJI.'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
     $this->m = isset($_GET['m']) ? $_GET['m'] : 0;
+    $this->wap = isset($_GET['wap']) ? $_GET['wap'] : 0;
     $this->cvdb = new cashValue();
     $this->udb = new users();
   }
@@ -116,7 +118,15 @@ class alipayCtrl extends \core\icunji{
    * 同步跳转
    */
   public function synchronization(){
-    header('Location:/recharge/index');
+    // if
+    if ($this->wap == 1)
+    {
+      header('Location:/wap/pay/pay');
+    }
+    else
+    {
+      header('Location:/recharge/index');
+    }
   }
 
 }
