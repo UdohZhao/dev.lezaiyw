@@ -242,6 +242,8 @@ function wxJsapiPay($openId,$goods,$order_sn,$total_fee,$attach){
     $input->SetOpenid($openId);                  //用户openID
     $order = WxPayApi::unifiedOrder($input);    //统一下单
 
+    return $order;
+
     $jsApiParameters = $tools->GetJsApiParameters($order);
 
     return $jsApiParameters;
