@@ -96,6 +96,19 @@ class alipayCtrl extends \core\icunji{
    */
   public function asynchronization(){
     $arr=$_POST;
+    // 手机端
+    if (isHttpsMobile())
+    {
+      // 支付宝手机支付接口
+      require_once ICUNJI.'/vendor/alipay/wappay/service/AlipayTradeService.php';
+      require_once ICUNJI.'/vendor/alipay/wappay/buildermodel/AlipayTradeWapPayContentBuilder.php';
+    }
+    else
+    {
+      // 支付宝电脑支付接口
+      require_once ICUNJI.'/vendor/alipay/pagepay/service/AlipayTradeService.php';
+      require_once ICUNJI.'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
+    }
     $alipaySevice = new \AlipayTradeService(conf::all('alipay'));
     $alipaySevice->writeLog(var_export($_POST,true));
     $result = $alipaySevice->check($arr);
